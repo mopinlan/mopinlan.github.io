@@ -1,0 +1,774 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java面试小结(二) | mopinlan</title><meta name="keywords" content="面试 JAVA 数据库"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于Java面试，数据库篇。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试小结(二)">
+<meta property="og:url" content="https://mopinlan.github.io/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="关于Java面试，数据库篇。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg">
+<meta property="article:published_time" content="2022-05-18T14:03:03.000Z">
+<meta property="article:modified_time" content="2022-05-19T02:38:39.605Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java面试小结(二)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-19 10:38:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java面试小结(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-18T14:03:03.000Z" title="发表于 2022-05-18 22:03:03">2022-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-19T02:38:39.605Z" title="更新于 2022-05-19 10:38:39">2022-05-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java面试小结(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Java面试小结-二"><a href="#Java面试小结-二" class="headerlink" title="Java面试小结(二)"></a>Java面试小结(二)</h3><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>关于数据库方面的问题，参考博客<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://zhugefeng.github.io/2021/11/11/Review-Day9/#toc-heading-2" 
+  title="数据库"><i class="far fa-hand-point-right"></i><span>数据库</span></a></p>
+</div>
+
+<blockquote>
+<h4 id="1-DDL-DCL-DML-DQL-DTL"><a href="#1-DDL-DCL-DML-DQL-DTL" class="headerlink" title="1.DDL DCL DML DQL DTL"></a>1.DDL DCL DML DQL DTL</h4></blockquote>
+<ul>
+<li><p>DQL(Data Query Language) - 数据查询语言 - sql的核心<br>select</p>
+</li>
+<li><p>DML(Data Manipulation Language) - 数据操纵语言<br>insert update delete</p>
+</li>
+<li><p>DDL(Data definition Language) - 数据定义语言<br>create alter drop truncate</p>
+</li>
+<li><p>DCL(Data Control Language) - 数据控制语言<br>grant[授权] revoke[取消授权]</p>
+</li>
+<li><p>DTL(Data Transaction Language) - 数据事务语言<br>commit savepoint rollback</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="2-主键-外键-左连接-右连接"><a href="#2-主键-外键-左连接-右连接" class="headerlink" title="2.主键 外键 左连接 右连接"></a>2.主键 外键 左连接 右连接</h4></blockquote>
+<ul>
+<li><p>主键的关键字是primary key,用于唯一标识表中的行数据,不能为空,一个主键值对应一行数据.另外,会自动在主键上创建索引,加快查询速度.</p>
+</li>
+<li><p>外键的关键字是foreign key,用于标识两个表之间的联系,两个表必须具有相同类型的属性,在该属性上有相同的值.</p>
+</li>
+<li><p>左连接的关键字是left join,假设有两张表,分别是A表和B表,以A表为基准表,如果A表的记录在B表不存在,也能够查询出来.</p>
+</li>
+<li><p>右连接的关键字是right join,假设有两张表,分别是A表和B表,以B表为基准表,如果B表的记录在A表不存在,也能够查询出来.</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="3-DB-DBMS-RDBMS-DBS-DBA"><a href="#3-DB-DBMS-RDBMS-DBS-DBA" class="headerlink" title="3.DB,DBMS,RDBMS,DBS,DBA"></a>3.DB,DBMS,RDBMS,DBS,DBA</h4></blockquote>
+<ul>
+<li>DB - Database - 数据库</li>
+<li>DBMS - Database Management System - 数据库管理系统 - 数据库是通过DBMS来创建和操作的.</li>
+<li>RDBMS - Relational Database Management System - 关系数据库管理系统</li>
+<li>DBA - Database Administrator - 数据库管理员</li>
+<li>DBS - Database System - 数据库系统 &#x3D; DB + DBMS + DBA</li>
+</ul>
+<blockquote>
+<h4 id="4-事务"><a href="#4-事务" class="headerlink" title="4.事务"></a>4.事务</h4></blockquote>
+<p>事务是指一组相关的SQL操作,我们所有的操作都是处在事务中的,执行业务的基本单位不是sql,而是事务.</p>
+<p>命令</p>
+<ul>
+<li>begin - 标记事务的开始</li>
+<li>commit - 提交事务</li>
+<li>rollback - 回滚事务</li>
+<li>save - 设置事务可以回滚到的保存点</li>
+</ul>
+<p>四大特性</p>
+<ul>
+<li><p>Atomicity原子性 - 事务不可再分割,要么同时成功,要么同时失败.</p>
+</li>
+<li><p>Consistency一致性 - 事务一旦结束,内存中的数据和数据库中的数据是保持一致的.</p>
+</li>
+<li><p>example:A用户和B用户进行转账1000,A账号减少1000,B用户增加1000,无论如何执行,两个账户的金额改变加起来一定是1000.</p>
+</li>
+<li><p>Isolation隔离性 - 事务之间相互独立,互不干扰</p>
+</li>
+<li><p>Durability持久性 - 事务一旦提交,数据会持久化到数据库中永久保存.</p>
+</li>
+</ul>
+<p>隔离级别</p>
+<ul>
+<li><p>读未提交[READ UNCOMMITED]<br>事务最低的隔离级别,允许另外一个事务看到这个事务未提交的数据</p>
+</li>
+<li><p>读已提交[READ COMMITED]<br>保证一个事务修改的数据提交后才能被另外一个事务读取,即另外一个事务不能读取该事务未提交的数据.</p>
+</li>
+<li><p>可重复读[REPEATABLE READ] - mysql默认事务隔离级别<br>保证一个事务相同情况下前后两次读取的数据是一致的.</p>
+</li>
+<li><p>串行化[SERIALIZABLE]<br>事务被处理为顺序执行,有点类似于锁表,但性能很低.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>事务隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>读已提交</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>串行化</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody></table>
+<p>多事务并发问题</p>
+<ul>
+<li><p>脏读<br>事务 A 读取了事务 B 更新的数据，然后 B 回滚操作，那么 A 读取到的数据是脏数据</p>
+</li>
+<li><p>不可重复读<br>一个事务多次读取同一条记录产生不同的结果<br>事务A正在读取数据库中的记录,事务B正在修改数据库的事务并提交,事务A在事务B提交前和提交后读取到的记录结果不同,导致原来的数据变成不可重复读的数据.</p>
+</li>
+<li><p>幻读<br>一个事务修改表中的多行记录,一个事务往表里插入记录,第一个事务查询时发现仍旧有未更新的记录(新插入的),好像出现了幻觉一样</p>
+</li>
+</ul>
+<p><font color="red">不可重复读的重点是一个事务查一个事务修改,而幻读的重点是一个事务更新,一个事务插入.</font></p>
+<blockquote>
+<h4 id="5-编程式事务-x2F-声明式事务"><a href="#5-编程式事务-x2F-声明式事务" class="headerlink" title="5.编程式事务&#x2F;声明式事务"></a>5.编程式事务&#x2F;声明式事务</h4></blockquote>
+<ul>
+<li>编程式事务 - 通过编码的方式实现事务,导致事务和业务的代码耦合在一起,类似JDBC编程实现事务管理.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">..... </span><br><span class="line">connection.setAutoCommit(<span class="literal">false</span>); </span><br><span class="line">..... </span><br><span class="line"><span class="comment">// 一连串SQL操作 </span></span><br><span class="line">connection.commit(); </span><br><span class="line">&#125; <span class="keyword">catch</span>(SQLException) &#123; </span><br><span class="line"><span class="comment">// 发生错误，撤消所有变更 </span></span><br><span class="line">connection.rollback(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>声明式事务 - 建立在AOP之上,最大的优点是不需要通过编程的方式管理事务,不需要在业务逻辑代码中掺杂事务管理的代码,只需要在配置文件中做相关的申明,或通过@Transactional注解的方式就可以将事务规则应用到业务逻辑中</li>
+</ul>
+<blockquote>
+<h4 id="6-悲观锁和乐观锁"><a href="#6-悲观锁和乐观锁" class="headerlink" title="6.悲观锁和乐观锁"></a>6.悲观锁和乐观锁</h4></blockquote>
+<p>悲观锁<br>总是假设最坏的情况,每次取数据都认为别人会修改,所以在每个操作上都进行上锁. Java的synchronized和reentrantlock等独占锁就是悲观锁.</p>
+<p>乐观锁<br>总是假设最好的情况,每次那数据都认为别人不修改,所以不上锁,但是在更新的时候会判断一下在此期间有没有人去更新这个数据.</p>
+<p>悲观锁和乐观锁的使用场景</p>
+<ul>
+<li>悲观锁适用于写的情况比较多的场景.</li>
+<li>乐观锁适用于读的情况比较多的场景.</li>
+</ul>
+<p>乐观锁的实现方式</p>
+<ul>
+<li>版本号机制<br>在数据表中加上一个版本号version字段,表示数据被修改的次数,当数据被修改时,version的值会加一.</li>
+</ul>
+<p>假设现在同时有线程A和B对数据库的同一行数据进行操作,此时线程A读取版本号version&#x3D;1然后进行数据更新,在线程A操作的同时线程B也读取版本号version&#x3D;1并进行修改.线程A提交时先查看数据库的版本是否和自己读取的版本一致,发现是一致的,完成提交.</p>
+<ul>
+<li><p>CAS算法 - compare and swap(比较与交换)<br>CAS算法是一种有名的无锁算法,即在不使用锁的情况下实现多线程之间的变量同步.它涉及到三个操作数</p>
+</li>
+<li><p>需要读写的内存位置V- 主存</p>
+</li>
+<li><p>需要进行比较的预期值A - 主存中V的旧值</p>
+</li>
+<li><p>需要写入的新值U</p>
+</li>
+</ul>
+<p>主内存中的值为V,拷贝一份主内存的值到工作内存中为A, 更新后的值为U,当线程更新值时首先判断工作内存中A的值和主存中的V进行对比,如果相同才可以提交.如果不相同就会写不进去,会自旋,重新拉取主存的值给A</p>
+<blockquote>
+<h4 id="7-myisam和innodb的区别"><a href="#7-myisam和innodb的区别" class="headerlink" title="7.myisam和innodb的区别"></a>7.myisam和innodb的区别</h4></blockquote>
+<ul>
+<li><p>myisam不支持事务,innodb支持事务</p>
+</li>
+<li><p>myisam支持表锁,innodb支持行锁.</p>
+</li>
+<li><p>myisam不支持外键,innodb支持外键</p>
+</li>
+<li><p>在索引方面myisam和innodb有很大区别</p>
+<ul>
+<li>myisam中索引文件和数据文件是分开的独立的两个文件,innodb中索引文件和数据文件合二为一,只有一个文件.</li>
+<li>myisam中的聚簇索引和非聚簇索引的方式都是一致的,叶子结点存储的是索引的值和索引文件物理行地址.innodb中的聚簇索引的叶子结点存储的是索引的值和行记录,非聚簇索引的叶子结点存储的是索引的值和主键的值</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h4 id="8-索引"><a href="#8-索引" class="headerlink" title="8.索引"></a>8.索引</h4></blockquote>
+<p>数据结构<br>二叉树<br>二叉树的缺点 - 可能会形成链表,导致查询效率很低.</p>
+<p>平衡二叉树<br>基于二叉树的缺点改进为平衡二叉树,平衡二叉树每个节点的左右子树的高度差不能超过1.</p>
+<p>平衡二叉树的缺点</p>
+<ul>
+<li>平衡二叉树是每个节点只存储一个键值和数据,每个磁盘块只存储一个键值和数据.</li>
+<li>如果要存储的数据很多,二叉树的节点将会很多,高度也会极高,导致进行很多次的磁盘IO交互,查找的效率将会很低.</li>
+</ul>
+<p>B树<br>每查找一次数据就需要从磁盘中读取一个节点,也就是我们说的一个磁盘块.读取的单位是页 - 1页的磁盘块的数据大小是16kb,每个节点可以有更多的key-value</p>
+<p>B树单个节点存储多个键值和数据</p>
+<p>B树的优点 - 查找数据读取磁盘的数据将会很少,数据的查找效率也会比二叉树高很多.</p>
+<p>B树的缺点 - 因为每个节点存储的都是key值和行记录,如果行记录很多的话会导致存储的key值很少.</p>
+<p>B+树<br>B+树的非叶节点仅仅保存了key值,所以每个非叶节点可以保存更多的key,而叶子节点存储所有的数据.</p>
+<p>这又分为聚簇索引和非聚簇索引,聚簇索引的叶子结点存储的索引列值和行记录,非聚簇索引的叶子结点存储的是索引列值和主键值.</p>
+<p>非聚簇索引在查询时首先查询到主键值再根据主键值到聚簇索引中找到行记录,这个过程称之为回表.但是不一定会回表,如果查询的列就是索引列或者是主键列,就不需要回表.</p>
+<p><font color="red">以innodb作为存储引擎的表,表中的数据都会有一个主键,即使不创建主键,系统也会创建一个隐式的主键.</font></p>
+<blockquote>
+<h4 id="9-索引失效场景-x2F-如何提高sql查询效率"><a href="#9-索引失效场景-x2F-如何提高sql查询效率" class="headerlink" title="9.索引失效场景&#x2F;如何提高sql查询效率"></a>9.索引失效场景&#x2F;如何提高sql查询效率</h4></blockquote>
+<ul>
+<li>违反最左原则,查询语句where最左边的列一定要和创建复合索引的第一个列保持一致.</li>
+<li>在范围之后索引列会失效</li>
+<li>索引列进行模糊查询且”%”不是出现在末尾.</li>
+<li>索引列使用函数或参与计算</li>
+<li>索引列参与运算[not in &#x2F; is null]</li>
+<li>mysql在使用!&#x3D; &lt;&gt;的时候无法使用索引</li>
+<li>字符串不加单引号导致索引失效</li>
+<li>在查询时使用or连接查询条件</li>
+</ul>
+<p>建立索引的策略</p>
+<ul>
+<li>索引不是越多越好,因为索引 也是需要占用空间的,需要进行维护.</li>
+<li>推荐建立索引的列 - 主键列&#x2F;唯一列;不经常改变的列;满足以上条件并且经常作为查询条件的列</li>
+<li>不建议建立索引的列 - 重复值太多的列;null值太多的列</li>
+</ul>
+<p><font color="red">为什么可以提高查询效率 - 解释B+树的查询过程</font></p>
+<blockquote>
+<h4 id="10-sql优化"><a href="#10-sql优化" class="headerlink" title="10.sql优化"></a>10.sql优化</h4></blockquote>
+<ul>
+<li>避免在where子句中使用!&#x3D;或者&lt;&gt;操作符,否则将进行全表扫描.</li>
+<li>避免在where子句中使用or来连接条件</li>
+<li>避免使用is null</li>
+<li>避免使用not in</li>
+<li>避免使用索引列进行计算</li>
+<li>避免对索引列使用函数</li>
+<li>遵循最左原则</li>
+<li>避免使用select &#x2F;<em>,用具体的字段列表替代 &#x2F;</em></li>
+<li>避免使用order by,因为order by效率很低.</li>
+<li>针对于limit可以使用where语句配合使用</li>
+</ul>
+<blockquote>
+<h4 id="11-truncate和delete-drop区别"><a href="#11-truncate和delete-drop区别" class="headerlink" title="11.truncate和delete,drop区别"></a>11.truncate和delete,drop区别</h4></blockquote>
+<p>用法和区别</p>
+<ul>
+<li>drop table 表名 - 删除内容和定义,并释放空间,执行drop语句会把表结构一起删除.</li>
+<li>truncate table 表名 - 删除内容,释放空间但不删除定义(保留表的数据结构).</li>
+<li>delete from 表名 where 列名 &#x3D; 值 - 与truncate相似,delete也只删除内容,释放空间但不删除定义.</li>
+</ul>
+<p>区别</p>
+<ul>
+<li><p>执行速度一般是drop&gt;truncate&gt;delete</p>
+</li>
+<li><p>delete语句是DML操作,可以回滚.</p>
+</li>
+<li><p>truncate和drop是DDL,操作立即失效,无法回滚.</p>
+</li>
+<li><p>truncate会重置表的自增值,delete不会.</p>
+</li>
+<li><p>truncate不能操作视图,其他的都可以</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="12-三大范式"><a href="#12-三大范式" class="headerlink" title="12.三大范式"></a>12.三大范式</h4></blockquote>
+<ul>
+<li><p>1NF - 保证列的原子性,列不可再分割</p>
+</li>
+<li><p>2NF - 基于1NF,不存在非关键列部分依赖于关键列 [非关键列部分依赖于关键列的一部分]</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">场景:有一张表sc(sid,same,cid,cname);</span><br><span class="line">这里的主键应该是复合主键(sid,cid),其中非关键列sname就只依赖于sid,也就是说非关键列部分依赖于关键列,不符合2NF</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3NF - 基于2NF,不存在非关键列传递依赖于关键列</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">场景:由一张表student(sid,sname,sage,schoolid,schoolname);</span><br><span class="line">这里的主键是sid,但是存在非关键列schoolname依赖于schoolid,schoolid依赖于sid,所以说是非关键列不是直接依赖于关键列,而是传递依赖于关键列.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="13-单行函数"><a href="#13-单行函数" class="headerlink" title="13.单行函数"></a>13.单行函数</h4></blockquote>
+<p>字符串函数</p>
+<ul>
+<li>substring(str,pos,len) - 返回字符串str的位置pos起len个字符.</li>
+<li>substring(str,pos) - 返回字符串str的位置pos起后面的子串</li>
+<li>replace(str,from_str,to_str) - 用字符串to_str替换字符串str中的子串from_str并返回</li>
+<li>char_length(str) - 不管是汉字还是数字或者字母都算是一个字符</li>
+<li>lenght(str) - 汉字占3个其他占1个</li>
+</ul>
+<p>数字函数</p>
+<ul>
+<li>floor(n) - 返回不大于n的最大整数值</li>
+<li>ceiling(n) - 返回不小于n的最小整数值</li>
+<li>round(n[,d]) - 返回n的四舍五入值,保留d位小数(d的默认值为0)</li>
+<li>truncate(n,d) - 保留数字n的d位小数并返回 - 直接截取</li>
+</ul>
+<p>日期函数</p>
+<ul>
+<li><p>select now(); - 返回当前系统的日期</p>
+</li>
+<li><p>date_format(date,format) - 把日期转换成指定模板的字符串</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%Y - 四位数的年份</span><br><span class="line">%y - 两位数的年份</span><br><span class="line">%d - 月份中的天数(<span class="number">00.</span>.<span class="number">.31</span>)</span><br><span class="line">%m - 数字(<span class="number">01.</span>.<span class="number">.12</span>)</span><br><span class="line">%H - <span class="number">24</span>小时制小时(<span class="number">00.</span>.<span class="number">.23</span>)</span><br><span class="line">%h - <span class="number">12</span>小时制小时(<span class="number">01.</span>.<span class="number">.12</span>)</span><br><span class="line">%i - 分钟(<span class="number">00.</span>.<span class="number">.59</span>)</span><br><span class="line">%s - 秒钟(<span class="number">00.</span>.<span class="number">.59</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select start_date,date_format(start_date,<span class="string">&#x27;%Y-%m-%d %H:%i:%s&#x27;</span>) from s_emp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符串转日期,mysql中只要字符串满足默认支持的格式默认会转为date类型.<br>例如2021&#x2F;10&#x2F;12 2019-09-08 20181106<br>如果不是默认支持的格式 - str_to_date(‘05&#x2F;11&#x2F;2023’,’%d%m%Y’)</li>
+</ul>
+<blockquote>
+<h4 id="14-group-by-x2F-order-by-x2F-多行函数-x2F-组函数"><a href="#14-group-by-x2F-order-by-x2F-多行函数-x2F-组函数" class="headerlink" title="14.group by &#x2F; order by &#x2F; 多行函数 &#x2F; 组函数"></a>14.group by &#x2F; order by &#x2F; 多行函数 &#x2F; 组函数</h4></blockquote>
+<p>group by&#x2F;order by</p>
+<p>语法select 语句 where 语句 group by 语句 [having 组函数判断] order by 语句<br>order by默认是升序,asc是升序,desc是降序.</p>
+<p>多行函数&#x2F;组函数&#x2F;聚合函数</p>
+<p>count &#x2F; avg &#x2F; sum &#x2F; min &#x2F; max</p>
+<blockquote>
+<h4 id="15-视图的定义和优点"><a href="#15-视图的定义和优点" class="headerlink" title="15.视图的定义和优点"></a>15.视图的定义和优点</h4></blockquote>
+<p>视图是由数据库中的一个表或者多个表导出的虚拟表,是一种虚拟存在的表,方便用户对数据的操作.</p>
+<p>视图的作用</p>
+<ul>
+<li>保证数据的安全性</li>
+<li>封装一些比较繁琐的关联查询,在以后再次用到的时候就可以直接查询视图</li>
+<li>简化查询数据</li>
+</ul>
+<p>关于视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建视图</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名 <span class="keyword">as</span> <span class="keyword">select</span> 语句</span><br><span class="line"><span class="comment">-- 删除视图</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图名</span><br></pre></td></tr></table></figure>
+
+<p><font color="red">简单视图就是单张表的视图,可以对简单视图进行DML操作,同样会对原表产生影响.复杂视图就是多图关联查询导出的视图,不能对复杂视图进行DML操作.</font></p>
+<blockquote>
+<h4 id="16-存储过程的定义语法和优点"><a href="#16-存储过程的定义语法和优点" class="headerlink" title="16.存储过程的定义语法和优点"></a>16.存储过程的定义语法和优点</h4></blockquote>
+<p>存储过程是为了完成一些特定的功能,提前将sql预编译好,存储在mysql-server端系统的执行计划表中,第一次去调用存储过程的时候会对sql进行预编译并且进行保存,第二次再去调用的时候,省去了sql语句的编译过程.</p>
+<p>优点</p>
+<ul>
+<li>增强SQL语言的功能和灵活性 - 存储过程可以用控制语句编写,有很强的灵活性,可以完成复杂的判断和较复杂的运算.</li>
+<li>标准组件式编程 - 存储过程被创建后,可以在程序中被多次调用,而不必重新编写该存储过程的SQL语句.</li>
+<li>执行速度比较快 - 因为存储过程是预编译的,速度比批处理的执行速度快</li>
+</ul>
+<blockquote>
+<h4 id="17-存储过程和函数的区别"><a href="#17-存储过程和函数的区别" class="headerlink" title="17.存储过程和函数的区别"></a>17.存储过程和函数的区别</h4></blockquote>
+<p>存储过程的实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除存储过程</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> sal_pro;</span><br><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line">delimiter <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> sal_pro()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">-- 封装sql语句</span></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">from</span> s_emp;</span><br><span class="line"><span class="keyword">end</span> <span class="operator">/</span><span class="operator">/</span></span><br><span class="line">delimiter <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> sal_pro();</span><br></pre></td></tr></table></figure>
+
+<p>函数的区别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除函数</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> my_date;</span><br><span class="line"><span class="comment">-- 创建函数</span></span><br><span class="line">delimiter <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> my_date(dt <span class="type">date</span>)<span class="keyword">returns</span> <span class="type">varchar</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">return</span> date_format(dt,<span class="string">&#x27;%Y年%m月%日&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span> <span class="operator">/</span><span class="operator">/</span></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用函数</span></span><br><span class="line"><span class="keyword">select</span> my_date(<span class="string">&#x27;2010-09-09&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>存储过程和函数的区别</p>
+<ul>
+<li>定义函数的时候必须制定returns返回类型,定义存储过程的时候不需要使用returns返回类型.</li>
+<li>函数体中必须要有return语句+返回结果,但是存储过程可以没有return语句</li>
+<li>函数的调用使用select关键字,存储过程的调用使用call关键字</li>
+<li>存储过程更加侧重于封装以及预编译sql语句,提高sql语句的复用性.</li>
+<li>存储过程是用in来接受参数,out来返回结果.</li>
+</ul>
+<blockquote>
+<h4 id="18-触发器"><a href="#18-触发器" class="headerlink" title="18.触发器"></a>18.触发器</h4></blockquote>
+<p>在mysql中,当我们执行一些操作的时候[比如dml操作],一旦事件被触发就会执行一段程序.</p>
+<p>触发器的本质上就是一个特殊的存储过程.</p>
+<p>before触发器[前置触发器] - 在触发条件之前执行</p>
+<p>after触发器[后置触发器] - 在触发条件之后执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除account表中的任意一条数据的时候[触发时间],并且把这条数据放到备份表中acc_copy</span></span><br><span class="line"><span class="comment">-- 删除触发器</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> acc_tri;</span><br><span class="line"><span class="comment">-- 创建触发器</span></span><br><span class="line">delimiter <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> acc_tri</span><br><span class="line">after <span class="keyword">delete</span> <span class="keyword">on</span> account</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">-- old.列名 - 刚刚删除的那条数据</span></span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> acc_copy <span class="keyword">values</span>(old.id,old.name,old.balance);</span><br><span class="line"><span class="keyword">end</span> <span class="operator">/</span><span class="operator">/</span></span><br><span class="line">delimiter;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 触发器是遇到触发的事件才会执行的,不是我们手动去调用的.</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> account  <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="19-如何自己使用mysql进行分页操作"><a href="#19-如何自己使用mysql进行分页操作" class="headerlink" title="19.如何自己使用mysql进行分页操作"></a>19.如何自己使用mysql进行分页操作</h4></blockquote>
+<p>limit (pageNow-1)*pageSize,pageSize</p>
+<p>limit缺点 - 如果偏移量很大,性能就会降低</p>
+<blockquote>
+<h4 id="20-数据库的数据类型"><a href="#20-数据库的数据类型" class="headerlink" title="20.数据库的数据类型"></a>20.数据库的数据类型</h4></blockquote>
+<p>数值类型</p>
+<table>
+<thead>
+<tr>
+<th>tinyint</th>
+<th>1 Bytes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>smallint</td>
+<td>2 Bytes</td>
+</tr>
+<tr>
+<td>mediumint</td>
+<td>3 Bytes</td>
+</tr>
+<tr>
+<td>int或者integer</td>
+<td>4 Bytes</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>8 Bytes</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4 Bytes</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8 Bytes</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+</tr>
+</tbody></table>
+<p>日期和时间类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小 ( bytes)</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01&#x2F;9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>‘-838:59:59’&#x2F;‘838:59:59’</td>
+<td>HH:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901&#x2F;2155</td>
+<td>YYYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01-01 00:00:00&#x2F;9999-12-31 23:59:59</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>1970-01-01 00:00:00&#x2F;2038结束时间是第 2147483647 秒，北京时间 2038-1-19 11:14:07，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td>YYYYMMDD HHMMSS</td>
+<td>混合日期和时间值，时间戳</td>
+</tr>
+</tbody></table>
+<p>字符串类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CHAR</td>
+<td>0-255 bytes</td>
+<td>定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>0-65535 bytes</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>0-255 bytes</td>
+<td>不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>0-255 bytes</td>
+<td>短文本字符串</td>
+</tr>
+<tr>
+<td>BLOB（图片存储方式可以blog）</td>
+<td>0-65 535 bytes</td>
+<td>二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>0-65 535 bytes</td>
+<td>长文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>0-16 777 215 bytes</td>
+<td>二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>0-16 777 215 bytes</td>
+<td>中等长度文本数据</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>0-4 294 967 295 bytes</td>
+<td>二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>0-4 294 967 295 bytes</td>
+<td>极大文本数据</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h4 id="21-约束的类型"><a href="#21-约束的类型" class="headerlink" title="21.约束的类型"></a>21.约束的类型</h4></blockquote>
+<ul>
+<li>not null - 非空约束</li>
+<li>unique - 唯一约束</li>
+<li>primary key - 主键约束</li>
+<li>foreign key - 外键约束</li>
+<li>check - 检查约束</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/">https://mopinlan.github.io/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java面试小结(一)</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/"><img class="next-cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java面试小结(三)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/" title="Java面试小结(三)"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-19</div><div class="title">Java面试小结(三)</div></div></a></div><div><a href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)"><img class="cover" src="https://s2.loli.net/2022/03/21/cX8iDtlV6vgdreE.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-21</div><div class="title">Java面试小结(五)</div></div></a></div><div><a href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">Java面试小结(一)</div></div></a></div><div><a href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-21</div><div class="title">Java面试小结(四)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C"><span class="toc-number">1.</span> <span class="toc-text">Java面试小结(二)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-DDL-DCL-DML-DQL-DTL"><span class="toc-number">1.1.</span> <span class="toc-text">1.DDL DCL DML DQL DTL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%BB%E9%94%AE-%E5%A4%96%E9%94%AE-%E5%B7%A6%E8%BF%9E%E6%8E%A5-%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">2.主键 外键 左连接 右连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DB-DBMS-RDBMS-DBS-DBA"><span class="toc-number">1.3.</span> <span class="toc-text">3.DB,DBMS,RDBMS,DBS,DBA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4.事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1-x2F-%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.5.</span> <span class="toc-text">5.编程式事务&#x2F;声明式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-number">1.6.</span> <span class="toc-text">6.悲观锁和乐观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-myisam%E5%92%8Cinnodb%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">7.myisam和innodb的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E7%B4%A2%E5%BC%95"><span class="toc-number">1.8.</span> <span class="toc-text">8.索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF-x2F-%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98sql%E6%9F%A5%E8%AF%A2%E6%95%88%E7%8E%87"><span class="toc-number">1.9.</span> <span class="toc-text">9.索引失效场景&#x2F;如何提高sql查询效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-sql%E4%BC%98%E5%8C%96"><span class="toc-number">1.10.</span> <span class="toc-text">10.sql优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-truncate%E5%92%8Cdelete-drop%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.</span> <span class="toc-text">11.truncate和delete,drop区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="toc-number">1.12.</span> <span class="toc-text">12.三大范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.13.</span> <span class="toc-text">13.单行函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-group-by-x2F-order-by-x2F-%E5%A4%9A%E8%A1%8C%E5%87%BD%E6%95%B0-x2F-%E7%BB%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.14.</span> <span class="toc-text">14.group by &#x2F; order by &#x2F; 多行函数 &#x2F; 组函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-%E8%A7%86%E5%9B%BE%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BC%98%E7%82%B9"><span class="toc-number">1.15.</span> <span class="toc-text">15.视图的定义和优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%AD%E6%B3%95%E5%92%8C%E4%BC%98%E7%82%B9"><span class="toc-number">1.16.</span> <span class="toc-text">16.存储过程的定义语法和优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.17.</span> <span class="toc-text">17.存储过程和函数的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">1.18.</span> <span class="toc-text">18.触发器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-%E5%A6%82%E4%BD%95%E8%87%AA%E5%B7%B1%E4%BD%BF%E7%94%A8mysql%E8%BF%9B%E8%A1%8C%E5%88%86%E9%A1%B5%E6%93%8D%E4%BD%9C"><span class="toc-number">1.19.</span> <span class="toc-text">19.如何自己使用mysql进行分页操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.20.</span> <span class="toc-text">20.数据库的数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E7%BA%A6%E6%9D%9F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.21.</span> <span class="toc-text">21.约束的类型</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)"><img src="https://s2.loli.net/2022/03/21/cX8iDtlV6vgdreE.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(五)"/></a><div class="content"><a class="title" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)">Java面试小结(五)</a><time datetime="2022-05-21T08:20:19.000Z" title="发表于 2022-05-21 16:20:19">2022-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(四)"/></a><div class="content"><a class="title" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)">Java面试小结(四)</a><time datetime="2022-05-21T07:31:21.000Z" title="发表于 2022-05-21 15:31:21">2022-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/" title="Java面试小结(三)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(三)"/></a><div class="content"><a class="title" href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/" title="Java面试小结(三)">Java面试小结(三)</a><time datetime="2022-05-19T13:45:21.000Z" title="发表于 2022-05-19 21:45:21">2022-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/" title="Java面试小结(二)"><img src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(二)"/></a><div class="content"><a class="title" href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/" title="Java面试小结(二)">Java面试小结(二)</a><time datetime="2022-05-18T14:03:03.000Z" title="发表于 2022-05-18 22:03:03">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(一)"/></a><div class="content"><a class="title" href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)">Java面试小结(一)</a><time datetime="2022-05-17T06:41:43.000Z" title="发表于 2022-05-17 14:41:43">2022-05-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

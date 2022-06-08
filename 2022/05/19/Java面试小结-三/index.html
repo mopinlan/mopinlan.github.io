@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java面试小结(三) | mopinlan</title><meta name="keywords" content="面试 JAVA JavaWeb"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于Java面试，JDBC、Mybatis、JavaWeb。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试小结(三)">
+<meta property="og:url" content="https://mopinlan.github.io/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="关于Java面试，JDBC、Mybatis、JavaWeb。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg">
+<meta property="article:published_time" content="2022-05-19T13:45:21.000Z">
+<meta property="article:modified_time" content="2022-05-21T07:11:32.966Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java面试小结(三)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-21 15:11:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java面试小结(三)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-19T13:45:21.000Z" title="发表于 2022-05-19 21:45:21">2022-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-21T07:11:32.966Z" title="更新于 2022-05-21 15:11:32">2022-05-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java面试小结(三)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Java面试小结-三"><a href="#Java面试小结-三" class="headerlink" title="Java面试小结(三)"></a>Java面试小结(三)</h3><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>关于JDBC、Mybatis、网络基础，JavaWeb,参考博客<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://zhugefeng.github.io/2021/11/12/Review-Day10/" 
+  title="Review-Day10"><i class="far fa-hand-point-right"></i><span>Review-Day10</span></a></p>
+</div>
+
+<blockquote>
+<h4 id="JDBC6大编程步骤"><a href="#JDBC6大编程步骤" class="headerlink" title="JDBC6大编程步骤"></a>JDBC6大编程步骤</h4></blockquote>
+<ul>
+<li><p>加载驱动 - 加载驱动实现类 - Driver</p>
+</li>
+<li><p>获取连接 - 和db进行连接 - DriverManager</p>
+</li>
+<li><p>获取语句对象Statement</p>
+<ul>
+<li>写sql语句</li>
+<li>由语句对象将sql发送到mysql-server,如果执行的是DQL,还需要进行结果集处理,执行第4步</li>
+</ul>
+</li>
+<li><p>处理结果集 - 通过光标来获取表中的数据 - ResultSet</p>
+</li>
+<li><p>关闭对象-ResultSet,Statement,Connection</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></blockquote>
+<p>负责发送sql语句的对象 - Statement语句对象 - 引发sql注入问题 - 是因为参数硬拼接到了sql语句中</p>
+<p>传入非法的参数</p>
+<p>sql注入的场景:</p>
+<p>username是外部传过来的参数.该参数直接会被拼接到sql语句中.</p>
+<p>rs &#x3D; st.executeQuery(sql);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> User <span class="title function_">getByUsername</span><span class="params">(String username)</span> &#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from t_user where username=&#x27;&quot;</span>+username+<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="PrepareStatement和Statement区别"><a href="#PrepareStatement和Statement区别" class="headerlink" title="PrepareStatement和Statement区别"></a>PrepareStatement和Statement区别</h4></blockquote>
+<ul>
+<li>PreparedStatement继承自Statement,都是接口</li>
+<li>Statement适用于运行静态 SQL 语句[参数直接硬拼接到sql语句]。 Statement 接口不接受参数。</li>
+<li>**PrepareStatement计划多次使用同一条 SQL 语句[适合执行同构的sql]**， PreparedStatement接口运行时接受输入的参数。</li>
+<li>PrepareStatement有效防止sql注入</li>
+<li>PreparedStatement会预编译SQL语句,Statement每次都会解析&#x2F;编译SQL</li>
+<li>PreparedStatement的效率 比 Statement 的效率高</li>
+</ul>
+<blockquote>
+<h4 id="连接池的工作原理"><a href="#连接池的工作原理" class="headerlink" title="连接池的工作原理"></a>连接池的工作原理</h4></blockquote>
+<p>数据库连接池的基本思想就是为数据库连接 建立一个“缓冲池”。预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，只需从“缓冲池”中取出一个，使用完毕之后再放回去</p>
+<p>连接池的工作原理主要由三部分组成，分别为连接池的建立、连接池中连接的使用管理、连接池的关闭。</p>
+<ul>
+<li><p>连接池的创建<br>一般在系统初始化时，连接池会根据系统配置建立，并在池中创建了几个连接对象，以便使用时能从连接池中获取。<br>连接池中的连接不能随意创建和关闭，这样避免了连接随意建立和关闭造成的系统开销。Java中提供了很多容器类可以方便的构建连接池，例如Vector[线程安全的类]、Stack等。</p>
+</li>
+<li><p>连接池连接的使用管理<br>连接池管理策略是连接池机制的核心，连接池内连接的分配和释放对系统的性能有很大的影响。其管理策略是：<br>当客户端·请求数据库连接时，首先查看连接池中是否有空闲连接，如果存在空闲连接，则将连接分配给客户端使用；如果没有空闲连接，则查看当前所开的连接数是否已经达到最大连接数，如果没达到就重新创建一个连接给请求的客户端；如果达到就按设定的最大等待时间进行等待，如果超出最大等待时间，则抛出异常给客户端。 当客户端释放数据库连接时，先判断该连接的引用次数是否超过了规定值，如果超过就从连接池中删除该连接，否则保留为其他客户服务。该策略保证了数据库连接的有效复用，避免频繁的建立、释放连接锁带来的系统资源开销。</p>
+</li>
+<li><p>连接池的关闭<br>当应用程序退出时，关闭连接池中所有的连接，释放连接池相关的资源，该过程正好与创建相反</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="ORM思想-对象关系映射"><a href="#ORM思想-对象关系映射" class="headerlink" title="ORM思想(对象关系映射)"></a>ORM思想(对象关系映射)</h4></blockquote>
+<p>表和实体类息息相关</p>
+<blockquote>
+<h4 id="Mybatis-半自动ORM框架-和hibernate-全自动ORM框架-区别"><a href="#Mybatis-半自动ORM框架-和hibernate-全自动ORM框架-区别" class="headerlink" title="Mybatis(半自动ORM框架)和hibernate(全自动ORM框架)区别"></a>Mybatis(半自动ORM框架)和hibernate(全自动ORM框架)区别</h4></blockquote>
+<ul>
+<li>Mybatis 和hibernate不同,它不完全是一个ORM框架,因为MyBatis需要程序员自己编写Sql语句。</li>
+<li>Mybatis 直接编写原生态sql，可以严格控制sql执行性能,灵活度高,非常适合对关系数据模型要求不高的软件开发,因为这类软件需求变化频繁, -但需求变化要求迅速输出成果。但是灵活的前提是mybatis无法做到数据库无关性,如果需要实现支持多种数据库的软件,则需要自定义多套sql映射文件,工作量大。</li>
+<li>Hibernate 对象&#x2F;关系映射能力强,数据库无关性好,对于关系模型要求高的软件,如果用hibernate 开发可以节省很多代码,提高效率。</li>
+</ul>
+<blockquote>
+<h4 id="Mybatis-面对简单的封装-自动封装结果集-和JDBC-手动封装结果集-区别"><a href="#Mybatis-面对简单的封装-自动封装结果集-和JDBC-手动封装结果集-区别" class="headerlink" title="Mybatis(面对简单的封装,自动封装结果集)和JDBC(手动封装结果集)区别"></a>Mybatis(面对简单的封装,自动封装结果集)和JDBC(手动封装结果集)区别</h4></blockquote>
+<p>Mybatis免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作.</p>
+<p>复杂的查询那么仍然是需要手动进行映射的[列-属性]</p>
+<blockquote>
+<h4 id="和-区别"><a href="#和-区别" class="headerlink" title="${ }和#{ }区别"></a>${ }和#{ }区别</h4></blockquote>
+<p>#{}是预编译处理, ${}是字符串替换。<br>Mybatis在处理#{}时,会将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值;<br>Mybatis在处理${}时,就是把${}替换成变量的值。<br>使用#{}可以有效的防止SQL注入,提高系统安全性</p>
+<blockquote>
+<h4 id="resultType和resultMap区别"><a href="#resultType和resultMap区别" class="headerlink" title="resultType和resultMap区别"></a>resultType和resultMap区别</h4></blockquote>
+<h5 id="resultType"><a href="#resultType" class="headerlink" title="resultType"></a>resultType</h5><ul>
+<li><p>只有select标签才需要指定resultType属性</p>
+</li>
+<li><p>自动映射</p>
+</li>
+<li><p>mybatis什么时候才能够实现自动映射的效果 - 一定是查询出来的列名和实体类属性名高度保持一致</p>
+</li>
+<li><p>或者出来的列名是一个合法的匈牙利命名 - 实体类属性的小驼峰.</p>
+</li>
+</ul>
+<h5 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h5><ul>
+<li>当查询的列值不能自动映射&#x2F;绑定实体类的属性的时候,需要通过resultMap来进行一一绑定.</li>
+</ul>
+<blockquote>
+<h4 id="selectOne和selectList区别"><a href="#selectOne和selectList区别" class="headerlink" title="selectOne和selectList区别"></a>selectOne和selectList区别</h4></blockquote>
+<ul>
+<li><p>selectOne - 负责加载唯一的一条数据 - 返回的是一个单个对象</p>
+</li>
+<li><p>selectList - 负责加载多条数据,返回一个集合</p>
+</li>
+<li><p>如果在必须使用selectList,不小心使用到了selectOne.那么就会抛出异常</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h4></blockquote>
+<p>MyBatis中的延迟加载，也称为懒加载，是指在进行表的关联查询时，按照设置延迟规则推迟对关联对象的select查询。例如在进行一对多查询的时候，只查询出一方，当程序中需要多方的数据时，mybatis再发出sql语句进行查询，这样子延迟加载就可以的减少数据库压力。MyBatis 的延迟加载只是对关联对象的查询有迟延设置，对于主加载对象都是直接执行查询语句的。</p>
+<blockquote>
+<h4 id="一级缓存和二级缓存"><a href="#一级缓存和二级缓存" class="headerlink" title="一级缓存和二级缓存"></a>一级缓存和二级缓存</h4></blockquote>
+<h5 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h5><p>mybatis中是自动开启一级缓存的.</p>
+<p>SqlSession &#x3D; Connection[Jdbc中的一次连接] + Cache[默认开启的就是一级缓存]</p>
+<p>一级缓存是SqlSession级别的.</p>
+<ul>
+<li>优先到一级缓存中去查询是否存在这个实体对象.如果有直接返回.否则才会和db进行交互</li>
+<li>目的好处 - 为了提高查询效率的</li>
+</ul>
+<h5 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h5><p>mybatis并没有自动开启二级缓存,手动配置启动二级缓存</p>
+<ul>
+<li>优先从一级缓存中去查找是否存在对象,如果不存在执行2,存在,直接返回了</li>
+<li>再到二级缓存中去查找是否存在对象.如果不存在,则会和db进行交互</li>
+<li>将对象散列的属性数据放一份到二级缓存.将整个实体对象[整体]放入到一级缓存中.</li>
+</ul>
+<blockquote>
+<h4 id="SqlSessionFactoryBuilder-SqlSessionFactory和SqlSession-x3D-x3D-Connection-Cache-一级缓存"><a href="#SqlSessionFactoryBuilder-SqlSessionFactory和SqlSession-x3D-x3D-Connection-Cache-一级缓存" class="headerlink" title="SqlSessionFactoryBuilder,SqlSessionFactory和SqlSession &#x3D;&#x3D; Connection + Cache(一级缓存)"></a>SqlSessionFactoryBuilder,SqlSessionFactory和SqlSession &#x3D;&#x3D; Connection + Cache(一级缓存)</h4></blockquote>
+<h5 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h5><p>仅仅只会使用到一次.</p>
+<p>SqlSessionFactory build(InputStream in);</p>
+<p>功能:读取xml的字节输入流来构建一个重量级的对象SqlSessionFactory - 相当于jdbc数据源对象[BasicDataSource].</p>
+<h5 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h5><p>重量级的对象 - 不能随意创建多个或者随意销毁 - 耗时间 - 占内存 - 单例</p>
+<p>一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例</p>
+<p>SqlSession openSession();&#x2F;&#x2F;获取Session对象</p>
+<h5 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h5><p>作用:负责和db进行CRUD操作.</p>
+<p>与db进行一次会话 - 一次连接.相当于JDBC中的Connection对象.但是比jdbc多出缓存的功能.</p>
+<p>SqlSession&#x3D;Connection[db连接] + Cache[默认的一级缓存];</p>
+<p>SqlSession 的实例不是线程安全的，因此是不能被共享的.每个线程都应该有它自己的 SqlSession 实例.</p>
+<p>session应该是一个局部变量</p>
+<p>回顾java知识点</p>
+<p>当线程执行到方法的时候,就会在本地开辟一块区域 - 线程栈[独占的]</p>
+<blockquote>
+<h4 id="association和collection区别-Mybatis加载一-x2F-多的区别"><a href="#association和collection区别-Mybatis加载一-x2F-多的区别" class="headerlink" title="association和collection区别(Mybatis加载一&#x2F;多的区别)"></a>association和collection区别(Mybatis加载一&#x2F;多的区别)</h4></blockquote>
+<ul>
+<li>关联-association</li>
+<li>集合-collection</li>
+</ul>
+<p><font color="red">association是用于一对一和多对一，而collection是用于一对多的关系</font></p>
+<blockquote>
+<h4 id="写出几个常见的SQL标签-x2F-动态SQL"><a href="#写出几个常见的SQL标签-x2F-动态SQL" class="headerlink" title="写出几个常见的SQL标签&#x2F;动态SQL"></a>写出几个常见的SQL标签&#x2F;动态SQL</h4></blockquote>
+<ul>
+<li><p>循环容器的标签forEach</p>
+</li>
+<li><p>concat模糊查询</p>
+</li>
+<li><p>choose (when, otherwise)标签<br>choose标签是按顺序判断其内部when标签中的test条件出否成立，如果有一个成立，则 choose 结束。当 choose 中所有 when 的条件都不满则时，则执行 otherwise 中的sql。类似于Java 的 switch 语句，choose 为 switch，when 为 case，otherwise 则为 default。</p>
+</li>
+<li><p>selectKey 标签</p>
+</li>
+<li><p>if标签</p>
+</li>
+<li><p>if + where 的条件判断</p>
+</li>
+<li><p>if + set实现修改语句</p>
+</li>
+<li><p>if + trim代替where&#x2F;set标签</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="Mybatis分页插件"><a href="#Mybatis分页插件" class="headerlink" title="Mybatis分页插件"></a>Mybatis分页插件</h4></blockquote>
+<p>PageHelper方法使用了静态的ThreadLocal参数，分页参数和线程是绑定的。内部流程是ThreadLocal中设置了分页参数（pageIndex，pageSize），之后在查询执行的时候，获取当线程中的分页参数，执行查询的时候通过拦截器在sql语句中添加分页参数，之后实现分页查询，查询结束后在 finally 语句中清除ThreadLocal中的查询参数</p>
+<p>PageHelper首先将前端传递的参数保存到page这个对象中，接着将page的副本存放入ThreadLoacl中，这样可以保证分页的时候，参数互不影响，接着利用了mybatis提供的拦截器，取得ThreadLocal的值，重新拼装分页SQL，完成分页。</p>
+<blockquote>
+<h4 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h4></blockquote>
+<p>init,service[doGet,doPost],destroy方法</p>
+<ul>
+<li><p>第一阶段 - Servlet何时被实例化<br>如果配置了0<br>如果配置了0或者正数,意味着启动tomcat的时候,就会立即初始化该servlet实例,并且利用该实例立即去调用init方法.<br>如果值一样,根据上下的配置顺序.如果值不一样.数值越小,优先级越高.<br>如果没有配置<br>当请求第一次到达的时候,tomcat容器会初始化该servlet的实例.然后利用该实例立即去调用init方法<br>init方法仅仅只会执行1次.</p>
+</li>
+<li><p>第二阶段<br>来自于client端的请求永远是永远是先到达service方法.如果本servlet中没有重写service方法<br>那么会自动进入到父类HttpServlet中的service方法,根据请求的方式来决定调用doGet方法还是doPost方法.<br>再在重写之后的doGet方法或者doPost方法中来处理请求和响应.</p>
+</li>
+<li><p>第三阶段<br>当我们关闭tomcat的时候,会调用destroy方法.</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="post和get区别"><a href="#post和get区别" class="headerlink" title="post和get区别"></a>post和get区别</h4></blockquote>
+<ul>
+<li><p>(1).get请求一般用于获取数据,post请求一般用于需要发数据到后台时使用</p>
+</li>
+<li><p>(2).get请求的参数,会放在url上,所以安全性,隐私性会比较差,post请求的参数会放在request.body中,比较的安全</p>
+</li>
+<li><p>(3).get请求不受到刷新,回退的影响,post请求则会在网页回退或者刷新后,重新进行发送</p>
+</li>
+<li><p>(4).get请求会被缓存,post请求不会被缓存</p>
+</li>
+<li><p>(5).get请求会被记录在浏览器的历史记录中,post请求则不会被记录</p>
+</li>
+<li><p>(6).get请求可以被收藏为标签,post不能被收藏为标签</p>
+</li>
+<li><p>(7).get请求只能进行url编码,post请求则支持多种编码</p>
+</li>
+<li><p>(8).get请求通常通过url地址栏请求,post通常通过表单发送数据请求</p>
+</li>
+<li><p>(9). post请求url长度理论上没有限制,get请求有限制[不同的浏览器不一样]</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="如何处理中文乱码"><a href="#如何处理中文乱码" class="headerlink" title="如何处理中文乱码"></a>如何处理中文乱码</h4></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="转发-x2F-重定向"><a href="#转发-x2F-重定向" class="headerlink" title="转发&#x2F;重定向"></a>转发&#x2F;重定向</h4></blockquote>
+<h5 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h5><ul>
+<li>转发发生在服务器端的跳转</li>
+<li>共享request作用域中的数据</li>
+<li>地址栏不变</li>
+</ul>
+<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h5><ul>
+<li>重定向发生在客户端的跳转</li>
+<li>至少2次请求,不能获取request作用域中的数据</li>
+<li>地址栏是会发生变化的</li>
+<li>可以重定向到其他站点</li>
+</ul>
+<blockquote>
+<h4 id="Cookie和session"><a href="#Cookie和session" class="headerlink" title="Cookie和session"></a>Cookie和session</h4></blockquote>
+<ul>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上.</li>
+<li>cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。</li>
+<li>设置cookie时间可以使cookie过期。但是使用session-destory（），我们将会销毁会话。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。(Session对象没有对存储的数据量的限制，其中可以保存更为复杂的数据类型)</li>
+</ul>
+<p>注意:</p>
+<ul>
+<li><p>session很容易失效,用户体验很差;</p>
+</li>
+<li><p>虽然cookie不安全,但是可以加密 ;</p>
+</li>
+<li><p>cookie也分为永久和暂时存在的;</p>
+</li>
+<li><p>浏览器 有禁止cookie功能 ,但一般用户都不会设置;</p>
+</li>
+<li><p>一定要设置失效时间,要不然浏览器关闭就消失了;</p>
+</li>
+</ul>
+<p>例如:</p>
+<p>​ 记住密码功能就是使用永久cookie写在客户端电脑，下次登录时，自动将cookie信息附加发送给服务端。</p>
+<p>​ application是全局性信息，是所有用户共享的信息，如可以记录有多少用户现在登录过本网站，并把该信息展示个所有用户。</p>
+<p>两者最大的区别在于生存周期，一个是IE启动到IE关闭.(浏览器页面一关 ,session就消失了)，一个是预先设置的生存周期，或永久的保存于本地的文件。(cookie)</p>
+<p>Session信息是存放在server端，但session id是存放在client cookie的，当然php的session存放方法是多样化的，这样就算禁用cookie一样可以跟踪</p>
+<p>Cookie是完全保持在客户端的如：IE firefox 当客户端禁止cookie时将不能再使用</p>
+<blockquote>
+<h4 id="Cookie如何管理session"><a href="#Cookie如何管理session" class="headerlink" title="Cookie如何管理session"></a>Cookie如何管理session</h4></blockquote>
+<p>诞生背景:session为什么要进行管理?</p>
+<p>原因:通过http协议发送的请求,http协议无状态的协议 - server不能够判断后续的多次请求是来自于同一个客户端[server本身不标识客户端.]</p>
+<ul>
+<li>何时才会创建session空间<br>1-1. 当后端代码中第一次出现req.getSession();<br>1-2. 第一次访问jsp文件,只要设置成false,就不会创建session空间.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> session=<span class="string">&quot;true&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>当第一次请求到达req.getSession();的时候,tomcat服务器会创建一个Session空间,并且给这个空间分配一个唯一的id<br>接着创建了cookie,这个cookie中存放了这个空间的id,并且通过响应头信息将这个cookie发送到client端,并且保存在client</p>
+</li>
+<li><p>后续的请求会带上存储sessionid的cookie一起发送到server端.由tomcat解析cookie中的session空间的id,然后将这个client联系到这个client对应的session空间</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="Http和Https"><a href="#Http和Https" class="headerlink" title="Http和Https"></a>Http和Https</h4></blockquote>
+<ul>
+<li>HTTP 明文传输，数据都是未加密的，安全性较差，HTTPS（SSL+HTTP） 数据传输过程是加密的，安全性较好。</li>
+<li>使用 HTTPS 协议需要到 CA（Certificate Authority，数字证书认证机构） 申请证书，一般免费证书较少，因而需要一定费用。证书颁发机构如：Symantec、Comodo、GoDaddy 和 GlobalSign 等。</li>
+<li>HTTP 页面响应速度比 HTTPS 快，主要是因为 HTTP 使用 TCP 三次握手建立连接，客户端和服务器需要交换 3 个包，而 HTTPS除了 TCP 的三个包，还要加上 ssl 握手需要的 9 个包，所以一共是 12 个包。</li>
+<li>http 和 https 使用的是完全不同的连接方式，用的端口也不一样，前者是 80，后者是 443。</li>
+<li>HTTPS 其实就是建构在 SSL&#x2F;TLS 之上的 HTTP 协议，所以，要比较 HTTPS 比 HTTP 要更耗费服务器资源。</li>
+</ul>
+<blockquote>
+<h4 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP(三次握手)"></a>TCP(三次握手)</h4></blockquote>
+<p><img src="https://s2.loli.net/2022/05/21/XZoUMniqeb8DyH6.png" alt="tcp-三次握手.png"></p>
+<ul>
+<li><p>SYN：连接请求&#x2F;接收 报文段 - 同步位</p>
+</li>
+<li><p>seq：发送的第一个字节的序号</p>
+</li>
+<li><p>ACK：确认报文段</p>
+</li>
+<li><p>ack：确认号。希望收到的下一个数据的第一个字节的序号</p>
+</li>
+<li><p>client和server一开始都是出于close状态</p>
+</li>
+<li><p>client自己想要建立请求 - 主动打开,server端被动打开的,然后server进入到listen监听状态.</p>
+</li>
+<li><p>（1）首先客户端向服务器端发送一段TCP报文，其中：<br>标记位为SYN，表示“请求建立新连接”;序号为Seq&#x3D;X；随后客户端进入SYN-SENT阶段。</p>
+</li>
+<li><p>（2）服务器端接收到来自客户端的TCP报文之后，结束LISTEN阶段。并返回一段TCP报文，其中：<br>标记位为SYN和ACK，表示“确认客户端的报文Seq序号有效，服务器能正常接收客户端发送的数据，并同意创建新连接”（即告诉客户端，服务器收到了你的数据）；序号为Seq&#x3D;y；确认号为Ack&#x3D;x+1，表示收到客户端的序号Seq并将其值加1作为自己确认号Ack的值；随后服务器端进入SYN-RCVD阶段。</p>
+</li>
+<li><p>（3）客户端接收到来自服务器端的确认收到数据的TCP报文之后，明确了从客户端到服务器的数据传输是正常的，结束SYN-SENT阶段。并返回最后一段TCP报文。其中：<br>标记位为ACK，表示“确认收到服务器端同意连接的信号”（即告诉服务器，我知道你收到我发的数据了）；序号为Seq&#x3D;x+1，表示收到服务器端的确认号Ack，并将其值作为自己的序号值；确认号为Ack&#x3D;y+1，表示收到服务器端序号Seq，并将其值加1作为自己的确认号Ack的值；随后客户端进入ESTABLISHED阶段。<br>服务器收到来自客户端的“确认收到服务器数据”的TCP报文之后，明确了从服务器到客户端的数据传输是正常的。结束SYN-SENT阶段，进入ESTABLISHED阶段。</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="为什么不能两次握手"><a href="#为什么不能两次握手" class="headerlink" title="为什么不能两次握手"></a>为什么不能两次握手</h4></blockquote>
+<ul>
+<li>client发送第一个请求①到server,但是由于网络不稳定,此次请求尚未到达server</li>
+<li>client发现server一直没有回复,再发一次请求②[第一次我握手,嗨,我要建立连接],第二个请求顺利到达server</li>
+<li>server和client进行第二次握手[好的,你建立吧].</li>
+<li>client和server进行第三次握手[那好,我真的建立]</li>
+<li>此时第一次请求慢吞吞的到达server了.[syn&#x3D;1,seq&#x3D;x],server会认为是一个新的请求过来了.</li>
+<li>server和client想要进行第二次握手ack&#x3D;x+1[确认号]</li>
+<li>client分析ack不是自己的,直接忽略此次来自于server端握手.</li>
+<li>server就会一直处于等待状态.</li>
+</ul>
+<blockquote>
+<h4 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h4></blockquote>
+<ul>
+<li>200 - 请求成功</li>
+<li>301 - 资源（网页等）被永久转移到其它URL</li>
+<li>404 - 请求的资源（网页等）不存在</li>
+<li>500 - 内部服务器错误</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>分类描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1**</td>
+<td>信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td>2**</td>
+<td>成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td>3**</td>
+<td>重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td>4**</td>
+<td>客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td>5**</td>
+<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h4 id="三大作用域"><a href="#三大作用域" class="headerlink" title="三大作用域"></a>三大作用域</h4></blockquote>
+<ul>
+<li>request作用域 - HttpServletRequest,一次请求,一次响应.</li>
+<li>session作用域 - HttpSession - 一次会话期间,浏览器开启,浏览器关闭</li>
+<li>application作用域 - ServletContext - 服务器开启 - 服务器关闭 - 整个应用期间</li>
+</ul>
+<blockquote>
+<h4 id="HttpServletRequest和HttpServletResponse"><a href="#HttpServletRequest和HttpServletResponse" class="headerlink" title="HttpServletRequest和HttpServletResponse"></a>HttpServletRequest和HttpServletResponse</h4></blockquote>
+<ul>
+<li><p>HttpServletRequest<br>extends javax.servlet. ServletRequest[I]<br>所有的请求的信息都被封装到了HttpServletRequest对象中</p>
+</li>
+<li><p>HttpServletResponse<br>extends javax.servlet. ServletResponse[I]<br>所有的响应给客户端的信息全部封装到这个对象中了.</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="Filter和Intecepor"><a href="#Filter和Intecepor" class="headerlink" title="Filter和Intecepor"></a>Filter和Intecepor</h4></blockquote>
+<p>Filter有如下几个用处。</p>
+<ul>
+<li>在HttpServletRequest到达Servlet之前，拦截客户的HttpServletRequest。</li>
+<li>根据需要检查HttpServletRequest，也可以修改HttpServletRequest头和数据。</li>
+<li>在HttpServletResponse到达客户端之前，拦截HttpServletResponse。</li>
+<li>根据需要检查HttpServletResponse，也可以修改HttpServletResponse头和数据。</li>
+</ul>
+<p>拦截器，在AOP(Aspect-Oriented Programming)中用于在某个方法或字段被访问之前，进行拦截，然后在之前或之后加入某些操作。拦截是AOP的一种实现策略。</p>
+<ul>
+<li>Filter是基于函数回调的，而Interceptor则是基于Java反射的。</li>
+<li>Filter依赖于Servlet容器，而Interceptor不依赖于Servlet容器。</li>
+<li>Filter对几乎所有的请求起作用，而Interceptor只能对action请求起作用。</li>
+<li>Interceptor可以访问Action的上下文，值栈里的对象，而Filter不能。</li>
+<li>在action的生命周期里，Interceptor可以被多次调用，而Filter只能在容器初始化时调用一次。</li>
+</ul>
+<blockquote>
+<h4 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h4></blockquote>
+<p>Listener监听器就是一个实现特定接口的普通Java程序，这个程序专门用于监听一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法将立即被执行。</p>
+<ul>
+<li><p>监听器Listener就是在application,session,request三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件。</p>
+</li>
+<li><p>Listener是Servlet的监听器，可以监听客户端的请求，服务端的操作等。</p>
+</li>
+<li><p>Listener实现了javax.servlet.ServletContextListener 接口的服务器端程序，它也是随web应用的启动而启动，只初始化一次，随web应用的停止而销毁。主要作用是：做一些初始化的内容添加工作、设置一些基本的内容、比如一些参数或者是一些固定的对象等等.</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="九大内置对象"><a href="#九大内置对象" class="headerlink" title="九大内置对象"></a>九大内置对象</h4></blockquote>
+<ul>
+<li>out（JspWriter）：等同与response.getWriter()，用来向客户端发送文本数据；</li>
+<li>config（ServletConfig）：对应“真身”中的ServletConfig；</li>
+<li>page（当前JSP的真身类型）：当前JSP页面的“this”，即当前对象；</li>
+<li>pageContext（PageContext）：页面上下文对象，它是最后一个没讲的域对象；</li>
+<li>exception（Throwable）：只有在错误页面中可以使用这个对象；</li>
+<li>request（HttpServletRequest）：即HttpServletRequest类的对象；</li>
+<li>response（HttpServletResponse）：即HttpServletResponse类的对象；</li>
+<li>application（ServletContext）：即ServletContext类的对象；</li>
+<li>session（HttpSession）：即HttpSession类的对象</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/">https://mopinlan.github.io/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java面试小结(二)</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/"><img class="next-cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java面试小结(四)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/" title="Java面试小结(二)"><img class="cover" src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-18</div><div class="title">Java面试小结(二)</div></div></a></div><div><a href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)"><img class="cover" src="https://s2.loli.net/2022/03/21/cX8iDtlV6vgdreE.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-21</div><div class="title">Java面试小结(五)</div></div></a></div><div><a href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">Java面试小结(一)</div></div></a></div><div><a href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-21</div><div class="title">Java面试小结(四)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89"><span class="toc-number">1.</span> <span class="toc-text">Java面试小结(三)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDBC6%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">JDBC6大编程步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.</span> <span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PrepareStatement%E5%92%8CStatement%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">PrepareStatement和Statement区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">连接池的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ORM%E6%80%9D%E6%83%B3-%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84"><span class="toc-number">1.5.</span> <span class="toc-text">ORM思想(对象关系映射)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mybatis-%E5%8D%8A%E8%87%AA%E5%8A%A8ORM%E6%A1%86%E6%9E%B6-%E5%92%8Chibernate-%E5%85%A8%E8%87%AA%E5%8A%A8ORM%E6%A1%86%E6%9E%B6-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.6.</span> <span class="toc-text">Mybatis(半自动ORM框架)和hibernate(全自动ORM框架)区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mybatis-%E9%9D%A2%E5%AF%B9%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85-%E8%87%AA%E5%8A%A8%E5%B0%81%E8%A3%85%E7%BB%93%E6%9E%9C%E9%9B%86-%E5%92%8CJDBC-%E6%89%8B%E5%8A%A8%E5%B0%81%E8%A3%85%E7%BB%93%E6%9E%9C%E9%9B%86-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">Mybatis(面对简单的封装,自动封装结果集)和JDBC(手动封装结果集)区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%92%8C-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.8.</span> <span class="toc-text">${ }和#{ }区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resultType%E5%92%8CresultMap%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text">resultType和resultMap区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#resultType"><span class="toc-number">1.9.1.</span> <span class="toc-text">resultType</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#resultMap"><span class="toc-number">1.9.2.</span> <span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#selectOne%E5%92%8CselectList%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.</span> <span class="toc-text">selectOne和selectList区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.11.</span> <span class="toc-text">延迟加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%92%8C%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">1.12.</span> <span class="toc-text">一级缓存和二级缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">1.12.1.</span> <span class="toc-text">一级缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">1.12.2.</span> <span class="toc-text">二级缓存</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SqlSessionFactoryBuilder-SqlSessionFactory%E5%92%8CSqlSession-x3D-x3D-Connection-Cache-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">1.13.</span> <span class="toc-text">SqlSessionFactoryBuilder,SqlSessionFactory和SqlSession &#x3D;&#x3D; Connection + Cache(一级缓存)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SqlSessionFactoryBuilder"><span class="toc-number">1.13.1.</span> <span class="toc-text">SqlSessionFactoryBuilder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SqlSessionFactory"><span class="toc-number">1.13.2.</span> <span class="toc-text">SqlSessionFactory</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SqlSession"><span class="toc-number">1.13.3.</span> <span class="toc-text">SqlSession</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#association%E5%92%8Ccollection%E5%8C%BA%E5%88%AB-Mybatis%E5%8A%A0%E8%BD%BD%E4%B8%80-x2F-%E5%A4%9A%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.14.</span> <span class="toc-text">association和collection区别(Mybatis加载一&#x2F;多的区别)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%87%BA%E5%87%A0%E4%B8%AA%E5%B8%B8%E8%A7%81%E7%9A%84SQL%E6%A0%87%E7%AD%BE-x2F-%E5%8A%A8%E6%80%81SQL"><span class="toc-number">1.15.</span> <span class="toc-text">写出几个常见的SQL标签&#x2F;动态SQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6"><span class="toc-number">1.16.</span> <span class="toc-text">Mybatis分页插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.17.</span> <span class="toc-text">Servlet生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#post%E5%92%8Cget%E5%8C%BA%E5%88%AB"><span class="toc-number">1.18.</span> <span class="toc-text">post和get区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-number">1.19.</span> <span class="toc-text">如何处理中文乱码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E5%8F%91-x2F-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.20.</span> <span class="toc-text">转发&#x2F;重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AC%E5%8F%91"><span class="toc-number">1.20.1.</span> <span class="toc-text">转发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.20.2.</span> <span class="toc-text">重定向</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie%E5%92%8Csession"><span class="toc-number">1.21.</span> <span class="toc-text">Cookie和session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86session"><span class="toc-number">1.22.</span> <span class="toc-text">Cookie如何管理session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Http%E5%92%8CHttps"><span class="toc-number">1.23.</span> <span class="toc-text">Http和Https</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.24.</span> <span class="toc-text">TCP(三次握手)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.25.</span> <span class="toc-text">为什么不能两次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#http%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.26.</span> <span class="toc-text">http状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.27.</span> <span class="toc-text">三大作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HttpServletRequest%E5%92%8CHttpServletResponse"><span class="toc-number">1.28.</span> <span class="toc-text">HttpServletRequest和HttpServletResponse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Filter%E5%92%8CIntecepor"><span class="toc-number">1.29.</span> <span class="toc-text">Filter和Intecepor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E5%99%A8"><span class="toc-number">1.30.</span> <span class="toc-text">监听器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.31.</span> <span class="toc-text">九大内置对象</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)"><img src="https://s2.loli.net/2022/03/21/cX8iDtlV6vgdreE.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(五)"/></a><div class="content"><a class="title" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%94/" title="Java面试小结(五)">Java面试小结(五)</a><time datetime="2022-05-21T08:20:19.000Z" title="发表于 2022-05-21 16:20:19">2022-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(四)"/></a><div class="content"><a class="title" href="/2022/05/21/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E5%9B%9B/" title="Java面试小结(四)">Java面试小结(四)</a><time datetime="2022-05-21T07:31:21.000Z" title="发表于 2022-05-21 15:31:21">2022-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/" title="Java面试小结(三)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(三)"/></a><div class="content"><a class="title" href="/2022/05/19/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%89/" title="Java面试小结(三)">Java面试小结(三)</a><time datetime="2022-05-19T13:45:21.000Z" title="发表于 2022-05-19 21:45:21">2022-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/" title="Java面试小结(二)"><img src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(二)"/></a><div class="content"><a class="title" href="/2022/05/18/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%BA%8C/" title="Java面试小结(二)">Java面试小结(二)</a><time datetime="2022-05-18T14:03:03.000Z" title="发表于 2022-05-18 22:03:03">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java面试小结(一)"/></a><div class="content"><a class="title" href="/2022/05/17/Java%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93-%E4%B8%80/" title="Java面试小结(一)">Java面试小结(一)</a><time datetime="2022-05-17T06:41:43.000Z" title="发表于 2022-05-17 14:41:43">2022-05-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
