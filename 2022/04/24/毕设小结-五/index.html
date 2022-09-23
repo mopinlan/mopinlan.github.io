@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>毕设小结(五) | mopinlan</title><meta name="keywords" content="项目 毕设  Android"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="总结下毕设中Android的一些知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设小结(五)">
+<meta property="og:url" content="https://mopinlan.github.io/2022/04/24/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E4%BA%94/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="总结下毕设中Android的一些知识点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg">
+<meta property="article:published_time" content="2022-04-24T02:09:51.000Z">
+<meta property="article:modified_time" content="2022-04-24T08:40:14.658Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2022/04/24/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E4%BA%94/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '毕设小结(五)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-24 16:40:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">毕设小结(五)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-24T02:09:51.000Z" title="发表于 2022-04-24 10:09:51">2022-04-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-24T08:40:14.658Z" title="更新于 2022-04-24 16:40:14">2022-04-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="毕设小结(五)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>关于毕设完成也有段时间了，写论文有点懈怠了自己对于知识点的总结。趁着快要答辩了，对自己项目中的一些知识点赶一下工。</p>
+</div>
+
+<h4 id="Android开发的基础知识点"><a href="#Android开发的基础知识点" class="headerlink" title="Android开发的基础知识点"></a>Android开发的基础知识点</h4><blockquote>
+<p>Activity</p>
+</blockquote>
+<ol>
+<li>Activity是一个Android的应用组件，它提供屏幕进行交互。每个Activity都会获得一个用于绘制其用户界面的窗口，窗口可以充满哦屏幕也可以小于屏幕并浮动在其他窗口之上。</li>
+<li>当然Activity之间可以进行互相跳转，以便执行不同的操作。每当新Activity启动时，旧的Activity便会停止，但是系统会在堆栈也就是返回栈中保留该Activity。当Activity启动时，系统也会将其推送到返回栈上，并取得用户的操作焦点。当用户完成当前Activity并按返回按钮是，系统就会从堆栈将其弹出销毁，然后回复前一Activity.<br>当一个Activity因某个新Activity启动而停止时，系统会通过该Activity的生命周期回调方法通知其这一状态的变化。Activity因状态变化每个变化可能有若干种，每一种回调都会提供执行与该状态相应的特定操作的机会</li>
+</ol>
+<blockquote>
+<p>Fragment</p>
+</blockquote>
+<ol>
+<li>Fragment在应用开发中应用得非常的频繁，特别是在开发一些需要兼容手机设备、平板设备和智能电视等大屏幕设备的应用，Fragment发挥着重要的作用。那说了这么多，2.Fragment是Android为了应用适配不同设备的大屏幕、支持更加动态和灵活的UI设计所提供的一个组件。</li>
+<li>说到Fragment，就会联想到Activity，因为Fragment对象在应用中一般是不能独立存在的，它必须嵌入到activity中，而且Fragment的生命周期直接受所在的activity的影响。例如：当activity暂停时，他拥有的所有的Fragment都暂停了，当activity销毁时，他拥有的所有Fragment都被销毁。然而，当activity运行时（在onResume()之后，onPause()之前），可以单独地操作每个Fragment，比如添加或删除它们。当中执行上述针对Fragment的事务时，可以将事务添加到一个栈中，这个栈被activity管理，栈中的每一条都是一个Fragment的一次事务。有了这个栈，就可以反向执行Fragment的事务，这样就可以在Fragment级支持“返回”键（向后导航）。</li>
+</ol>
+<blockquote>
+<p>Adapter</p>
+</blockquote>
+<p>Adapter ：适配器，因为 ListView 是一个 View ，不能添加子项，因此在呈现数据的时候就需要某种工具将数据呈现在 ListView 上，而 Adapter 就能充当此角色。常用的 Adapter：ArrayAdapter、BaseAdapter等。<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://www.jianshu.com/p/a14feb480804" 
+  title="Android ViewHolder 的基本使用"><i class="far fa-hand-point-right"></i><span>Android ViewHolder 的基本使用</span></a></p>
+<blockquote>
+<p>ViewPage</p>
+</blockquote>
+<ol>
+<li><p>Viewpager，视图翻页工具，提供了多页面切换的效果。Android 3.0后引入的一个UI控件，位于v4包中。低版本使用需要导入v4包，但是现在我们开发的APP一般不再兼容3.0及以下的系统版本，另外现在大多数使用Android studio进行开发，默认导入v7包，v7包含了v4，所以不用导包，越来越方便了。</p>
+</li>
+<li><p>Viewpager使用起来就是我们通过创建adapter给它填充多个view，左右滑动时，切换不同的view。Google官方是建议我们使用Fragment来填充ViewPager的，这样 可以更加方便的生成每个Page，以及管理每个Page的生命周期。</p>
+</li>
+<li><p>ViewPager 直接继承了 ViewGroup，所有它是一个容器类，可以在其中添加其他的 view 类。<br>ViewPager 需要一个 PagerAdapter 适配器类给它提供数据。<br>ViewPager 经常和 Fragment 一起使用，并且提供了专门的 FragmentPagerAdapter 和 FragmentStatePagerAdapter 类供 Fragment 中的 ViewPager 使用。</p>
+</li>
+</ol>
+<blockquote>
+<p>Handler</p>
+</blockquote>
+<p>Handler是一套 Android 消息传递机制,主要用于线程间通信。<a class="btn-beautify red larger" target="_blank" rel="noopener" href="https://blog.csdn.net/ly0724ok/article/details/117324053/" 
+  title="Android Handler详解"><i class="far fa-hand-point-right"></i><span>Android Handler详解</span></a><br>用最简单的话描述： handler其实就是主线程在起了一个子线程，子线程运行并生成Message，Looper获取message并传递给Handler，Handler逐个获取子线程中的Message.<br>Binder&#x2F;Socket用于进程间通信，而Handler消息机制用于同进程的线程间通信<br>可以说只要有异步线程与主线程通信的地方就一定会有 Handler。<br>在多线程的应用场景中，将工作线程中需更新UI的操作信息 传递到 UI主线程，从而实现 工作线程对UI的更新处理，最终实现异步消息的处理<br><img src="https://s2.loli.net/2022/04/24/VP74Jlu5sUk3M9B.png" alt="2022-04-24_142448.png"></p>
+<blockquote>
+<p>RecyclerView</p>
+</blockquote>
+<p>RecyclerView是在Android5.0版本作为support-v7的一个组件出现，高效替代了最初的ListView等列表组件。使用上实现了视图代码解耦，功能上具备强大的item复用机制，并且提供默认多种LayoutMananger用来处理多种布局<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1725787674628292708&wfr=spider&for=pc" 
+  title="Android RecyclerView CardView 指南"><i class="far fa-hand-point-right"></i><span>Android RecyclerView CardView 指南</span></a></p>
+<ul>
+<li>LayoutManager ：管理视图渲染、包含视图复用回收等功能。本身是一个抽象类，系统已经实现的子类有LinearLayoutManager、GridLayoutManager、StaggeredGridLayoutManager等。</li>
+<li>Adapter： 适配器、数据和视图对接的桥梁。</li>
+<li>ItemDecoration：装饰抽象类，常常用来实现列表的分割线或者实现悬浮等功能。</li>
+<li>ItemAnimator：动效抽象类，常用定制item动画需求。</li>
+</ul>
+<blockquote>
+<p>Context</p>
+</blockquote>
+<p>Context是一个抽象基类。<a class="btn-beautify blue larger" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40611659/article/details/110134088" 
+  title="Android Context详解"><i class="far fa-hand-point-right"></i><span>Android Context详解</span></a></p>
+<ul>
+<li>Context 翻译为上下文，也可以理解为环境，是提供一些程序的运行环境基础信息。</li>
+<li>Context下有两个子类，ContextWrapper是上下文功能的封装类，而ContextImpl则是上下文功能的实现类。</li>
+</ul>
+<blockquote>
+<p>ButterKnife</p>
+</blockquote>
+<p>在android编程过程中，我们会写大量的布局和点击事件，像初始view、设置view监听这样简单而重复的操作让人觉得麻烦类，所以可以采用注解的方式去实现，而ButterKnife则是注解中相对简单易懂的很不错的开源框架。（目前ButterKnife好像已经被弃用了）</p>
+<blockquote>
+<p>Bundle</p>
+</blockquote>
+<p>Bundle主要用于传递数据；它保存的数据，是以key-value(键值对)的形式存在的。<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://blog.csdn.net/cswhale/article/details/39053411" 
+  title="Android Bundle详解"><i class="far fa-hand-point-right"></i><span>Android Bundle详解</span></a></p>
+<p>我们经常使用Bundle在Activity之间传递数据，传递的数据可以是boolean、byte、int、long、float、double、string等基本类型或它们对应的数组，也可以是对象或对象数组。当Bundle传递的是对象或对象数组时，必须实现Serializable 或Parcelable接口。下面分别介绍Activity之间如何传递基本类型、传递对象。</p>
+<blockquote>
+<p>Intent</p>
+</blockquote>
+<p>Android中的Intent是一个非常重要且常用的类，可以用来在一个组件中启动App中的另一个组件或者是启动另一个App的组件，这里所说的组件指的是Activity、Service以及Broadcast。<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://blog.csdn.net/iispring/article/details/48417779" 
+  title="Android中Intent概述及使用"><i class="far fa-hand-point-right"></i><span>Android中Intent概述及使用</span></a></p>
+<p>Intent主要有以下几种重要用途:</p>
+<ol>
+<li>启动Activity：可以将Intent对象传递给startActivity()方法或startActivityForResult()方法以启动一个Activity，该Intent对象包含了要启动的Activity的信息及其他必要的数据。</li>
+<li>启动Service：可以将Intent对象传递给startService()方法或bindService()方法以启动一个Service，该Intent对象包含了要启动的Service的信息及其他必要的数据。</li>
+<li>发送广播：广播是一种所有App都可以接收的信息。Android系统会发布各种类型的广播，比如发布开机广播或手机充电广播等。我们也可以给其他的App发送广播，可以将Intent对象传递给sendBroadcast()方法或sendOrderedBroadcast()方法或sendStickyBroadcast()方法以发送自定义广播。</li>
+</ol>
+<blockquote>
+<p>Okhttp</p>
+</blockquote>
+<p>Okhttp是一个支持HTTP 和 HTTP&#x2F;2 的客户端，可以在Android和Java应用程序中使用，其具有以下特点：<a class="btn-beautify pink larger" target="_blank" rel="noopener" href="https://blog.csdn.net/iispring/article/details/51661195" 
+  title="Okhttp使用详解"><i class="far fa-hand-point-right"></i><span>Okhttp使用详解</span></a></p>
+<ol>
+<li>API设计轻巧，基本上通过几行代码的链式调用即可获取结果。</li>
+<li>既支持同步请求，也支持异步请求。同步请求会阻塞当前线程，异步请求不会阻塞当前线程，异步执行完成后执行相应的回调方法。</li>
+<li>其支持HTTP&#x2F;2协议，通过HTTP&#x2F;2，可以让客户端中到同一服务器的所有请求共用同一个Socket连接。</li>
+<li>如果请求不支持HTTP&#x2F;2协议，那么Okhttp会在内部维护一个连接池， 通过该连接池，可以对HTTP&#x2F;1.x的连接进行重用，减少了延迟。</li>
+<li>透明的GZIP处理降低了下载数据的大小。</li>
+<li>请求的数据会进行相应的缓存处理，下次再进行请求时，如果服务器告知304（表明数据没有发生变化），那么就直接从缓存中读取数据，降低了重复请求的数量。</li>
+</ol>
+<p>我们在使用Okhttp进行开发的时候，主要牵扯到以下几个核心类：OkHttpClient、Request、Call 和 Response。</p>
+<ul>
+<li><p>OkHttpClient<br>OkHttpClient表示了HTTP请求的客户端类，在绝大多数的App中，我们只应该执行一次new OkHttpClient()，将其作为全局的实例进行保存，从而在App的各处都只使用这一个实例对象，这样所有的HTTP请求都可以共用Response缓存、共用线程池以及共用连接池。</p>
+</li>
+<li><p>Request<br>Request类封装了请求报文信息：请求的Url地址、请求的方法（如GET、POST等）、各种请求头（如Content-Type、Cookie）以及可选的请求体。一般通过内部类Request.Builder的链式调用生成Request对象。</p>
+</li>
+<li><p>Call<br>Call代表了一个实际的HTTP请求，它是连接Request和Response的桥梁，通过Request对象的newCall()方法可以得到一个Call对象。Call对象既支持同步获取数据，也可以异步获取数据。</p>
+</li>
+<li><p>Response<br>Response类封装了响应报文信息：状态吗（200、404等）、响应头（Content-Type、Server等）以及可选的响应体。可以通过Call对象的execute()方法获得Response对象，异步回调执行Callback对象的onResponse方法时也可以获取Response对象。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2022/04/24/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E4%BA%94/">https://mopinlan.github.io/2022/04/24/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E4%BA%94/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/22/Es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/I3eOd2fohvYHFX1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Es6学习笔记(三)</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/25/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E5%85%AD/"><img class="next-cover" src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">毕设小结(六)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/04/25/%E6%AF%95%E8%AE%BE%E5%B0%8F%E7%BB%93-%E5%85%AD/" title="毕设小结(六)"><img class="cover" src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-25</div><div class="title">毕设小结(六)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android%E5%BC%80%E5%8F%91%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">Android开发的基础知识点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/18/jQuery%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" title="jQuery语法相关"><img src="https://s2.loli.net/2022/03/21/T4wJAbS23e78ymI.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jQuery语法相关"/></a><div class="content"><a class="title" href="/2022/09/18/jQuery%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" title="jQuery语法相关">jQuery语法相关</a><time datetime="2022-09-18T13:14:36.000Z" title="发表于 2022-09-18 21:14:36">2022-09-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/15/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Java并发编程学习(一)"><img src="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java并发编程学习(一)"/></a><div class="content"><a class="title" href="/2022/09/15/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Java并发编程学习(一)">Java并发编程学习(一)</a><time datetime="2022-09-15T12:29:59.000Z" title="发表于 2022-09-15 20:29:59">2022-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/14/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式"><img src="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单例模式"/></a><div class="content"><a class="title" href="/2022/09/14/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式">单例模式</a><time datetime="2022-09-14T14:17:38.000Z" title="发表于 2022-09-14 22:17:38">2022-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/14/Spring-MVC%E6%B3%A8%E8%A7%A3/" title="Spring MVC注解"><img src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring MVC注解"/></a><div class="content"><a class="title" href="/2022/09/14/Spring-MVC%E6%B3%A8%E8%A7%A3/" title="Spring MVC注解">Spring MVC注解</a><time datetime="2022-09-14T12:58:00.000Z" title="发表于 2022-09-14 20:58:00">2022-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/spring-IOC%E5%92%8CDI%E8%AF%A6%E8%A7%A3/" title="Spring IOC和DI详解"><img src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring IOC和DI详解"/></a><div class="content"><a class="title" href="/2022/06/29/spring-IOC%E5%92%8CDI%E8%AF%A6%E8%A7%A3/" title="Spring IOC和DI详解">Spring IOC和DI详解</a><time datetime="2022-06-29T01:43:47.000Z" title="发表于 2022-06-29 09:43:47">2022-06-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<br>
+<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">苏ICP备2022038756号-1</a></a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux复习 | mopinlan</title><meta name="keywords" content="Linux"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="临近考试，刚好把linux学习的内容全部过一遍，就当作复习资料了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux复习">
+<meta property="og:url" content="https://mopinlan.github.io/2021/12/03/Linux%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="临近考试，刚好把linux学习的内容全部过一遍，就当作复习资料了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg">
+<meta property="article:published_time" content="2021-12-03T08:48:47.000Z">
+<meta property="article:modified_time" content="2022-03-15T08:40:11.959Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2021/12/03/Linux%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-15 16:40:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-03T08:48:47.000Z" title="发表于 2021-12-03 16:48:47">2021-12-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-15T08:40:11.959Z" title="更新于 2022-03-15 16:40:11">2022-03-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">15.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>51分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>临近考试，刚好把linux学习的内容全部过一遍，就当作复习资料了。<span id="more"></span></p>
+<h3 id="第1讲-Linux操作系统简介"><a href="#第1讲-Linux操作系统简介" class="headerlink" title="第1讲 Linux操作系统简介"></a>第1讲 Linux操作系统简介</h3><h4 id="1、Linux定义"><a href="#1、Linux定义" class="headerlink" title="1、Linux定义"></a>1、Linux定义</h4><ul>
+<li>Linux是一种开放源代码和自由传播的计算机操作系统。Linux内核由林纳斯•托瓦兹（Linus Torvalds）在1991年10月5日首次发布。</li>
+<li>Linux的本质就是一个类Unix操作系统，或者说它是一个类似于Unix的操作系统</li>
+</ul>
+<h4 id="2、Linux创始人"><a href="#2、Linux创始人" class="headerlink" title="2、Linux创始人"></a>2、Linux创始人</h4><ul>
+<li>1991年芬兰赫尔辛基大学的学生Linus Torvalds在自己的Intel 386个人计算机上开发了属于自己的第一个程序，并利用Internet发布了他开发的源代码，将其命名为Linux，从而创建了Linux操作系统。</li>
+</ul>
+<h4 id="3、GNU项目发起人，自由软件含义，GNU项目的目的"><a href="#3、GNU项目发起人，自由软件含义，GNU项目的目的" class="headerlink" title="3、GNU项目发起人，自由软件含义，GNU项目的目的"></a>3、GNU项目发起人，自由软件含义，GNU项目的目的</h4><ol>
+<li>始于1983年9月27日</li>
+<li>Richard M. Stallman发起</li>
+<li>目的是开发一个完整的、自由的UNIX like系统</li>
+<li>GNU是“GNU‘s Not Unix”的递归缩写，它的发音为“guh-noo”（革奴）</li>
+</ol>
+<blockquote>
+<p>Richard M. Stallman开发了许多Linux重要基础应用，如GCC(GNU C Compiler,C语言编译器）、Emacs编辑器等</p>
+</blockquote>
+<ol start="5">
+<li>自由软件的含义: 用户有运行、拷贝、研究、改进软件的自由。<br>自由软件是指用户拥有以下层次自由的软件：<br>① 研究程序运行机制，源代码公开并根据用户自己的需要修改它的自由；<br>② 重新分发拷贝，以使其他人能够共享软件的自由；<br>③ 改进程序，为使他人受益而散发它的自由；</li>
+</ol>
+<h4 id="4、（重点）LINUX系统组成：kernel，shell，file-system以及user-application，每个部分具体功能是什么。"><a href="#4、（重点）LINUX系统组成：kernel，shell，file-system以及user-application，每个部分具体功能是什么。" class="headerlink" title="4、（重点）LINUX系统组成：kernel，shell，file system以及user application，每个部分具体功能是什么。"></a>4、（重点）LINUX系统组成：kernel，shell，file system以及user application，每个部分具体功能是什么。</h4><ol>
+<li>POSIX标准:</li>
+</ol>
+<ul>
+<li><p>POSIX（Portable Operating System Interface，可移植操作系统接口），该标准定义了操作系统应该为应用程序提供的接口标准，是IEEE（美国电气和电子工程师协会）为要在各种UNIX操作系统上运行的软件而定义的一系列API标准的总称。</p>
+</li>
+<li><p>一个遵循POSIX标准的操作系统编写的程序，可在其它任何遵循POSIX标准的操作系统上运行。</p>
+</li>
+</ul>
+<ol start="2">
+<li>LINUX系统主要有4部分构成，即kernel，shell，file system以及user application。其中kernel，shell，file system构成了基本的操作系统结构，它使得我们可以运行程序，管理文件并使用系统。</li>
+</ol>
+<ul>
+<li>内核（Kernel）<br>它是LINUX操作系统的核心， “内核”指的是一个提供硬件抽象层、磁盘及文件系统控制、多任务等功能的系统软件。一个内核不是一套完整的操作系统。</li>
+<li>Shell<br>shell是一个系统的用户界面，它是用户和内核进行交互的接口，它是一个解释器，解释用户输入的命令并将其送入内核运行。</li>
+<li>文件系统（ file system ）<br>文件系统是文件存放在磁盘等存储设备上的组织方法，Linux采用的是树形目录结构，以“&#x2F;”为根目录，按照目录分层方式进行组织，但Linux同时也支持目前大多数主流目录系统，例如fat32，vfat，ext2，ext3，ext4，ISO9660等。</li>
+</ul>
+<h4 id="5、Linux版本分类，内核版本号各个部分的含义"><a href="#5、Linux版本分类，内核版本号各个部分的含义" class="headerlink" title="5、Linux版本分类，内核版本号各个部分的含义"></a>5、Linux版本分类，内核版本号各个部分的含义</h4><ol>
+<li>内核(Kernel)版本<br>Linux内核版本由3个数字组成：r.x.y</li>
+</ol>
+<ul>
+<li>r：目前发布的Kernel主版本。</li>
+<li>x：偶数是稳定版本，奇数是开发中的版本。</li>
+<li>y：错误修补次数。</li>
+</ul>
+<ol start="2">
+<li>发行(Distribution)版本<br>有时用命令查看内核版本号形式如下<br><font color="red">2.6.18-128.el5-x86_64</font></li>
+</ol>
+<blockquote>
+<p>第一组数字2，指主版本号；第二组数字6，指次版本号；第三组数字18，指修订版本号；第四组数字128，表示这个当前版本的微调补丁（patch）；<br>el5：表示版本特殊描述标识信息，由内核在编译时指定，不同的发行版有所不同，具有较大的随机性。在Red Hat Linux中用来表示企业版Linux(Enterprise Linux)<br>x86_64指CPU的字长。CPU按字长主要分为32位与64位，其中32位又可以分为：i386、i586、i686、而64的CPU则称为x86_64</p>
+</blockquote>
+<h4 id="6、常见的Linux发行版本有哪些"><a href="#6、常见的Linux发行版本有哪些" class="headerlink" title="6、常见的Linux发行版本有哪些"></a>6、常见的Linux发行版本有哪些</h4><p>发行版本是一些组织或厂家将Linux系统内核与应用软件和文档封装起来，并提供一些安装界面和系统设定管理工具的一个软件包的集合。<br>目前有几百种Linux发行版本，一般可分为企业版本，企业支持的社区版本以及完全社区驱动版本三种<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oa6Zx1"><img src="https://z3.ax1x.com/2021/12/03/oa6Zx1.png" alt="oa6Zx1.png"></a></p>
+<ul>
+<li>可使用” uname -r”命令查看内核版本号</li>
+<li>可使用” cat &#x2F;etc&#x2F;issue”命令查看发行版版本号</li>
+</ul>
+<h4 id="7、PPT最后思考题"><a href="#7、PPT最后思考题" class="headerlink" title="7、PPT最后思考题"></a>7、PPT最后思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">以下哪种说法是不正确的？</span><br><span class="line">A.Linux是免费与开源的操作系统</span><br><span class="line">B.Linux的版本分为发行版和开源版</span><br><span class="line">C.Linux是源于Minix的开源操作系统</span><br><span class="line">D.Linux严格区分大小写</span><br><span class="line">正确答案： B</span><br><span class="line">解析：Linux版本分为发行版和内核版</span><br><span class="line">---</span><br><span class="line">以下哪个是Redhat系列的Linux？</span><br><span class="line">A.Centos</span><br><span class="line">B.Debian C.Ubuntu D.AIX</span><br><span class="line">正确答案： A</span><br><span class="line">解析：Redhat系列，包括RHEL(Redhat Enterprise Linux，也就是所谓的Redhat Advance Server，收费版本)、Fedora Core(由原来的Redhat桌面版本发展而来，免费版本)、CentOS(RHEL的社区克隆版本，免费)。</span><br><span class="line">---</span><br><span class="line">下列哪个选项不是Linux支持的？</span><br><span class="line">A.多用户</span><br><span class="line">B.超进程</span><br><span class="line">C.可移植</span><br><span class="line">D.多进程</span><br><span class="line">正确答案： B</span><br><span class="line">解析：Linux是真正的多用户操作系统，支持多个用户同时使用同一台Linux主机。因此A正确。Linux还允许每个用户执行多项任务，因此就CPU而言，就需要对多个进程进行管理，控制多进程之间的状态转换、执行顺序及优先级等，因此D</span><br><span class="line">也正确。由于Linux支持POSIX协议，程序可在多平台上移植，因此C也正确。</span><br><span class="line">---</span><br><span class="line">Linux是所谓的Free Software，其中Free的含义是什么？</span><br><span class="line">A.Linux不需要付费</span><br><span class="line">B.Linux发行商不能向用户收费</span><br><span class="line">C.Linux可自由修改和发布</span><br><span class="line">D.只有Linux作者才能向用户收费</span><br><span class="line">正确答案： C</span><br><span class="line">解析：Free Software中的Free，本质并非免费，而是“自由”。Linux按照GPL协议发行，允许用</span><br><span class="line">户自由下载、分发、修改和再次发布源代码，并可在分发软件的过程中收取适当的成本和服务费</span><br><span class="line">用，但不允许任何人将该软件据为己有，因此选</span><br><span class="line">C</span><br><span class="line">---</span><br><span class="line">以下关于Linux内核版本的说法，哪个是错误的？</span><br><span class="line">A.Linux内核版本格式为“主版本号.次版本号.修正版本号”</span><br><span class="line">B.1.2.2表示稳定的发行版</span><br><span class="line">C.2.2.6表示对内核2.2的第6次修正</span><br><span class="line">D.1.3.2表示稳定的发行版</span><br><span class="line">正确答案： D</span><br><span class="line">解析：1.3.2中的次版本号为奇数，表示开发中版本，并非稳定的发行版</span><br><span class="line">---</span><br><span class="line">以下关于Shell的说法，哪个是错误的？</span><br><span class="line">A.Linux的组成部分</span><br><span class="line">B.用户与Linux内核之间的接口</span><br><span class="line">C.一种和C类似的高级程序设计语言</span><br><span class="line">D.一个命令语言解释器</span><br><span class="line">正确答案： C</span><br><span class="line">解析：Linux由内核、Shell、文件系统和用户应用4部分组成，因此A正确；</span><br><span class="line">Shell是一种交互式的命令解释程序，用户输入的每个Shell命令均由Shell解释，是用户与Linux</span><br><span class="line">内核之间的接口，因此B，D也正确。</span><br><span class="line">C错误的原因在于Shell处理的对象只能是文件、</span><br><span class="line">字符串或命令语句，不具有丰富的数据类型和数据结构，不是通用程序设计语言</span><br></pre></td></tr></table></figure>
+
+<h3 id="第2讲-Linux安装"><a href="#第2讲-Linux安装" class="headerlink" title="第2讲 Linux安装"></a>第2讲 Linux安装</h3><h4 id="1、硬盘种类"><a href="#1、硬盘种类" class="headerlink" title="1、硬盘种类"></a>1、硬盘种类</h4><p>目前常用的硬盘主要有三大类：IDE接口硬盘、SCSI接口硬盘和SATA<br>接口硬盘</p>
+<ul>
+<li>IDE（ Integrated Drive Electronics，电子集成驱动器）接口硬盘：采用并行传输技术，价格低廉，IDE接口的硬盘读&#x2F;写速度比较慢，线缆长度过短、连接设备少</li>
+<li>SCSI（ Small Computer System Interface，小型计算机系统接口）接口硬盘：用50针接口，外观和普通硬盘接口有些相似。用在服务器上面比较多，速度快，稳定性很好，比较适合做磁盘阵列</li>
+<li>SATA（Serial Advanced Technology Attachment，串行高级技术附件）接口硬盘：采用串行传输技术，具有传输速度快，安装方便、容易散热、支持热插拔等诸多<br>优点，是PC机硬盘的趋势</li>
+<li>存储技术<br>SSD（Solid State Disk，固态硬盘）：无需驱动马达转动碟片，采用闪存进行直接读写的设备，读写速度快，其接口也使用SATA或SCSI</li>
+</ul>
+<h4 id="2、Linux硬件设备文件名写法及含义"><a href="#2、Linux硬件设备文件名写法及含义" class="headerlink" title="2、Linux硬件设备文件名写法及含义"></a>2、Linux硬件设备文件名写法及含义</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oafuqI"><img src="https://z3.ax1x.com/2021/12/03/oafuqI.png" alt="oafuqI.png"></a></p>
+<h4 id="3、（重点）磁盘分区类型"><a href="#3、（重点）磁盘分区类型" class="headerlink" title="3、（重点）磁盘分区类型"></a>3、（重点）磁盘分区类型</h4><p>为了增加数据安全性和提高系统性能，将一块硬盘划分为多个分区，分区之间相互独立。<br>分区有三种类型：主分区（primary-partition）、扩展分区（extended-partition）和逻辑分区（logical-partition）。</p>
+<ol>
+<li>主分区</li>
+</ol>
+<ul>
+<li>主分区中不能再划分其他类型的分区，因此每个主分区都相当于一个逻辑磁盘。</li>
+<li>一个硬盘上最多只能有四个主分区（由于分区表只有64bytes, 而每个分区参数需要占据16bytes,因此硬盘默认的分区表仅能写入4组分区信息）</li>
+<li>主分区编号为1-4</li>
+<li>主分区可以被格式化，并作为安装操作系统的分区，也可以作为数据访问的分</li>
+</ul>
+<ol start="2">
+<li>扩展分区</li>
+</ol>
+<ul>
+<li>扩展分区目的是使用额外的扇区来记录分区信息</li>
+<li>扩展分区最多只能有1个。扩展分区严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区的起始位置，以此起始位置类推可以找到所有的分区</li>
+<li>主分区和扩展分区最多可以有4个</li>
+<li>扩展分区无法格式化，无法写入数据，只能包含逻辑分区</li>
+</ul>
+<ol start="3">
+<li>逻辑分区</li>
+</ol>
+<ul>
+<li>逻辑分区是由扩展分区持续切割出来的分区。</li>
+<li>逻辑分区的数量依操作系统而不同。在Linux系统中，IDE硬盘最多59个逻辑分区；SATA硬盘有11个逻辑分区</li>
+<li>逻辑分区从5开始编号</li>
+<li>逻辑分区可以被格式化，并作为数据访问的分区</li>
+</ul>
+<h4 id="4、磁盘分区设备名"><a href="#4、磁盘分区设备名" class="headerlink" title="4、磁盘分区设备名"></a>4、磁盘分区设备名</h4><p>Linux使用设备文件名后加数字的方法来标识硬盘分区，其中最后的数字表示分区的次序,如数字1~4表示主分区或扩展分区,逻辑分区从5开始。如果没有对磁盘分区,则一律不加数字,表示整块磁盘。<br>例如：<br>sda1 表示系统检测到的第一个SATA设备上的第1个主分区<br>hda6 表示IDE1的master设备上的第2个逻辑分区</p>
+<h4 id="5、掌握磁盘分区时必须存在的两个分区分别是什么"><a href="#5、掌握磁盘分区时必须存在的两个分区分别是什么" class="headerlink" title="5、掌握磁盘分区时必须存在的两个分区分别是什么"></a>5、掌握磁盘分区时必须存在的两个分区分别是什么</h4><p>根分区和交换分区<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oa408U"><img src="https://z3.ax1x.com/2021/12/03/oa408U.png" alt="oa408U.png"></a></p>
+<h4 id="6、分区、格式化的作用"><a href="#6、分区、格式化的作用" class="headerlink" title="6、分区、格式化的作用"></a>6、分区、格式化的作用</h4><ol>
+<li>分区<br>为了增加数据安全性和提高系统性能，将一块硬盘划分为多个分区，分区之间相互独立。</li>
+<li>格式化<br>格式化又称逻辑格式化,它是指根据用户选定的文件系统(NTFS,EXT3,EXT4等),在磁盘的特定区域写入特定数据,在分区中划出一片用于存放文件分配表,目录表等用于文件管理的磁盘空间.</li>
+</ol>
+<h4 id="7、（重点）Linux开机流程"><a href="#7、（重点）Linux开机流程" class="headerlink" title="7、（重点）Linux开机流程"></a>7、（重点）Linux开机流程</h4><ol>
+<li>CMOS：<br>Complementary Metal Oxide Semiconductor（互补金属氧化物半导体）的缩写，是电脑主板上的一块可读写的RAM（随机存取存储器）芯片，用来保存BIOS设置的主机硬件参数数据。</li>
+<li>BIOS：<br>Basic Input Output System（基本输入输出系统）的缩写，保存着计算机最重要的基本输入输出的程序、开机后自检程序和系统自启动程序，它可从CMOS中读写系统设置的具体信息。它是开机时计算机系统主动执行的第一个程序。BIOS设置程序也是储存在主板上的存储芯片中的。</li>
+</ol>
+<blockquote>
+<p>(注意)BIOS中的系统设置程序是完成CMOS参数设置的手段，而CMOS是存放设置好的<br>数据的场所</p>
+</blockquote>
+<ol start="3">
+<li>MBR ：<br>主引导记录（MBR，Master Boot Record）是采用MBR分区表的硬盘的第一个扇区，即C&#x2F;H&#x2F;S地址的0柱面0磁头1扇区，也叫做MBR扇区。</li>
+<li>GRUB ：<br>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自GNU项目的多操作系统启动程序。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oaIq9f"><img src="https://z3.ax1x.com/2021/12/03/oaIq9f.png" alt="oaIq9f.png"></a></li>
+</ol>
+<h4 id="8、Linux常见文件系统类型有哪些，Ubuntu默认文件系统类型是什么"><a href="#8、Linux常见文件系统类型有哪些，Ubuntu默认文件系统类型是什么" class="headerlink" title="8、Linux常见文件系统类型有哪些，Ubuntu默认文件系统类型是什么"></a>8、Linux常见文件系统类型有哪些，Ubuntu默认文件系统类型是什么</h4><p>linux：ext2、ext3、ext4、reiserfs<br>ubuntu: ext4</p>
+<h4 id="9、Linux文件系统结构中部分重要目录用途，主要记住-x2F-，-x2F-dev，-x2F-bin、-x2F-etc目录"><a href="#9、Linux文件系统结构中部分重要目录用途，主要记住-x2F-，-x2F-dev，-x2F-bin、-x2F-etc目录" class="headerlink" title="9、Linux文件系统结构中部分重要目录用途，主要记住:&#x2F;，&#x2F;dev，&#x2F;bin、&#x2F;etc目录"></a>9、Linux文件系统结构中部分重要目录用途，主要记住:&#x2F;，&#x2F;dev，&#x2F;bin、&#x2F;etc目录</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/ba1eca1679f685e0.png" alt="文件系统"></p>
+<ol>
+<li>&#x2F;<br>根文件系统，目录路径的起始点</li>
+<li>&#x2F;bin<br>这个目录是对UNIX系统习惯的沿袭，存放着root和一般用户最经常使用<br>的命令。例如：cp,ls,cat等</li>
+<li>&#x2F;dev<br>任何设备与接口设备都以文件的形式存在于这个目录中。例如&#x2F;dev&#x2F;hda。</li>
+<li>&#x2F;etc<br>存放所有系统管理需要的特定配置文件和子目录</li>
+<li>&#x2F;home<br>用户的主目录。如：用户帐号wang的默认主目录为&#x2F;home&#x2F;wang</li>
+<li>&#x2F;root<br>系统管理员用户主目录</li>
+<li>&#x2F;lib<br>存放系统最基本的函数库，其作用类似于windows里的.dll文件。几乎<br>所有的应用程序都需要用到这些函数库</li>
+</ol>
+<h4 id="10、root和普通用户shell命令提示符各自是什么"><a href="#10、root和普通用户shell命令提示符各自是什么" class="headerlink" title="10、root和普通用户shell命令提示符各自是什么"></a>10、root和普通用户shell命令提示符各自是什么</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/d631477b1e4602f9.png" alt="命令提示符"></p>
+<ul>
+<li>testuser为当前用户账号</li>
+<li>ubuntu显示的是主机名称</li>
+<li>~：表示当前用户的主文件夹，一般</li>
+<li>为&#x2F;home&#x2F;用户账号，对于本例为</li>
+<li>&#x2F;home&#x2F;testuser</li>
+<li>提示符：$对应一般用户</li>
+<li>#对应root用户</li>
+</ul>
+<h4 id="11、root和普通用户账号切换方式，及su和su-区别"><a href="#11、root和普通用户账号切换方式，及su和su-区别" class="headerlink" title="11、root和普通用户账号切换方式，及su和su -区别"></a>11、root和普通用户账号切换方式，及su和su -区别</h4><ul>
+<li>su和su –命令不同之处在于，su -切换到对应的用户时会将当前的工作目录自动转换到切换后的用户的主目录，同时环境变量也做相应的切换。</li>
+<li>对于上例, 使用su – 命令后，自动切换到root用户的主目录；而使用su命令仍在原testuser用户的主目录home&#x2F;testuse</li>
+<li>如果su命令后没有携带用户名，系统默认从当用户切换到超级用户，并提示用户输入超级用户口令。</li>
+<li>su 和 su –命令后面可加用户账号，表示希望切换到指定的用户账号</li>
+</ul>
+<h4 id="12、Tab键的功能"><a href="#12、Tab键的功能" class="headerlink" title="12、Tab键的功能"></a>12、Tab键的功能</h4><ul>
+<li>补全功能：可以用来补全命令名或文件名</li>
+<li>列表功能：两次点击Tab键，将会把所有可选指令或文件的名称列举出来，避免用户输入错误。</li>
+</ul>
+<h4 id="13、在线帮助命令man（只需要知道该命令功能是什么即可）"><a href="#13、在线帮助命令man（只需要知道该命令功能是什么即可）" class="headerlink" title="13、在线帮助命令man（只需要知道该命令功能是什么即可）"></a>13、在线帮助命令man（只需要知道该命令功能是什么即可）</h4><p>Unix Like系统中提供的操作说明手册，其说明文件存储在&#x2F;usr&#x2F;share&#x2F;man</p>
+<ul>
+<li>man page 显示的命令后的数字有特别含义<br><img src="https://s3.bmp.ovh/imgs/2021/12/283b618ef74d4887.png" alt="man"></li>
+<li>利用man –f 命令，可以查看关于指定命令更多相关信息。</li>
+<li>利用man –k命令，可以查找指定关键字相关的内容</li>
+</ul>
+<h4 id="14、PPT最后思考题"><a href="#14、PPT最后思考题" class="headerlink" title="14、PPT最后思考题"></a>14、PPT最后思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">以下哪个不是常用分区类型？</span><br><span class="line">A.主分区</span><br><span class="line">B.扩展分区</span><br><span class="line">C.根分区</span><br><span class="line">D.逻辑分区</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">Linux 安装时至少划分哪两个分区才能正常安装使用？</span><br><span class="line">A./分区和swap分区</span><br><span class="line">B./分区和/home分区</span><br><span class="line">C./boot分区和swap分区</span><br><span class="line">D./home分区和swap分区</span><br><span class="line">正确答案： A</span><br><span class="line">解析：安装Linux至少需要两个分区，</span><br><span class="line">根分区和交换分区。</span><br><span class="line">交换分区：用于实现虚拟内存</span><br><span class="line">根分区：用于存放包含系统程序和</span><br><span class="line">用户数据在内的所有数据</span><br><span class="line">---</span><br><span class="line">/dev/hda5在Linux中表示什么？</span><br><span class="line">A.IDE1(主）接口上从盘</span><br><span class="line">B.IDE1接口上主盘的逻辑分区</span><br><span class="line">C.IDE1接口上主盘的第5个分区</span><br><span class="line">D.IDE1接口上从盘的扩展分区</span><br><span class="line">正确答案： B</span><br><span class="line">解析：A.IDE1接口上从盘对应的设</span><br><span class="line">备文件名为/dev/hdb; D. IDE1接口上</span><br><span class="line">从盘的扩展分区对应为/dev/hdb4;</span><br><span class="line">C. IDE1接口上主盘的第5个分区,说</span><br><span class="line">法也不正确，hda5表示的是第一个</span><br><span class="line">逻辑分区，并不代表是第5个分区。</span><br><span class="line">---</span><br><span class="line">多重引导装载程序GRUB默认安装在什么地方？</span><br><span class="line">A.主引导记录MBR</span><br><span class="line">B.引导分区的第一个扇区</span><br><span class="line">C./boot目录</span><br><span class="line">D.内核</span><br><span class="line">正确答案： A</span><br><span class="line">解析：默认是将GRUB安装在硬盘的</span><br><span class="line">MBR中，也可以将其修改为安装在</span><br><span class="line">引导分区的第一个扇区。内核一般</span><br><span class="line">安装在/boot目录</span><br><span class="line">---</span><br><span class="line">root密码必须符合什么要求？</span><br><span class="line">A.至少4字符，大小写敏感</span><br><span class="line">B.至少6字符，大小写敏感</span><br><span class="line">C.至少4字符，大小写不敏感</span><br><span class="line">D.至少6字符，大小写不敏感</span><br><span class="line">正确答案： B</span><br><span class="line">解析：Linux中大小写敏感，且规定</span><br><span class="line">密码至少包含6个字符。合格的根</span><br><span class="line">密码应该采取字母、数字和符号混</span><br><span class="line">合的方式，且尽可能的保持一定的</span><br><span class="line">长度</span><br><span class="line">---</span><br><span class="line">系统启动过程一般包含如下几步: (1) 启动引导装载程序；(2)用户登</span><br><span class="line">录;(3)启动Linux;(4)BIOS自检。以下哪个顺序是正确的？</span><br><span class="line">A.4231</span><br><span class="line">B.4132</span><br><span class="line">C.2431</span><br><span class="line">D.1432</span><br><span class="line">正确答案： B</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="第3讲-文件与目录管理"><a href="#第3讲-文件与目录管理" class="headerlink" title="第3讲 文件与目录管理"></a>第3讲 文件与目录管理</h3><h4 id="1、（重点）文件的6大类型是哪些，每种表示方法"><a href="#1、（重点）文件的6大类型是哪些，每种表示方法" class="headerlink" title="1、（重点）文件的6大类型是哪些，每种表示方法"></a>1、（重点）文件的6大类型是哪些，每种表示方法</h4><ol>
+<li><p>普通文件<br>普通文件是用户最常用的文件，通常可分为纯文本文件ASCII、二进制文件binary和数据格式文件data。<br>纯文本文件可以使用cat、more、less等命令查看其内容；<br>二进制文件通常是系统仅能识别且能执行的文件；数据格式文件为一种特殊格式文件，一般为程序运行过程中读取的文件。<br><font color="red">可以通过ls –l 命令查看文件类型，普通文件类型为“-”</font></p>
+</li>
+<li><p>目录文件<br>Linux系统中把目录也看成是文件，因此目录文件即为目录。目录用来存储一组相关文件的位置、大小等信息。目录中还可以包含下一级目录和文件。目录文件只允许系统管理员对其进行修改，用户进程可以读取目录文件，但不能对它们进行修改</p>
+</li>
+</ol>
+<p>“点”（.）表示目录本身 ；“点点”（..）表示该目录的父目录<br><font color="red">目录文件类型为“d”</font></p>
+<ol start="3">
+<li><p>链接文件<br>  链接文件指向某个实际的目标文件，其用途类似于Windows系统中的“快捷方式”，也即当访问链接文件时，实际访问的将是链接文件所指向的目标文件。<br>  <font color="red">链接文件类型为“l”(英文字母L的小写)</font></p>
+</li>
+<li><p>设备文件<br>  设备文件是用于为操作系统与设备提供连接的一种文件。在Linux系统中将设备作为文件来处理，操作设备就像操作普通文件一样。每个设备对应一个设备文件，所有设备文件都存放在&#x2F;dev目录下。<br>  设备文件可以分为块设备文件和字符设备文件两类。</p>
+</li>
+</ol>
+<ul>
+<li>块设备文件<br>应用程序可以随机访问设备数据，程序可自行确定读取数据的位置，块设备的存取以字符块为单位。<br>典型代表：硬盘</li>
+<li>字符设备文件<br>提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。字符设备的存取以一个字符为单位。<br>典型代表：打印机，键盘、鼠标<br><font color="red">块设备文件类型为“b”,字符设备文件类型为“c”。</font></li>
+</ul>
+<ol start="5">
+<li><p>套接字文件<br>通常用在网络数据连接。可以启动一个程序来监听客户端的请求，客户端可以通过套接字socket来进行数据通信。<br><font color="red">套接字文件类型为“s”</font></p>
+</li>
+<li><p>管道文件（pipe）<br>也被叫做FIFO文件（先进先出），从字面上理解，管道文件就是从一头流入，从另一头流出。<br>管道文件也是Linux中较特殊的文件类型，这类文件多用于进程间的通信方面，主要目的在于解决多个程序同时访问一个文件所面临的问题。<br><font color="red">管道文件类型为“p”</font></p>
+</li>
+</ol>
+<h4 id="2、文件操作命令-cp-rm-mv-file-每种命令用途及命令写法，不要求记忆选项，后面一旦涉及命令，均是如此要求，不再赘述）"><a href="#2、文件操作命令-cp-rm-mv-file-每种命令用途及命令写法，不要求记忆选项，后面一旦涉及命令，均是如此要求，不再赘述）" class="headerlink" title="2、文件操作命令:cp,rm,mv,file (每种命令用途及命令写法，不要求记忆选项，后面一旦涉及命令，均是如此要求，不再赘述）"></a>2、文件操作命令:cp,rm,mv,file (每种命令用途及命令写法，不要求记忆选项，后面一旦涉及命令，均是如此要求，不再赘述）</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/03432001edc5b92a.png" alt="操作命令"></p>
+<ol>
+<li>文件复制命令cp</li>
+</ol>
+<ul>
+<li>命令功能：复制文件或目录</li>
+<li>命令格式：<br>cp [选项] 源文件 目标文件<br>cp [选项] 源文件1 源文件2 源文件3… 目标目录</li>
+<li>说明：如果源文件是多个文件，则文件之间用空格分开，同时复制的目标必须是一个目录，这些源文件将被复制到目标目录下</li>
+</ul>
+<ol start="2">
+<li>文件删除命令rm</li>
+</ol>
+<ul>
+<li>命令功能：删除文件或目录</li>
+<li>命令格式：rm [选项] 文件或目录</li>
+<li>说明：<br>如果源文件是多个文件，则文件之间用空格分开，表示一次删除多个文件；删除链接文件时，只是断开了链接，原文件保持不变；<br>使用rm命令要格外小心。因为一旦删除了一个文件，就无法再恢复它。所以，在删除文件之前，最好看一下文件的内容，确定是否真要删除。</li>
+</ul>
+<ol start="3">
+<li>文件移动&#x2F;更名命令mv</li>
+</ol>
+<ul>
+<li>命令功能：文件或目录进行移动（move)或改名</li>
+<li>命令格式：<br>mv [选项] 源文件名 目标文件名 &#x2F;&#x2F; 改名操作<br>mv [选项] 源文件名 目录名<br>mv [选项] 源目录名 目标目录名 &#x2F;&#x2F;目标目录已存在，将源目录移动到目标目录；目标目录不存在则改名</li>
+<li>说明：如果源文件是多个文件，则文件之间用空格分开，同时目标必须是一个目录，这些源文件将被移动到目标目录下</li>
+</ul>
+<ol start="4">
+<li>文件类型查看命令file</li>
+</ol>
+<ul>
+<li>命令功能：显示文件或目录的类型</li>
+<li>命令格式：<br>file [选项] 文件名</li>
+<li>说明：<br>如果不为 file命令指定任何标志, 缺省显示最后 10 行</li>
+</ul>
+<h4 id="3、文件查看命令-cat-more-less-head-tail-需要记住-f选项作用-touch"><a href="#3、文件查看命令-cat-more-less-head-tail-需要记住-f选项作用-touch" class="headerlink" title="3、文件查看命令: cat ,more,less,head,tail(需要记住-f选项作用),touch"></a>3、文件查看命令: cat ,more,less,head,tail(需要记住-f选项作用),touch</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oBuLex"><img src="https://s4.ax1x.com/2021/12/05/oBuLex.png" alt="oBuLex.png"></a></p>
+<ol>
+<li>文件查看命令cat</li>
+</ol>
+<ul>
+<li>命令功能：<ul>
+<li>功能1：将指定文件从首行开始连续显示在屏幕，当文件过大时不适用命令格式： cat [选项] 文件名</li>
+<li>功能2：将多个文件内容合并<br>命令格式： cat [选项] 文件名1 文件名2 。。。&gt; 目标文件名</li>
+<li>功能3： 从键盘创建一个文件（ 只能创建新文件,不能编辑已有文件, ctrl+c终止输入 ）<br>命令格式： cat &gt; 文件名</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>文件查看命令more</li>
+</ol>
+<ul>
+<li>命令功能：</li>
+<li>功能：分页显示文件内容</li>
+<li>命令格式： more [选项] 文件名</li>
+<li>说明：<br>和cat命令类似，more可将文件内容显示在屏幕上，但是它每次只显示一<br>页<br>该命令一次显示一屏文本，满屏后停下来，并且在屏幕的底部出现一个提<br>示信息，给出至今已显示的该文件的百分比：–More–（XX%）</li>
+</ul>
+<ol start="3">
+<li>文件查看命令less</li>
+</ol>
+<ul>
+<li>命令功能：<br>功能：分页显示文件内容<br>命令格式： less[选项] 文件名<br>说明：<br>less命令作用和more命令类似,可用于浏览文本文件的内容; 不同的是，less<br>命令允许用户使用光标键上下翻动浏览文本，更加灵活。<br>less可以不读入整个文本文件，因此在处理大型文件时速度较快</li>
+</ul>
+<ol start="4">
+<li>文件查看命令head</li>
+</ol>
+<ul>
+<li>命令功能：显示一个文件或多个文件的前几行或前几个字节</li>
+<li>命令格式：<br>head [选项] [文件名]</li>
+<li>说明：<br>如果不为 head 命令指定任何标志, 缺省显示前 10 行<br>如果没有接文件名，那么将会显示用户从键盘上输入的字符</li>
+</ul>
+<ol start="5">
+<li>文件查看命令tail</li>
+</ol>
+<ul>
+<li>命令功能：显示一个文件或多个文件的后几行或后几个字节</li>
+<li>命令格式：<br>tail [选项] [文件名]</li>
+<li>说明：<br>如果不为 tail命令指定任何标志, 缺省显示最后 10 行<br>如果没有接文件名，那么将会显示用户从键盘上输入的字符<br><font color="red">-f 将文件里的最尾部的内容显示在屏幕上，并且不断刷新，只<br>要文件更新就可以看到最新的文件内容</font></li>
+</ul>
+<ol start="6">
+<li>修改文件时间及创建新文件命令touch</li>
+</ol>
+<ul>
+<li>命令功能：创建新文件，修改文件的修改时间mtime和访问时间atime</li>
+<li>命令格式：<br>touch [选项] 文件名</li>
+<li>说明：<br>该命令不能修改文件的创建时间<br>如果touch命令没有指定时间，touch就会将文件的mtime和atime修改为系统的<br>当前时间</li>
+</ul>
+<h4 id="4、（重点）文件查找命令-which-whereis-locate-find；要求知道4者之间的区别"><a href="#4、（重点）文件查找命令-which-whereis-locate-find；要求知道4者之间的区别" class="headerlink" title="4、（重点）文件查找命令: which ,whereis,locate,find；要求知道4者之间的区别"></a>4、（重点）文件查找命令: which ,whereis,locate,find；要求知道4者之间的区别</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oBMEuR"><img src="https://s4.ax1x.com/2021/12/05/oBMEuR.png" alt="oBMEuR.png"></a></p>
+<ol>
+<li>查看可执行文件的路径命令which</li>
+</ol>
+<ul>
+<li>命令功能：查看可执行文件的路径</li>
+<li>命令格式：<br>which [选项] 命令</li>
+<li>说明：<br>该命令在环境变量PATH指定的目录中，寻找指定的可执行文件</li>
+<li>常用选项<br>选项 说明</li>
+</ul>
+<p>-a 将所有可找到的命令列出，不仅仅列出第一个找到的命令</p>
+<ol start="2">
+<li>查看文件位置命令whereis</li>
+</ol>
+<ul>
+<li>命令功能：查看文件位置</li>
+<li>命令格式：<br>whereis [选项] 文件或目录名</li>
+<li>说明：<br>该命令利用系统数据库&#x2F;var&#x2F;lib&#x2F;mlocate&#x2F;mlocate.db中记录来进行查找，因此在<br>数据库未被更新时，可能找到已被删除掉的文件，或无法找到新建文件。<br>建议查询前先执行命令 sudo updatedb 更新数据库</li>
+</ul>
+<ol start="3">
+<li>查看符合条件的文件位置命令locate</li>
+</ol>
+<ul>
+<li>命令功能：查看符合条件的文件位置</li>
+<li>命令格式：<br>locate [选项] 关键字</li>
+<li>说明：<br>该命令利用系统数据库&#x2F;var&#x2F;lib&#x2F;mlocate&#x2F;mlocate.db中记录来进行查找，因此在<br>数据库未被更新时，可能找到已被删除掉的文件，或无法找到新建文件。<br>建议查询前先执行命令 sudo updatedb 更新数据库</li>
+</ul>
+<ol start="4">
+<li>查看文件位置命令find</li>
+</ol>
+<ul>
+<li>命令功能：借助搜索关键字（文件名、文件大小、文件所有者等）查找文件<br>或目录</li>
+<li>命令格式：<br>find [搜索路径] [选项] [动作]</li>
+<li>说明：<br>该命令直接查找硬盘文件系统，速度很慢，但能够完整地找出所有符合查找<br>条件的文件<br>动作：指定条件查找后进行的特定处理方法，如将查找到的文件在屏幕上显<br>示出来，或对其进行权限修改，或将查找到的文件删除等等</li>
+</ul>
+<ol start="5">
+<li>区别</li>
+</ol>
+<ul>
+<li>which    只能查可执行文件的位置 ，在PATH变量里面寻找</li>
+<li>whereis   只能查二进制文件（含可执行文件）、说明文档，源文件或目录名称等，从linux文件数据库（&#x2F;var&#x2F;lib&#x2F;slocate&#x2F;slocate.db 或 &#x2F;var&#x2F;lib&#x2F;mlocate&#x2F;mlocate.db）寻找，所以有可能找到刚刚删除，或者没有发现新建的文件</li>
+<li>locate    配合数据库查看文件或者目录位置，数据库大至每天更新一次，文件名是部分匹配</li>
+<li>find     实际搜寻硬盘查询文件名称</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2021/12/fff4aab16030c923.png" alt="总结"></p>
+<h4 id="5、目录定义及两个特殊目录-和"><a href="#5、目录定义及两个特殊目录-和" class="headerlink" title="5、目录定义及两个特殊目录.和.."></a>5、目录定义及两个特殊目录.和..</h4><ul>
+<li>目录本身属于一种特殊文件。</li>
+<li>Linux利用目录以树状结构的形式组织文件，目录记录了它内部所有文件<br>的属性信息。</li>
+<li>为关联上一级目录以及它自己本身，在每个目录下有两个特殊目录：“.”<br>和“..”，其中“.”表示当前目录本身，而“..”则表示当前目录的父<br>目录。</li>
+<li>子目录是挂靠在另一个目录中的目录。包含子目录的目录称作父目录。<br>除了root目录以外，所有的目录都是子目录，并且有它们的父目录。<br>root目录就作为自己的父目录</li>
+</ul>
+<h4 id="6、root和普通用户的用户主目录各是什么"><a href="#6、root和普通用户的用户主目录各是什么" class="headerlink" title="6、root和普通用户的用户主目录各是什么"></a>6、root和普通用户的用户主目录各是什么</h4><p>一般普通用户,家目录是&#x2F;home&#x2F;用户名</p>
+<p>root用户，家目录是&#x2F;root</p>
+<h4 id="7、绝对路径和相对路径写法"><a href="#7、绝对路径和相对路径写法" class="headerlink" title="7、绝对路径和相对路径写法"></a>7、绝对路径和相对路径写法</h4><ol>
+<li>绝对路径名</li>
+</ol>
+<ul>
+<li>以根目录为起点的路径名称做绝对路径名。</li>
+<li>绝对路径名总是以斜线字符(&#x2F;)开头,它表示根目录，例如：<br>&#x2F;home&#x2F;mengqc&#x2F;lib&#x2F;func&#x2F;file1</li>
+</ul>
+<ol start="2">
+<li>相对路径名</li>
+</ol>
+<ul>
+<li>相对当前工作目录的路径名</li>
+<li>例如工作目录是&#x2F;home&#x2F;mengqc&#x2F;lib , 其子目录func下文件file1的绝对路径<br>名为&#x2F;home&#x2F;mengqc&#x2F;lib&#x2F;func&#x2F;file1，而相对路径名是 func&#x2F;file1。</li>
+<li>点(.)目录表示本目录自身，而点点(..)目录代表该目录的父目录。例如，<br>当前工作目录是&#x2F;home&#x2F;mengqc&#x2F;lib，想列出&#x2F;home&#x2F;liu目录的内容，可使用<br>命令：$ ls ..&#x2F;..&#x2F;liu</li>
+</ul>
+<h4 id="8、目录操作命令：-ls-cd-pwd-mkdir-rmdir，对于ls命令需要掌握递归显示子目录内容的选项及显示隐藏文件选项；掌握rmdir与rm的区别"><a href="#8、目录操作命令：-ls-cd-pwd-mkdir-rmdir，对于ls命令需要掌握递归显示子目录内容的选项及显示隐藏文件选项；掌握rmdir与rm的区别" class="headerlink" title="8、目录操作命令： ls , cd ,pwd, mkdir ,rmdir，对于ls命令需要掌握递归显示子目录内容的选项及显示隐藏文件选项；掌握rmdir与rm的区别"></a>8、目录操作命令： ls , cd ,pwd, mkdir ,rmdir，对于ls命令需要掌握递归显示子目录内容的选项及显示隐藏文件选项；掌握rmdir与rm的区别</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/08723a7227d08e73.png" alt="目录操作命令"></p>
+<ol>
+<li>查看文件和目录命令ls</li>
+</ol>
+<ul>
+<li>命令功能：用于显示指定目录下内容（列出目录所含文件及子目录)</li>
+<li>命令格式：<br>ls [选项] 文件名或目录名</li>
+<li>说明：<br>ls是英文单词list的简写，是用户最常用的命令之一，它类似于DOS下的dir命令。<br>选项和参数都缺省的情况下，ls默认打印当前路径下的文件名<br><font color="red">-a 显示目录下的全部文件及目录（包括隐藏文件，即以.开头）</font><br><font color="red">-A 显示所有文件及目录（包括隐藏文件，但不包含.与..这两个目录</font><br><font color="red">-R 列出当前目录下的所有文件信息，并以递归地方式显示各个子目录中的文件<br>和子目录信息</font></li>
+</ul>
+<ol start="2">
+<li>目录切换命令cd</li>
+</ol>
+<ul>
+<li>命令功能：目录切换</li>
+<li>命令格式：<br>cd [目录名]</li>
+<li>说明：<br>如果省略目录，则默认切换到当前用户的主目录</li>
+</ul>
+<ol start="3">
+<li>显示当前目录命令pwd</li>
+</ol>
+<ul>
+<li>命令功能：显示当前目录</li>
+<li>命令格式：<br>pwd [选项]</li>
+<li>常用选项</li>
+</ul>
+<p>-P（注意大写） 显示实际工作目录，而非链接文件本身目录名</p>
+<ol start="4">
+<li>新建目录命令mkdir</li>
+</ol>
+<ul>
+<li>命令功能：创建目录</li>
+<li>命令格式：<br>mkdir [选项] 目录名</li>
+<li>说明：<br><font color="red">需要注意的是新建目录的名称不能与指定路径中已有的目录或文件同名</font><br><font color="red">目录创建者必须对指定路径具有写权限</font></li>
+</ul>
+<ol start="5">
+<li>删除目录命令rmdir</li>
+</ol>
+<ul>
+<li>命令功能：删除目录</li>
+<li>命令格式：<br>rmdir [选项] 目录名</li>
+<li>说明：<br><font color="red">目录被删除之前应该是空目录，否则报错。</font><br>当前工作目录必须在被删除目录之上，不能是被删除目录本身，也不能是被<br>删除目录的子目录</li>
+</ul>
+<ol start="6">
+<li>rmdir和rm的区别<br>rmdir只能用于删除空的目录，而rm在删除目录上则没有限定目录一定要是空的才可以删除，所以rmdir可以很好的用于检测一个目录是否为空目录</li>
+</ol>
+<h4 id="9、（重点）文件相关3个时间属性分别是什么？ctime，mtime和atime，三者具体含义"><a href="#9、（重点）文件相关3个时间属性分别是什么？ctime，mtime和atime，三者具体含义" class="headerlink" title="9、（重点）文件相关3个时间属性分别是什么？ctime，mtime和atime，三者具体含义"></a>9、（重点）文件相关3个时间属性分别是什么？ctime，mtime和atime，三者具体含义</h4><p>文件具有3个时间属性：创建时间ctime,修改时间mtime和访问时间atime</p>
+<ul>
+<li>mtime(modification time):当文件的内容更改时，就会更新这个时间。</li>
+<li>ctime(change status time):当文件的状态被更改时，会更改这个时间，比<br>如像文件的权限或者属性被更改时就会更改这个时间。</li>
+<li>atime(access time):就是文件访问时间，当文件的内容被读取时就会更改这<br>个时间。比如使用cat指令读取某个文件时，这个时间就会被更改。</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2021/12/ba85b600cbe6ea4d.png" alt="时间属性"></p>
+<h4 id="10、PPT最后思考题"><a href="#10、PPT最后思考题" class="headerlink" title="10、PPT最后思考题"></a>10、PPT最后思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">问题1</span><br><span class="line">输入“cd”命令并按【Enter】键后，将有什么结果？</span><br><span class="line">A.从当前目录切换到根目录</span><br><span class="line">B.屏幕显示当前目录</span><br><span class="line">C.从当前目录切换到用户主目录</span><br><span class="line">D.从当前目录切换为上一级目录</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">问题2</span><br><span class="line">pwd命令的功能是什么？</span><br><span class="line">A.设置用户的口令</span><br><span class="line">B.显示用户的口令</span><br><span class="line">C.显示当前目录的绝对路径</span><br><span class="line">D.查看当前目录的文件</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">问题3</span><br><span class="line">如何快速切换到用户John的主目录？</span><br><span class="line">A.cd @John</span><br><span class="line">B.cd #John</span><br><span class="line">C.cd &amp;John</span><br><span class="line">D.cd ~John</span><br><span class="line">正确答案： D</span><br><span class="line">---</span><br><span class="line">问题4</span><br><span class="line">如果当前目录为/home，使用以下哪个命令后可进入</span><br><span class="line">/home/stud1/test目录？</span><br><span class="line">A.cd test</span><br><span class="line">B.cd stud1/test</span><br><span class="line">C.cd /stud1/test</span><br><span class="line">D. cd home</span><br><span class="line">正确答案： B</span><br><span class="line">---</span><br><span class="line">问题5</span><br><span class="line">ls命令的哪个参数可以递归显示当前目录和所有子目录中所有文件？</span><br><span class="line">A.-a</span><br><span class="line">B.-d</span><br><span class="line">C.-aR</span><br><span class="line">D. -t</span><br><span class="line">正确答案： C</span><br><span class="line">解析：-a 表示显示所有文件和子目录，包含隐藏文件</span><br><span class="line">-d：表示显示目录时仅显示目录信息，不显示其中包含</span><br><span class="line">的文件信息</span><br><span class="line">-t：按时间顺序显示</span><br><span class="line">-R：递归显示子目录中的文件和子目录信息</span><br><span class="line">---</span><br><span class="line">问题6</span><br><span class="line">以下关于命令cat name test1 test2 &gt;name的说法，哪个正确？</span><br><span class="line">A.命令正确，作用是将name,test1,test2文件内容合并到name文件</span><br><span class="line">B.命令错误，输出文件不能与输入文件同名</span><br><span class="line">C.name文件为空时正确</span><br><span class="line">D. 命令错误，应为cat name test1 test2 &gt;&gt;name</span><br><span class="line">正确答案： B</span><br><span class="line">解析：</span><br><span class="line">cat 文件1 文件2 &gt; 文件3, 表示将文件1，</span><br><span class="line">文件2内容合并，产生文件3, 但不允许</span><br><span class="line">一个文件即是输入文件又是输出文件；</span><br><span class="line">cat &gt;&gt;文件名 表示向文件追加内容</span><br><span class="line">---</span><br><span class="line">问题7</span><br><span class="line">目录中有5个文件，文件名分别为jq.c, jq1.c,jq2.c,jq3.cpp和jq10.c，</span><br><span class="line">执行ls jq*.?命令后显示哪些文件？</span><br><span class="line">A.jq.c, jq1.c,jq2.c,jq3.cpp</span><br><span class="line">B. jq1.c,jq2.c,jq10.c</span><br><span class="line">C.jq1.c,jq2.c,jq3.cpp</span><br><span class="line">D. jq.c, jq1.c,jq2.c,jq10.c</span><br><span class="line">正确答案： D</span><br><span class="line">解析：*表示任意长度的任何字符，但不能</span><br><span class="line">与”.”开头的文件名匹配</span><br><span class="line">？表示任何一个字符</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="第4讲-文件权限、账号管理-重点章节"><a href="#第4讲-文件权限、账号管理-重点章节" class="headerlink" title="第4讲 文件权限、账号管理(重点章节)"></a>第4讲 文件权限、账号管理(重点章节)</h3><h4 id="1、用户、用户组概念及各自唯一标识号"><a href="#1、用户、用户组概念及各自唯一标识号" class="headerlink" title="1、用户、用户组概念及各自唯一标识号"></a>1、用户、用户组概念及各自唯一标识号</h4><ol>
+<li>用户</li>
+</ol>
+<p>一定资源的使用者，可以创建和管理文件以及访问其他用户文件。Linux系统中针对文件的权限，规定了4种不同类型的用户：</p>
+<ul>
+<li>文件所有者（owner）：Linux的文件或目录被一个用户拥有时，这个用户<br>称为文件所有者,对文件的控制取决于文件所有者或root用户，一般来说是<br>文件的创建者。</li>
+<li>同组用户（group）： 文件所属用户组中的用户（也是owner所在的组）</li>
+<li>其他用户 (others) ：非文件所有者和用户组内用户（不包括root）</li>
+<li>超级用户 (root) ：具有管理系统的特权</li>
+</ul>
+<ol start="2">
+<li>用户组</li>
+</ol>
+<ul>
+<li>由一定数量的对某些文件具有相同操作权限的用户组成的小组。</li>
+<li>Linux中每个用户都至少属于一个用户组，以保证对一个用户组中的所有用户进行集中管理</li>
+<li>一个用户可以从属于多个用户组</li>
+<li>一个用户组可以拥有多个用户</li>
+</ul>
+<ol start="3">
+<li>UID和GID</li>
+</ol>
+<ul>
+<li>用户与用户组的标识号</li>
+<li>root用户 UID&#x3D;0</li>
+<li>系统用户 UID 1&#x2F;<del>999（Linux系统中一类特殊的用户，主要是用来完成某些系统管理或服务任务的。与root用户和普通用户不同，这类用户账户是不能用来登录系统的， 通常在安装软件包时自动创建 ）<br>普通用户 UID 1000</del>60000可通过查看&#x2F;etc&#x2F;login.defs文件获取范围</li>
+</ul>
+<h4 id="2、掌握ls-l命令结果各项含义"><a href="#2、掌握ls-l命令结果各项含义" class="headerlink" title="2、掌握ls -l命令结果各项含义"></a>2、掌握ls -l命令结果各项含义</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/42de9b70a4ca2491.png" alt="ls -l"></p>
+<h4 id="3、（重点）读懂给出文件权限，能说明各项具体代表的意思，会根据给定条件，写出对应的文件权限（符号化方式和十进制方式均要求掌握）"><a href="#3、（重点）读懂给出文件权限，能说明各项具体代表的意思，会根据给定条件，写出对应的文件权限（符号化方式和十进制方式均要求掌握）" class="headerlink" title="3、（重点）读懂给出文件权限，能说明各项具体代表的意思，会根据给定条件，写出对应的文件权限（符号化方式和十进制方式均要求掌握）"></a>3、（重点）读懂给出文件权限，能说明各项具体代表的意思，会根据给定条件，写出对应的文件权限（符号化方式和十进制方式均要求掌握）</h4><ol>
+<li>符号法<br><img src="https://s3.bmp.ovh/imgs/2021/12/1f0a9ead20b23530.png" alt="文件权限"><br>问题：假设test1,test2,test3同属于testgroup用户组，如果有下面的两个文件，请说明两个文件的所有者与其相关的权限是什么？<br><code>-rw-r--r-- 1 root root 238 Jun 18 17:22 test.txt</code><br><code>-rwxr-xr-- 1 test1 testgroup 5238 Jun 19 10:25 tsai</code><br>答：文件test.txt的所有者为root，组为root，只有root这个账号可以存取此文件，其它人则仅能读此文件。<br>文件tsai的所有者为test1，而组为testgroup。其中，test1 可以针对此文件具有可读可写可执行的权力，而同组的test2, test3两个人与test1同样是testgroup的群组账号，则仅可读可执行但不能写(亦即不能修改)，至于非testgroup组的人则仅可以读，不能写也不能执行</li>
+<li>十进制<br><img src="https://s3.bmp.ovh/imgs/2021/12/b8c012dc18d524f1.png" alt="十进制"></li>
+</ol>
+<h4 id="4、（重点）文件权限相关命令：chgrp-chmod-chown-umask（要求知道针对文件和目录分别对应的默认权限是什么）"><a href="#4、（重点）文件权限相关命令：chgrp-chmod-chown-umask（要求知道针对文件和目录分别对应的默认权限是什么）" class="headerlink" title="4、（重点）文件权限相关命令：chgrp ,chmod, chown, umask（要求知道针对文件和目录分别对应的默认权限是什么）"></a>4、（重点）文件权限相关命令：chgrp ,chmod, chown, umask（要求知道针对文件和目录分别对应的默认权限是什么）</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/733463458110fc22.png" alt="文件权限"></p>
+<ol>
+<li><p>改变文件所属用户组命令chgrp<br>• 命令功能：改变指定文件所属用户组<br>• 命令格式：<br><code>chgrp [选项] 组名 文件名</code><br>• 说明：<br>① 如果用户不是该文件&#x2F;目录的文件所有者或超级用户，则不能改变该文<br>件&#x2F;目录的所属组<br>② 要被改变的组名必须在&#x2F;etc&#x2F;group文件中存在<br>③ chgrp只具有改变所属组的功能,chown可以同时改变文件拥有者和所属<br>组</p>
+</li>
+<li><p>改变文件所有者命令chown<br>• 命令功能：改变文件或目录的所有者和所属的组<br>• 命令格式：<br><code>chown [选项] [owner][:[group]] 文件列表</code><br>• 说明：<br>① 只有超级用户才可以使用该命令<br>② 要被改变的用户名owner必须在&#x2F;etc&#x2F;passwd文件中存在<br>③ 要被改变的组名group必须在&#x2F;etc&#x2F;group文件中存在<br>④ 只有owner时表示仅修改文件所有者，不修改所属组<br>⑤ owner:group时表示同时修改文件所有者和所属组<br>⑥ 只有owner:时表示修改文件所有者，修改所属组为新所有者的登录组<br>⑦ 只有: group时表示不改变文件所有者，修改所属组为新组</p>
+</li>
+<li><p>改变文件权限命令chmod<br>• 命令功能：改变文件或目录的权限<br>• 命令格式：符号或数字二种形式(对应于权限的两种表示方法)<br>数字形式：chmod [选项] xyz 文件列表<br> xyz: 分别为三组rwx属性数值的和<br>符号形式：<br><img src="https://s3.bmp.ovh/imgs/2021/12/5c73fc664444aee3.png" alt="chomd"></p>
+</li>
+<li><p>指定新建文件时预设的权限掩码命令umask<br>• 命令功能：设置用户在新建文件或目录时的权限默认值<br>• 命令格式：<br>umask [选项] [权限掩码]<br>说明：权限掩码是由3位八进制数组成，用基数权限去掉权限掩码后，即可产<br>生建立文件时预设的权限。<br>• <font color="red">文件创建时的默认权限＝ 0666-umask</font><br>• <font color="red">目录创建时的默认权限＝ 0777-umask</font><br>如果系统默认的umask是0022，那么创建文件时默认权限为：0666 -<br>0022&#x3D;0644，即-rw-r–r–<br>那么创建目录时默认权限为：0777-0022&#x3D;0755,即drwxr-xr-x</p>
+</li>
+<li><p>设置文件隐藏属性命令chattr<br>• 命令功能：设置文件隐藏属性<br>• 命令格式：<br>chattr [选项] [+-&#x3D;][属性名] 文件或目录名<br>说明：</p>
+</li>
+<li><p>显示文件隐藏属性命令lsattr<br>• 命令功能：显示文件隐藏属性<br>• 命令格式：<br>lsattr [选项] 文件或目录</p>
+</li>
+</ol>
+<h4 id="5、（重点）文件特殊权限：SUID，SGID，SBIT含义，及其各自设置方法"><a href="#5、（重点）文件特殊权限：SUID，SGID，SBIT含义，及其各自设置方法" class="headerlink" title="5、（重点）文件特殊权限：SUID，SGID，SBIT含义，及其各自设置方法"></a>5、（重点）文件特殊权限：SUID，SGID，SBIT含义，及其各自设置方法</h4><h5 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a>SUID</h5><ol>
+<li>定义</li>
+</ol>
+<ul>
+<li>文件所有者权限中的x被s标志代替，称为具有SUID权限<br>testuser@ubuntu:&#x2F;tmp$ ls -l &#x2F;usr&#x2F;bin&#x2F;passwd</li>
+</ul>
+<p>-rwsr-xr-x 1 root root 54256 May 17 2017 &#x2F;usr&#x2F;bin&#x2F;passwd</p>
+<ul>
+<li>用于控制用户执行文件时的权限，以文件所有者的访问权限运行，而不受<br>执行文件的用户本身访问权限的限制。</li>
+<li>该权限仅对二进制程序有效（可利用file命令查看）</li>
+<li>该权限对shell script不起作用，因为shell script只是将很多二进制执行文件调<br>进来执行而已，SUID权限还需要看调进来的二进制执行程序的设置。</li>
+<li>该权限对目录不起作用</li>
+<li>执行文件的用户对该二进制程序需要具有x的可执行权限</li>
+<li>该权限仅在执行该程序的过程中有效，执行完毕立即释放权</li>
+</ul>
+<ol start="2">
+<li>执行原理</li>
+</ol>
+<ul>
+<li>&#x2F;usr&#x2F;bin&#x2F;passwd命令执行权限为-rwsr-xr-x ，因此普通用户user1具有x权限</li>
+<li>passwd程序的文件所有者为root</li>
+<li>因为设置了SUID权限，因此当普通用户user1执行passwd命令时，自动“暂<br>时”获得该程序的文件所有者root的权限，执行命令成功</li>
+</ul>
+<ol start="3">
+<li>设置方法</li>
+</ol>
+<ul>
+<li>设置suid ： chmod u+s 文件名</li>
+<li>chmod 4xxx 文件名</li>
+<li>取消suid ： chmod u-s 文件名</li>
+<li>chmod 0xxx 文件名</li>
+<li>SUID属性字为4000，xxx代表文件原来的存取属性</li>
+</ul>
+<h5 id="SGID"><a href="#SGID" class="headerlink" title="SGID"></a>SGID</h5><ol>
+<li>定义</li>
+</ol>
+<ul>
+<li>文件所属用户组权限中的x被s标志代替，称为具有SGID权限</li>
+</ul>
+<p>-rwxrwsr-x</p>
+<ol start="2">
+<li>执行原理</li>
+</ol>
+<ul>
+<li>对于文件而言</li>
+</ul>
+<ol>
+<li>该权限对二进制程序有效</li>
+<li>用户执行的文件时以该文件所属组的访问权限运行，而不受执行文件的用<br>户本身所属用户组访问权限的限制</li>
+<li>执行文件的用户对该程序需要具有x的可执行权限</li>
+<li>该权限仅在执行该程序的过程中有效，执行完毕立即释放权限</li>
+<li>对于目录而言</li>
+</ol>
+<ul>
+<li>该权限对目录有效</li>
+</ul>
+<ol>
+<li><p>用户对于该目录具有r和x的权限，即该用户可以进入此目录</p>
+</li>
+<li><p>用户在该目录下新建文件&#x2F;目录的用户组与此目录的用户组相同</p>
+</li>
+<li><p>设置方法</p>
+</li>
+</ol>
+<ul>
+<li>设置sgid ： chmod g+s 文件名&#x2F;目录名</li>
+<li>chmod 2xxx 文件名&#x2F;目录名</li>
+<li>取消sgid ： chmod g-s 文件名&#x2F;目录名</li>
+<li>chmod 0xxx 文件名&#x2F;目录名</li>
+<li>SGID属性字为2000，xxx代表文件原来的存取属性</li>
+</ul>
+<h5 id="SBIT"><a href="#SBIT" class="headerlink" title="SBIT"></a>SBIT</h5><ol>
+<li>定义</li>
+</ol>
+<ul>
+<li><p>其他非同组用户权限中的x被t标志代替，称为具有SBIT权限</p>
+<p>drwxrwxrwt</p>
+</li>
+<li><p>该权限仅对目录有效</p>
+</li>
+<li><p>用户在该目录下新建文件&#x2F;目录时，仅有自己与root才有权利删除该文件或<br>目录</p>
+</li>
+</ul>
+<ol start="2">
+<li>设置方法</li>
+</ol>
+<ul>
+<li>设置sbit： chmod o+t 目录名</li>
+<li>chmod 1xxx 目录名</li>
+<li>取消sbit ： chmod o-t 目录名</li>
+<li>chmod 0xxx 目录名</li>
+<li>SBIT属性字为1000，xxx代表文件原来的存取属性</li>
+</ul>
+<h4 id="6、（重点）用户、用户组相关的文件名称，每个文件功能是什么（无需记忆每行每个字段具体含义）"><a href="#6、（重点）用户、用户组相关的文件名称，每个文件功能是什么（无需记忆每行每个字段具体含义）" class="headerlink" title="6、（重点）用户、用户组相关的文件名称，每个文件功能是什么（无需记忆每行每个字段具体含义）"></a>6、（重点）用户、用户组相关的文件名称，每个文件功能是什么（无需记忆每行每个字段具体含义）</h4><h5 id="用户相关文件"><a href="#用户相关文件" class="headerlink" title="用户相关文件"></a>用户相关文件</h5><ol>
+<li>用户账号信息文件&#x2F;etc&#x2F;passwd<br>• &#x2F;etc&#x2F;passwd文件是账号管理中最重要的一个文件<br>• 一个纯文本文件，对所有用户都可读<br>• 保存除口令外的用户账号信息。<br>• 只有root用户才能修改该文件</li>
+<li>用户账号信息文件&#x2F;etc&#x2F;passwd<br>• &#x2F;etc&#x2F;passwd文件是账号管理中最重要的一个文件<br>• 一个纯文本文件，对所有用户都可读<br>• 保存除口令外的用户账号信息。<br>• 只有root用户才能修改该文件</li>
+</ol>
+<h5 id="用户组相关"><a href="#用户组相关" class="headerlink" title="用户组相关"></a>用户组相关</h5><ol>
+<li>用户组信息文件&#x2F;etc&#x2F;group<br>• 该文件是用户组的配置文件，内容包括用户和用户组，并且能显示出用<br>户是归属哪个用户组或哪几个用户组<br>• 对所有用户都可读</li>
+<li>用户组口令信息文件&#x2F;etc&#x2F;gshadow<br>• 存储所有用户组账户的加密密码、组管理员等重要信息<br>• &#x2F;etc&#x2F;gshadow文件只有超级用户才能查看<br>• 每行定义了一个用户组信息(4个字段)</li>
+</ol>
+<h4 id="7、用户管理命令：useradd-x2F-adduser，passwd-usermod-userdel"><a href="#7、用户管理命令：useradd-x2F-adduser，passwd-usermod-userdel" class="headerlink" title="7、用户管理命令：useradd&#x2F;adduser，passwd, usermod, userdel"></a>7、用户管理命令：useradd&#x2F;adduser，passwd, usermod, userdel</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/f6c70e49c64eb2de.png" alt="用户管理命令"></p>
+<ol>
+<li><p>新增用户命令useradd<br>• 命令功能：新增用户<br>• 命令格式：<br>useradd [选项] 用户名<br>• 说明：<br>命令执行需要root权限<br>不加任何选项时：<br>为用户指定默认的UID<br>为用户创建一个与用户名相同的组，即用户私有组<br>ubuntu系统执行useradd命令，在&#x2F;home目录下并未自动产生对应的用户主<br>目录&#x2F;home&#x2F;user0215<br>解决方法：<br>方法一:<br>使用useradd命令时带-m 参数<br>方法二:使用adduser命令<br>方法三:对应使用未加-m参数的useradd命令，可以手工创建&#x2F;home&#x2F;用户主目<br>录</p>
+</li>
+<li><p>设置用户密码命令passwd<br>• 命令功能：设置用户密码<br>• 命令格式：<br>passwd [选项] [用户名]<br>• 说明：<br>只有超级用户可以使用“passwd 用户名”修改其他用户的口令<br>普通用户只能用不带用户名的passwd命令修改自己的口令<br>新创建的用户在没有设置口令的情况下是处于锁定的状态，用户无法登录<br>系统，所以必须为其设置口令</p>
+</li>
+<li><p>修改用户命令usermod<br>• 命令功能：修改用户<br>• 命令格式：<br>usermod [选项] 用户名<br>• 说明：<br>命令执行需要root权限<br>用户名必须在&#x2F;etc&#x2F;passwd中存在</p>
+</li>
+<li><p>删除用户命令userdel<br>• 命令功能：删除用户<br>• 命令格式：<br>userdel [选项] 用户名<br>• 常用选项<br>&#x2F;-r 连同用户的主目录及其下所有文件和目录也一起删除<br>• 说明：<br>命令执行需要root权限<br>用户名必须在&#x2F;etc&#x2F;passwd中存在<br>不带任何选项，表示仅删除用户账号，不删除相关文件<br>已登录的用户账号不能直接删除<br>如果在新建该用户时创建了私有组，且该私有组当前没有其他用户，则在<br>删除用户的同时也删除这一私有组</p>
+</li>
+<li><p>查询用户UID&#x2F;GID等信息命令id<br>• 命令功能：查询用户UID&#x2F;GID&#x2F;用户组等信息<br>• 命令格式：<br>id [选项] [用户名]<br>• 说明：<br>未指定用户名时，表示当前用户</p>
+</li>
+<li><p>用户身份切换命令su<br>• 命令功能：用户身份切换<br>• 命令格式：<br>su [选项] [用户名]<br>• 说明：<br>不带用户名，默认为切换到root<br>可以使用exit退回原来的用户</p>
+</li>
+<li><p>以root身份执行命令sudo<br>• 命令功能：以root身份执行命令<br>• 命令格式：<br>sudo [选项] [命令]<br>• 说明：<br>可以让用户在不切换身份的情况下，以其他用户的身份执行命令<br>用户能否执行sudo命令依赖于配置文件&#x2F;etc&#x2F;sudoers，配置文件中存放着用户是否<br>具有执行sudo的权限<br>执行该命令，无需获取root密码，只需要输入用户自己密码即可<br>如需要修改&#x2F;etc&#x2F;sudoers文件，则需要 visudo 这个指令。</p>
+</li>
+<li><p>显示自身用户名称命令whoami<br>• 命令功能：显示自身用户名称<br>• 命令格式：<br>whoami [选项]<br>说明：<br>相当于执行id -un</p>
+</li>
+<li><p>显示当前登录所有用户命令who<br>• 命令功能：显示当前登录系统的所有用户信息命令<br>• 命令格式：<br>who [选项]</p>
+</li>
+</ol>
+<h4 id="8、用户组管理命令：groupadd-groupmod-groupdel"><a href="#8、用户组管理命令：groupadd-groupmod-groupdel" class="headerlink" title="8、用户组管理命令：groupadd,groupmod,groupdel"></a>8、用户组管理命令：groupadd,groupmod,groupdel</h4><p><img src="https://s3.bmp.ovh/imgs/2021/12/8efaa7e09b82aa62.png" alt="用户组管理命令"></p>
+<ol>
+<li><p>新增用户组命令groupadd<br>• 命令功能：新增用户组<br>• 命令格式：<br>groupadd [选项] 用户组名<br>• 说明：<br>该命令仅root权限才能执行</p>
+</li>
+<li><p>修改用户组命令groupmod<br>• 命令功能：修改用户组<br>• 命令格式：<br>groupmod [选项] 用户组名<br>• 说明：<br>该命令仅root权限才能执行</p>
+</li>
+<li><p>删除用户组命令groupdel<br>• 命令功能：删除用户组<br>• 命令格式：<br>groupdel [选项] 用户组名<br>• 说明：<br> 该命令仅root权限才能执行<br>如果该用户组是某个用户的主要组，而该用户账户还存在，那么就不能删<br>除该用户组。此外，如果该用户组中的用户在线，也不能删除该用户组。<br><font color="red">通常，应该先将用户组中的用户移除后再将它删除</font></p>
+</li>
+<li><p>管理用户组命令gpasswd<br>• 命令功能：修改用户组<br>• 命令格式：<br>gpasswd [选项] 用户组名<br>• 说明：<br>该命令仅root和用户组管理员才能执行<br>不带选项时，表示修改用户组密码</p>
+</li>
+<li><p>显示用户组命令groups<br>• 命令功能：显示用户组<br>• 命令格式：<br>groups [选项] [用户名]</p>
+</li>
+<li><p>有效用户组切换命令newgrp<br>• 命令功能：有效用户组切换<br>• 命令格式：<br>newgroup [用户组名]<br>• 说明<br>需要切换的用户组名，必须是该用户所属的用户组</p>
+</li>
+</ol>
+<h4 id="9、PPT最后思考题"><a href="#9、PPT最后思考题" class="headerlink" title="9、PPT最后思考题"></a>9、PPT最后思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">问题1</span><br><span class="line">以下哪个文件保存用户账号的UID信息？</span><br><span class="line">A./etc/users</span><br><span class="line">B./etc/shadow</span><br><span class="line">C./etc/passwd</span><br><span class="line">D./etc/inittab</span><br><span class="line">正确答案： C</span><br><span class="line">解析：A对应文件并不存在，B对应文</span><br><span class="line">件主要保存加密密码和其他密码相关</span><br><span class="line">信息，D对应文件是决定运行级别的文</span><br><span class="line">件，与用户账号信息无关</span><br><span class="line">---</span><br><span class="line">问题2</span><br><span class="line">使用useradd命令新建用户，如需指定用户的主目录，要使用哪个</span><br><span class="line">选项？</span><br><span class="line">A.-g</span><br><span class="line">B.-d</span><br><span class="line">C.-u</span><br><span class="line">D.-s</span><br><span class="line">正确答案： B</span><br><span class="line">解析：-g 指定用户所属的主群组；</span><br><span class="line">-u 指定用户UID， -s 指定用户登录shell</span><br><span class="line">---</span><br><span class="line">问题3</span><br><span class="line">以下哪个命令能在删除用户peter的同时删除其用户主目录？</span><br><span class="line">A.rmuser –r peter</span><br><span class="line">B.deluser –r peter</span><br><span class="line">C.userdel –r peter</span><br><span class="line">D.usermgr –r peter</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">问题4</span><br><span class="line">设置文件权限，要求文件所有者具有读/写/执行权限，其他用户只</span><br><span class="line">有执行权限，则应当设置为什么数值？</span><br><span class="line">A.722</span><br><span class="line">B.711</span><br><span class="line">C.744</span><br><span class="line">D.644</span><br><span class="line">正确答案： B</span><br><span class="line">---</span><br><span class="line">问题5</span><br><span class="line">文件exer1的权限为rw-r—r--，现要增加所有用户的执行权限和同组</span><br><span class="line">用户的写权限，下列哪个命令正确？</span><br><span class="line">A.chmod a+x,g+w exer1</span><br><span class="line">B.chmod 765 exer1</span><br><span class="line">C.chmod o+x exer1</span><br><span class="line">D.chmod g+w exer1</span><br><span class="line">正确答案： A</span><br><span class="line">---</span><br><span class="line">问题6</span><br><span class="line">以下哪个命令能修改文件所有者？</span><br><span class="line">A.chgrp</span><br><span class="line">B.chown</span><br><span class="line">C.chmod</span><br><span class="line">D.chuser</span><br><span class="line">正确答案： B</span><br><span class="line">解析：chgrp更改文件的所属用户组，</span><br><span class="line">chmod更改文件权限，chuser命令不存</span><br><span class="line">在</span><br><span class="line">---</span><br><span class="line">问题7</span><br><span class="line">使用umask 命令，得到输出为：0002，那么 当前用户创建一个文本</span><br><span class="line">文件时，该文件的权限为？</span><br><span class="line">A.drwxrwxrw</span><br><span class="line">B.drwxrwxr-x</span><br><span class="line">C.-rw-rw-r--</span><br><span class="line">D.-rw-r--r--</span><br><span class="line">正确答案： C</span><br><span class="line">解析：文本文件创建时默认权限为</span><br><span class="line">-rw-rw-rw-(0666), 去掉umask 0002对应</span><br><span class="line">的-------w-, 结果为-rw-rw-r--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="第5讲-vi和vim编辑器"><a href="#第5讲-vi和vim编辑器" class="headerlink" title="第5讲 vi和vim编辑器"></a>第5讲 vi和vim编辑器</h3><h4 id="1、vi的三种工作模式"><a href="#1、vi的三种工作模式" class="headerlink" title="1、vi的三种工作模式"></a>1、vi的三种工作模式</h4><ul>
+<li>一般模式（command mode,命令模式）</li>
+<li>编辑模式(insert mode，插入模式)</li>
+<li>命令行模式（command-line mode,底行模式）</li>
+</ul>
+<h4 id="2、三种模式之间如何切换"><a href="#2、三种模式之间如何切换" class="headerlink" title="2、三种模式之间如何切换"></a>2、三种模式之间如何切换</h4><p><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/10f9bf38ddd6ada0.png" alt="模式切换"></p>
+<h4 id="3、PPT最后思考题"><a href="#3、PPT最后思考题" class="headerlink" title="3、PPT最后思考题"></a>3、PPT最后思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vi的3种模式之间不能直接转换的是以下哪种情况？</span><br><span class="line">A.一般模式-编辑模式</span><br><span class="line">B.一般模式-命令行模式</span><br><span class="line">C.编辑模式-命令行模式</span><br><span class="line">D.任何模式之间都能直接转换</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">问题2</span><br><span class="line">存盘并退出vi可用命令“:wq”</span><br><span class="line">, 还可用下列哪个命令？</span><br><span class="line">A. ：q！</span><br><span class="line">B. ：ZZ</span><br><span class="line">C. exit</span><br><span class="line">D. ：q</span><br><span class="line">正确答案： B</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Shell基础和第7讲-Shell编程（重点章节）"><a href="#Shell基础和第7讲-Shell编程（重点章节）" class="headerlink" title="Shell基础和第7讲 Shell编程（重点章节）"></a>Shell基础和第7讲 Shell编程（重点章节）</h3><h4 id="1、shell分类"><a href="#1、shell分类" class="headerlink" title="1、shell分类"></a>1、shell分类</h4><ol>
+<li>Bsh(Bourne Shell)<br>UNIX的默认Shell,也是其他shell的开发基础，其主文件名为sh。<br>Shell编程能力很强,但在处理与用户的交互方面做得不如其他<br>Shell</li>
+<li>Csh(C Shell)<br>• 能提供Bsh所不能处理的用户交互特征，如命令补全、命令别名、历<br>史命令替换等。<br>• 编程能力不如Bourne Shell<br>• 语法和C语言的很相似<br>• 在linux中扩展为tcsh</li>
+<li>Ksh(Korn Shell)：<br>• 融合了Csh和Bsh的优点，并和Bsh完全兼容<br>• 效率很高<br>• 命令交互界面和编程交互界面都很不错。</li>
+<li>Bash(Bourne Again shell )<br>• Bash与sh兼容<br>• 目前Linux默认Shell</li>
+</ol>
+<h4 id="2、（重点）Shell变量分类，每种类型的设置、查看，取消设置方法"><a href="#2、（重点）Shell变量分类，每种类型的设置、查看，取消设置方法" class="headerlink" title="2、（重点）Shell变量分类，每种类型的设置、查看，取消设置方法"></a>2、（重点）Shell变量分类，每种类型的设置、查看，取消设置方法</h4><p>Shell变量主要分为四类：</p>
+<ul>
+<li>用户自定义变量（本地变量）</li>
+<li>环境变量</li>
+<li>位置变量</li>
+<li>预定义变量</li>
+</ul>
+<ol>
+<li>用户自定义变量</li>
+</ol>
+<ul>
+<li>自定义变量的设置<br>变量名&#x3D;变量值</li>
+<li>说明：</li>
+</ul>
+<ol>
+<li>赋值号“&#x3D;”的两边没有空格，否则在执行时会引起错误</li>
+<li>如果变量的值中有$符号，会将其后字符串视为变量名</li>
+<li>如果变量的值中有空格（shell会认为命令结束）、换行符（shell会认</li>
+<li>为命令结束）等特殊字符，要用“” 或’’引用起来也可以修改原有变量值</li>
+<li>双引号内的特殊字符可以保有变量特性，但是单引号内的特殊字符仅为一般字符。<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/6a4ebe0539c0e6c8.png" alt="6.1"></li>
+<li>变量值部分必要时需要以字符“\”来将特殊符号(如$，\，空格符等)变成一般符号<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/b3d168d766b17128.png" alt="6.2"></li>
+<li>建立的变量为当前shell的局部变量，不能传递给由当前Shell创建的任何子进程中，或从本shell中退出后变量便无效了。</li>
+</ol>
+<ul>
+<li>自定义变量的查看(单个)<br><code>echo</code> $变量名<br><code>echo</code> “$变量名”<br><code>echo</code> ${变量名}<br>（花括号的作用是限定变量名字符串的范围）<br>testuser@ubuntu:~$ echo zz</li>
+<li>自定义变量的查看（所有变量查看）<br><code>set</code>命令</li>
+<li>自定义变量的清除<br><code>unset</code> 变量名<br>注意：<br>变量名前无$符号</li>
+</ul>
+<ol start="2">
+<li>环境变量概述</li>
+</ol>
+<ul>
+<li>Shell预留了一些和系统的工作环境有关的变量，这些变量称为环境变量。</li>
+<li>全局环境变量可以由父进程传给子进程，可用于所有子进程(自定义变量只用于当前Shell)</li>
+<li>通常用于工作环境的设置</li>
+<li>传统上，所有全局环境变量均为大写</li>
+<li>HOME：用户主目录的绝对路径</li>
+<li>SHELL：当前使用的shell。通常，它的值是&#x2F;bin&#x2F;bash</li>
+<li>PATH：shell查找命令的路径（目录）列表，各个目录用冒号（：）隔开</li>
+<li>PWD：当前工作目录的路径</li>
+<li>LOGNAME：登录用户名</li>
+<li>LANG:语言种类</li>
+</ul>
+<ol>
+<li>环境变量查看</li>
+</ol>
+<ul>
+<li>echo命令：显示单个变量</li>
+<li>env命令：<br>显示所有环境变量，包括本进程及以前的“祖先进程”所输出的变量<br>格式：env</li>
+<li>set命令<br>该命令可显示所有定义的变量，包括自定义变量和环境变量</li>
+</ul>
+<ol start="2">
+<li>环境变量设置</li>
+</ol>
+<ul>
+<li>export命令</li>
+<li>export 变量名 &#x2F;&#x2F;将一个已有本地变量变更为环境变量<br>export 变量名&#x3D;变量值 &#x2F;&#x2F;定义一个环境变量且赋值<br>说明：利用这种方式设置的环境变量，用户注销&#x2F;关机后所设值丢失可以修改&#x2F;etc&#x2F;profile或<del>&#x2F;.bash_profile或</del>&#x2F;.bashrc文件</li>
+</ul>
+<ol start="3">
+<li>环境变量清除</li>
+</ol>
+<ul>
+<li>unset 变量名</li>
+</ul>
+<ol start="3">
+<li>位置参数变量概述</li>
+</ol>
+<ul>
+<li>位置参数是一种在调用shell程序的命令行中按照各自的位置决定的变量，是在程序名之后输入的参数。位置参数之间用空格分隔。<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/e5072df0fe7a00f2.png" alt="6.3"></li>
+<li>其他特殊位置参数变量<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/8e5ae61976957afc.png" alt="6.4"></li>
+</ul>
+<ol start="4">
+<li><p>系统预定义变量概述</p>
+</li>
+<li><p>预定义变量和环境变量相类似，也是在shell一开始时就定义了的变量。所不同的是，用户只能根据shell的定义来使用这些变量，而不能重新定义它。所有预定义变量都是由$符和另一个符号组成的，常用的shell预定义变量有：</p>
+</li>
+</ol>
+<ul>
+<li>$#：位置参数的数量</li>
+<li>$*：所有位置参数的内容</li>
+<li>$?：上一条命令执行后的返回值，执行正确为0，非0为执行过程<br>中产生某些错误</li>
+<li>$@：表示命令行中输入的所有参数串</li>
+<li>$$：当前进程的进程号</li>
+<li>$!：后台运行的最后一个命令对应的进程号</li>
+</ul>
+<h4 id="4、常用特殊字符，重点：单引号与双引号之间的区别"><a href="#4、常用特殊字符，重点：单引号与双引号之间的区别" class="headerlink" title="4、常用特殊字符，重点：单引号与双引号之间的区别"></a>4、常用特殊字符，重点：单引号与双引号之间的区别</h4><ol>
+<li>单引号</li>
+</ol>
+<ul>
+<li>单引号括起来的所有字符都作为普通字符出现</li>
+<li>特殊字符用单引号括起来后，也会失去原有意义，而只作为普通字符解释。<br>例：<br>aaa&#x3D;bbb<br>echo $aaa<br>bbb<br>echo ‘$aaa’<br>$aaa</li>
+</ul>
+<ol start="2">
+<li>双引号<br>由双引号括起来的字符，除下面几种符号具有其特殊功能外，其余字符都作为普通字符对待：</li>
+</ol>
+<ul>
+<li>$符号：用其后指定的变量值来代替这个变量；</li>
+<li>\符号：它是转义字符，它告诉Shell不要对其后面的特殊</li>
+<li>字符($、\和双引号)进行特殊处理，只当做普通字符即可。</li>
+</ul>
+<p>双引号:Shell解释器对双引号内的内容进行变量替换和命令替换<br>（包括反引号包含的命令）</p>
+<ol start="3">
+<li><p>反引号<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/d05d4a993efcecf9.png" alt="6.5"></p>
+</li>
+<li><p>反斜线<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/0a2e5139d274442f.png" alt="6.6"></p>
+</li>
+<li><p>注释符号#<br>在Shell编程或Linux的配置文档中，经常要对某些正文行进行注释，以增加程序的可读性。<br>在Shell程序中以字符 # 开头的正文行表示注释行。</p>
+</li>
+<li><p>通配符</p>
+</li>
+</ol>
+<ul>
+<li>*与0个或多个任意的字符相匹配</li>
+<li>？  可以匹配文件名中的任何单个字符</li>
+<li>通配符[…]和[^…]<br>[…]<br>匹配方括号[ ]中指定范围内的字符<br>可以使用横杠-来连接两个字母或数字，以表示范围<br>例：[a-z]<br>[^…]<br>匹配不在指定范围内的任何字符。<br>例：[^a-z]</li>
+</ul>
+<h4 id="5、管道"><a href="#5、管道" class="headerlink" title="5、管道"></a>5、管道</h4><ul>
+<li>管道将多个命令前后连接起来形成一个管道流。</li>
+<li>前一个命令的输出结果作为后一个命令的输入。</li>
+<li>一般形式：<br>   命令1 |命令2</li>
+<li>管道是命令之间的，重定向是命令与文件之间的</li>
+<li>常用管道命令-选取命令grep<br>grep命令是一种强大的文本搜索工具，它能使用复杂的的匹配模式来搜索文本，并把匹配的行打印出来。<br>  常见应用场景：在文件中查找包含有指定字符串的行。<br> 格式：<br>  grep 　[参数] 　要查找的字符串 　[文件名]</li>
+<li>输入重定向<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/22de8307269089bc.png" alt="6.7"></li>
+<li>输出重定向<br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/a46bd3d08c956d45.png" alt="6.8"></li>
+</ul>
+<h4 id="6、shell脚本执行的3种方法及区别"><a href="#6、shell脚本执行的3种方法及区别" class="headerlink" title="6、shell脚本执行的3种方法及区别"></a>6、shell脚本执行的3种方法及区别</h4><ul>
+<li>需要为脚本赋予执行权限<br>chmod a+x hello.sh</li>
+<li>执行Shell脚本<br>存在三种运行方式：</li>
+</ul>
+<ol>
+<li>bash 脚本名称   如：bash hello.sh<br>这种方式Shell会查找PATH变量中的各路径中是否有相应程序，若没有则会出错，因而需要在PATH变量中添加脚本所在的路径。或者直接利用cd命令切换到脚本所在路径下，再使用该方式运行脚本（也就是Shell文件在当前目录下这样执行是可以的）</li>
+<li>.&#x2F;脚本名称    如：.&#x2F;hello.sh</li>
+<li>source 脚本名称    如：source hello.sh</li>
+</ol>
+<h4 id="7、算术表达式写法"><a href="#7、算术表达式写法" class="headerlink" title="7、算术表达式写法"></a>7、算术表达式写法</h4><p><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/b5cdf2bc1700e70b.png" alt="6.9"><br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/3be20afc19817f00.png" alt="6.10"></p>
+<h4 id="8、逻辑表达式写法（因内容较多，仅要求掌握两个整数之间的比较写法）"><a href="#8、逻辑表达式写法（因内容较多，仅要求掌握两个整数之间的比较写法）" class="headerlink" title="8、逻辑表达式写法（因内容较多，仅要求掌握两个整数之间的比较写法）"></a>8、逻辑表达式写法（因内容较多，仅要求掌握两个整数之间的比较写法）</h4><p><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/a93f35f780047c6b.png" alt="6.11"><br><img src="https://b2.kuibu.net/file/imgdisk/imgs/2021/12/26356a9ff3d0a192.png" alt="6.12"></p>
+<h4 id="9、分支语句（if-case均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）"><a href="#9、分支语句（if-case均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）" class="headerlink" title="9、分支语句（if,case均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）"></a>9、分支语句（if,case均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.创建一个简单的 <span class="keyword">shell</span> 程序,其功能为:</span><br><span class="line">使用<span class="keyword">read</span>命令从键盘上获取文件名 ，判断该文件是否是存在，如果不存在给出提示并退出，判断文件是否是符号链接文件，如果是则移动到/tmp目录下，否则不进行任何处理,显示执行过程以及结果。</span><br><span class="line">#!/bin/bash</span><br><span class="line"><span class="keyword">read</span> -<span class="keyword">p</span> <span class="string">&quot;Please input a filename:&quot;</span> fname</span><br><span class="line"><span class="keyword">if</span> [ ! -<span class="keyword">e</span> <span class="string">&quot;$fname&quot;</span> ]</span><br><span class="line">then</span><br><span class="line">   <span class="keyword">echo</span> <span class="string">&quot;$fname is not exist&quot;</span></span><br><span class="line">   <span class="keyword">exit</span> <span class="number">1</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -L <span class="string">&quot;$fname&quot;</span> ]</span><br><span class="line">then</span><br><span class="line">   $(sudo mv $fname /tmp)&amp;&amp;<span class="keyword">echo</span> <span class="string">&quot;copy $fname to /tmp successful&quot;</span> || <span class="keyword">echo</span> <span class="string">&quot;copy $fname to /tmp fail&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   <span class="keyword">echo</span> <span class="string">&quot;$fname is not a link file&quot;</span></span><br><span class="line">fi</span><br><span class="line">备注： -L $fname 只能检查出符号链接文件，对于硬链接文件无法检查.（可以用<span class="keyword">ln</span> –s <span class="keyword">file</span> linkfile文件创建符号链接文件来测试。）</span><br><span class="line"><span class="number">4</span>、编写一个Shell脚本，利用<span class="keyword">for</span>循环把当前目录下的所有*.<span class="keyword">c</span>文件复制到指定的目录中，注意判断指定目录是否存在，并显示复制后该目录内按文件大小排序的目录文件清单</span><br><span class="line">#!/bin/bash</span><br><span class="line"><span class="keyword">echo</span> “请输入指定目录名称:”</span><br><span class="line"><span class="keyword">read</span> dir</span><br><span class="line"><span class="keyword">if</span> [ -d $dir ]</span><br><span class="line">then</span><br><span class="line">    <span class="keyword">for</span> filename in *.<span class="keyword">c</span></span><br><span class="line">    <span class="keyword">do</span> </span><br><span class="line">      <span class="keyword">cp</span> $filename $dir</span><br><span class="line">    done</span><br><span class="line">    <span class="keyword">ls</span> -<span class="keyword">l</span> $dir | <span class="keyword">sort</span> -n -r -<span class="keyword">k</span> <span class="number">5</span> </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&quot;bad directory name:$dir&quot;</span></span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="10、循环语句-for-while-until均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）"><a href="#10、循环语句-for-while-until均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）" class="headerlink" title="10、循环语句(for,while,until均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）"></a>10、循环语句(for,while,until均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>. 用Shell编程，实现自动在/tmp目录下创建四个文件m1.txt，m2.txt，m3.txt，m4.txt，自动创建m1,m2,m3,m4四个目录，并将m1.txt ，m2.txt，m3.txt，m4.txt 四个文件分别拷贝到各自相应的目录下</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"><span class="keyword">cd</span> /tmp</span><br><span class="line">i=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> [ $i -<span class="keyword">le</span> <span class="number">4</span> ](也可以用<span class="keyword">for</span> i in <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   touch <span class="keyword">m</span>$i.txt</span><br><span class="line">   <span class="built_in">mkdir</span> <span class="keyword">m</span>$i</span><br><span class="line">   <span class="keyword">cp</span> <span class="keyword">m</span>$i.txt <span class="keyword">m</span>$i</span><br><span class="line">   i=$((i+<span class="number">1</span>))</span><br><span class="line">done</span><br><span class="line"><span class="number">3</span>、用Shell编程：根据用户输入的数<span class="keyword">x</span>计算x!，并用<span class="keyword">echo</span>命令显示结果。</span><br><span class="line">解答：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#！/bin/bash</span><br><span class="line"><span class="keyword">read</span> –<span class="keyword">p</span> “Please <span class="built_in">input</span> <span class="keyword">a</span> <span class="keyword">number</span>:” num</span><br><span class="line"><span class="keyword">if</span> [ $num –<span class="keyword">lt</span> <span class="number">0</span> ]</span><br><span class="line">then </span><br><span class="line"><span class="keyword">echo</span> “The num <span class="keyword">is</span> little then <span class="number">0</span>!”</span><br><span class="line"><span class="keyword">exit</span> <span class="number">1</span></span><br><span class="line">elif [ $num –eq <span class="number">0</span> ]</span><br><span class="line">then </span><br><span class="line"><span class="keyword">echo</span> “The result <span class="keyword">is</span> <span class="number">1</span>.”</span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">  i=<span class="number">1</span></span><br><span class="line">  sum=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> [ “$i” –<span class="keyword">le</span> “$num”  ]</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">sum = $((sum*i))</span><br><span class="line">i=$((i+<span class="number">1</span>))</span><br><span class="line">done</span><br><span class="line"><span class="keyword">echo</span> “The factory of $num <span class="keyword">is</span> $sum”</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h4 id="11、思考题"><a href="#11、思考题" class="headerlink" title="11、思考题"></a>11、思考题</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Shell命令行的选项和参数之间用什么符号隔开？</span><br><span class="line">A%</span><br><span class="line">B！</span><br><span class="line">C空格</span><br><span class="line">D~</span><br><span class="line">正确答案： C</span><br><span class="line">---</span><br><span class="line">用户曾经使用过的命令保存在哪个文件？</span><br><span class="line">A.bashrc</span><br><span class="line">B.bash_history</span><br><span class="line">C.bash_profile</span><br><span class="line">D.history</span><br><span class="line">正确答案：B</span><br><span class="line">---</span><br><span class="line">普通用户执行ls –l /root &amp;&gt;/tmp/root.ls命令后结果如何？</span><br><span class="line">A.显示/root目录和/tmp/root.ls文件的详细列表</span><br><span class="line">B.显示/root目录的详细列表，并重定向输出到/tmp/root.ls文件 </span><br><span class="line">C.报告错误信息</span><br><span class="line">D.将/root目录的详细列表信息重定向输出到/tmp/root.ls文件，并将错误信息重定向输出到/tmp/root.ls文件</span><br><span class="line">正确答案：D</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2021/12/03/Linux%E5%A4%8D%E4%B9%A0/">https://mopinlan.github.io/2021/12/03/Linux%E5%A4%8D%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/01/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue学习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/07/%E6%95%B4%E4%B8%AA%E6%B4%BB/"><img class="next-cover" src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">整个活</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/08/05/Linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux学习之文件目录结构"><img class="cover" src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-05</div><div class="title">Linux学习之文件目录结构</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC1%E8%AE%B2-Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">第1讲 Linux操作系统简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Linux%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">1、Linux定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81Linux%E5%88%9B%E5%A7%8B%E4%BA%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2、Linux创始人</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81GNU%E9%A1%B9%E7%9B%AE%E5%8F%91%E8%B5%B7%E4%BA%BA%EF%BC%8C%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6%E5%90%AB%E4%B9%89%EF%BC%8CGNU%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.3.</span> <span class="toc-text">3、GNU项目发起人，自由软件含义，GNU项目的目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89LINUX%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%EF%BC%9Akernel%EF%BC%8Cshell%EF%BC%8Cfile-system%E4%BB%A5%E5%8F%8Auser-application%EF%BC%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E5%85%B7%E4%BD%93%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82"><span class="toc-number">1.4.</span> <span class="toc-text">4、（重点）LINUX系统组成：kernel，shell，file system以及user application，每个部分具体功能是什么。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81Linux%E7%89%88%E6%9C%AC%E5%88%86%E7%B1%BB%EF%BC%8C%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%84%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.5.</span> <span class="toc-text">5、Linux版本分类，内核版本号各个部分的含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.6.</span> <span class="toc-text">6、常见的Linux发行版本有哪些</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81PPT%E6%9C%80%E5%90%8E%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text">7、PPT最后思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC2%E8%AE%B2-Linux%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">第2讲 Linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%A1%AC%E7%9B%98%E7%A7%8D%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">1、硬盘种类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81Linux%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D%E5%86%99%E6%B3%95%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="toc-number">2.2.</span> <span class="toc-text">2、Linux硬件设备文件名写法及含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">3、（重点）磁盘分区类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E8%AE%BE%E5%A4%87%E5%90%8D"><span class="toc-number">2.4.</span> <span class="toc-text">4、磁盘分区设备名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%8E%8C%E6%8F%A1%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E6%97%B6%E5%BF%85%E9%A1%BB%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%88%86%E5%8C%BA%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.5.</span> <span class="toc-text">5、掌握磁盘分区时必须存在的两个分区分别是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E5%88%86%E5%8C%BA%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.6.</span> <span class="toc-text">6、分区、格式化的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89Linux%E5%BC%80%E6%9C%BA%E6%B5%81%E7%A8%8B"><span class="toc-number">2.7.</span> <span class="toc-text">7、（重点）Linux开机流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81Linux%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8CUbuntu%E9%BB%98%E8%AE%A4%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.8.</span> <span class="toc-text">8、Linux常见文件系统类型有哪些，Ubuntu默认文件系统类型是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%AD%E9%83%A8%E5%88%86%E9%87%8D%E8%A6%81%E7%9B%AE%E5%BD%95%E7%94%A8%E9%80%94%EF%BC%8C%E4%B8%BB%E8%A6%81%E8%AE%B0%E4%BD%8F-x2F-%EF%BC%8C-x2F-dev%EF%BC%8C-x2F-bin%E3%80%81-x2F-etc%E7%9B%AE%E5%BD%95"><span class="toc-number">2.9.</span> <span class="toc-text">9、Linux文件系统结构中部分重要目录用途，主要记住:&#x2F;，&#x2F;dev，&#x2F;bin、&#x2F;etc目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81root%E5%92%8C%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7shell%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6%E5%90%84%E8%87%AA%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.10.</span> <span class="toc-text">10、root和普通用户shell命令提示符各自是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E3%80%81root%E5%92%8C%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%8F%8Asu%E5%92%8Csu-%E5%8C%BA%E5%88%AB"><span class="toc-number">2.11.</span> <span class="toc-text">11、root和普通用户账号切换方式，及su和su -区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12%E3%80%81Tab%E9%94%AE%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">2.12.</span> <span class="toc-text">12、Tab键的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13%E3%80%81%E5%9C%A8%E7%BA%BF%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4man%EF%BC%88%E5%8F%AA%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E8%AF%A5%E5%91%BD%E4%BB%A4%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="toc-number">2.13.</span> <span class="toc-text">13、在线帮助命令man（只需要知道该命令功能是什么即可）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14%E3%80%81PPT%E6%9C%80%E5%90%8E%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">2.14.</span> <span class="toc-text">14、PPT最后思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC3%E8%AE%B2-%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">第3讲 文件与目录管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E6%96%87%E4%BB%B6%E7%9A%846%E5%A4%A7%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%93%AA%E4%BA%9B%EF%BC%8C%E6%AF%8F%E7%A7%8D%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">1、（重点）文件的6大类型是哪些，每种表示方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4-cp-rm-mv-file-%E6%AF%8F%E7%A7%8D%E5%91%BD%E4%BB%A4%E7%94%A8%E9%80%94%E5%8F%8A%E5%91%BD%E4%BB%A4%E5%86%99%E6%B3%95%EF%BC%8C%E4%B8%8D%E8%A6%81%E6%B1%82%E8%AE%B0%E5%BF%86%E9%80%89%E9%A1%B9%EF%BC%8C%E5%90%8E%E9%9D%A2%E4%B8%80%E6%97%A6%E6%B6%89%E5%8F%8A%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%9D%87%E6%98%AF%E5%A6%82%E6%AD%A4%E8%A6%81%E6%B1%82%EF%BC%8C%E4%B8%8D%E5%86%8D%E8%B5%98%E8%BF%B0%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">2、文件操作命令:cp,rm,mv,file (每种命令用途及命令写法，不要求记忆选项，后面一旦涉及命令，均是如此要求，不再赘述）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4-cat-more-less-head-tail-%E9%9C%80%E8%A6%81%E8%AE%B0%E4%BD%8F-f%E9%80%89%E9%A1%B9%E4%BD%9C%E7%94%A8-touch"><span class="toc-number">3.3.</span> <span class="toc-text">3、文件查看命令: cat ,more,less,head,tail(需要记住-f选项作用),touch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4-which-whereis-locate-find%EF%BC%9B%E8%A6%81%E6%B1%82%E7%9F%A5%E9%81%934%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.4.</span> <span class="toc-text">4、（重点）文件查找命令: which ,whereis,locate,find；要求知道4者之间的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E7%9B%AE%E5%BD%95%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E7%9B%AE%E5%BD%95-%E5%92%8C"><span class="toc-number">3.5.</span> <span class="toc-text">5、目录定义及两个特殊目录.和..</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81root%E5%92%8C%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%9A%84%E7%94%A8%E6%88%B7%E4%B8%BB%E7%9B%AE%E5%BD%95%E5%90%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.6.</span> <span class="toc-text">6、root和普通用户的用户主目录各是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95"><span class="toc-number">3.7.</span> <span class="toc-text">7、绝对路径和相对路径写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%9A-ls-cd-pwd-mkdir-rmdir%EF%BC%8C%E5%AF%B9%E4%BA%8Els%E5%91%BD%E4%BB%A4%E9%9C%80%E8%A6%81%E6%8E%8C%E6%8F%A1%E9%80%92%E5%BD%92%E6%98%BE%E7%A4%BA%E5%AD%90%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9%E7%9A%84%E9%80%89%E9%A1%B9%E5%8F%8A%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9%EF%BC%9B%E6%8E%8C%E6%8F%A1rmdir%E4%B8%8Erm%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.8.</span> <span class="toc-text">8、目录操作命令： ls , cd ,pwd, mkdir ,rmdir，对于ls命令需要掌握递归显示子目录内容的选项及显示隐藏文件选项；掌握rmdir与rm的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B33%E4%B8%AA%E6%97%B6%E9%97%B4%E5%B1%9E%E6%80%A7%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9Fctime%EF%BC%8Cmtime%E5%92%8Catime%EF%BC%8C%E4%B8%89%E8%80%85%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89"><span class="toc-number">3.9.</span> <span class="toc-text">9、（重点）文件相关3个时间属性分别是什么？ctime，mtime和atime，三者具体含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81PPT%E6%9C%80%E5%90%8E%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">3.10.</span> <span class="toc-text">10、PPT最后思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E8%AE%B2-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E3%80%81%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86-%E9%87%8D%E7%82%B9%E7%AB%A0%E8%8A%82"><span class="toc-number">4.</span> <span class="toc-text">第4讲 文件权限、账号管理(重点章节)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%90%84%E8%87%AA%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86%E5%8F%B7"><span class="toc-number">4.1.</span> <span class="toc-text">1、用户、用户组概念及各自唯一标识号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%8E%8C%E6%8F%A1ls-l%E5%91%BD%E4%BB%A4%E7%BB%93%E6%9E%9C%E5%90%84%E9%A1%B9%E5%90%AB%E4%B9%89"><span class="toc-number">4.2.</span> <span class="toc-text">2、掌握ls -l命令结果各项含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E8%AF%BB%E6%87%82%E7%BB%99%E5%87%BA%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%8C%E8%83%BD%E8%AF%B4%E6%98%8E%E5%90%84%E9%A1%B9%E5%85%B7%E4%BD%93%E4%BB%A3%E8%A1%A8%E7%9A%84%E6%84%8F%E6%80%9D%EF%BC%8C%E4%BC%9A%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%86%99%E5%87%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%88%E7%AC%A6%E5%8F%B7%E5%8C%96%E6%96%B9%E5%BC%8F%E5%92%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E6%96%B9%E5%BC%8F%E5%9D%87%E8%A6%81%E6%B1%82%E6%8E%8C%E6%8F%A1%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">3、（重点）读懂给出文件权限，能说明各项具体代表的意思，会根据给定条件，写出对应的文件权限（符号化方式和十进制方式均要求掌握）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%EF%BC%9Achgrp-chmod-chown-umask%EF%BC%88%E8%A6%81%E6%B1%82%E7%9F%A5%E9%81%93%E9%92%88%E5%AF%B9%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E5%88%86%E5%88%AB%E5%AF%B9%E5%BA%94%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">4、（重点）文件权限相关命令：chgrp ,chmod, chown, umask（要求知道针对文件和目录分别对应的默认权限是什么）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E6%96%87%E4%BB%B6%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90%EF%BC%9ASUID%EF%BC%8CSGID%EF%BC%8CSBIT%E5%90%AB%E4%B9%89%EF%BC%8C%E5%8F%8A%E5%85%B6%E5%90%84%E8%87%AA%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">4.5.</span> <span class="toc-text">5、（重点）文件特殊权限：SUID，SGID，SBIT含义，及其各自设置方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SUID"><span class="toc-number">4.5.1.</span> <span class="toc-text">SUID</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SGID"><span class="toc-number">4.5.2.</span> <span class="toc-text">SGID</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SBIT"><span class="toc-number">4.5.3.</span> <span class="toc-text">SBIT</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%AF%8F%E4%B8%AA%E6%96%87%E4%BB%B6%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%88%E6%97%A0%E9%9C%80%E8%AE%B0%E5%BF%86%E6%AF%8F%E8%A1%8C%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AE%B5%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89%EF%BC%89"><span class="toc-number">4.6.</span> <span class="toc-text">6、（重点）用户、用户组相关的文件名称，每个文件功能是什么（无需记忆每行每个字段具体含义）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6"><span class="toc-number">4.6.1.</span> <span class="toc-text">用户相关文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84%E7%9B%B8%E5%85%B3"><span class="toc-number">4.6.2.</span> <span class="toc-text">用户组相关</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%EF%BC%9Auseradd-x2F-adduser%EF%BC%8Cpasswd-usermod-userdel"><span class="toc-number">4.7.</span> <span class="toc-text">7、用户管理命令：useradd&#x2F;adduser，passwd, usermod, userdel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%EF%BC%9Agroupadd-groupmod-groupdel"><span class="toc-number">4.8.</span> <span class="toc-text">8、用户组管理命令：groupadd,groupmod,groupdel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81PPT%E6%9C%80%E5%90%8E%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">4.9.</span> <span class="toc-text">9、PPT最后思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC5%E8%AE%B2-vi%E5%92%8Cvim%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">第5讲 vi和vim编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81vi%E7%9A%84%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">1、vi的三种工作模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="toc-number">5.2.</span> <span class="toc-text">2、三种模式之间如何切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81PPT%E6%9C%80%E5%90%8E%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">5.3.</span> <span class="toc-text">3、PPT最后思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E5%9F%BA%E7%A1%80%E5%92%8C%E7%AC%AC7%E8%AE%B2-Shell%E7%BC%96%E7%A8%8B%EF%BC%88%E9%87%8D%E7%82%B9%E7%AB%A0%E8%8A%82%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">Shell基础和第7讲 Shell编程（重点章节）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81shell%E5%88%86%E7%B1%BB"><span class="toc-number">6.1.</span> <span class="toc-text">1、shell分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89Shell%E5%8F%98%E9%87%8F%E5%88%86%E7%B1%BB%EF%BC%8C%E6%AF%8F%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%AE%BE%E7%BD%AE%E3%80%81%E6%9F%A5%E7%9C%8B%EF%BC%8C%E5%8F%96%E6%B6%88%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">2、（重点）Shell变量分类，每种类型的设置、查看，取消设置方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%EF%BC%8C%E9%87%8D%E7%82%B9%EF%BC%9A%E5%8D%95%E5%BC%95%E5%8F%B7%E4%B8%8E%E5%8F%8C%E5%BC%95%E5%8F%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.3.</span> <span class="toc-text">4、常用特殊字符，重点：单引号与双引号之间的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E7%AE%A1%E9%81%93"><span class="toc-number">6.4.</span> <span class="toc-text">5、管道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81shell%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E7%9A%843%E7%A7%8D%E6%96%B9%E6%B3%95%E5%8F%8A%E5%8C%BA%E5%88%AB"><span class="toc-number">6.5.</span> <span class="toc-text">6、shell脚本执行的3种方法及区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%86%99%E6%B3%95"><span class="toc-number">6.6.</span> <span class="toc-text">7、算术表达式写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%86%99%E6%B3%95%EF%BC%88%E5%9B%A0%E5%86%85%E5%AE%B9%E8%BE%83%E5%A4%9A%EF%BC%8C%E4%BB%85%E8%A6%81%E6%B1%82%E6%8E%8C%E6%8F%A1%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E6%AF%94%E8%BE%83%E5%86%99%E6%B3%95%EF%BC%89"><span class="toc-number">6.7.</span> <span class="toc-text">8、逻辑表达式写法（因内容较多，仅要求掌握两个整数之间的比较写法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5%EF%BC%88if-case%E5%9D%87%E8%A6%81%E6%B1%82%E6%8E%8C%E6%8F%A1%E5%86%99%E6%B3%95%EF%BC%8C%E7%86%9F%E8%AF%BBPPT%E4%B8%8A%E7%A4%BA%E4%BE%8B%EF%BC%8C%E8%A6%81%E6%B1%82%E8%83%BD%E8%AF%BB%E6%87%82%E6%AF%8F%E4%B8%80%E5%8F%A5%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%8C%E4%BC%9A%E4%BB%BF%E7%85%A7%E7%BC%96%E5%86%99%EF%BC%89"><span class="toc-number">6.8.</span> <span class="toc-text">9、分支语句（if,case均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for-while-until%E5%9D%87%E8%A6%81%E6%B1%82%E6%8E%8C%E6%8F%A1%E5%86%99%E6%B3%95%EF%BC%8C%E7%86%9F%E8%AF%BBPPT%E4%B8%8A%E7%A4%BA%E4%BE%8B%EF%BC%8C%E8%A6%81%E6%B1%82%E8%83%BD%E8%AF%BB%E6%87%82%E6%AF%8F%E4%B8%80%E5%8F%A5%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%8C%E4%BC%9A%E4%BB%BF%E7%85%A7%E7%BC%96%E5%86%99%EF%BC%89"><span class="toc-number">6.9.</span> <span class="toc-text">10、循环语句(for,while,until均要求掌握写法，熟读PPT上示例，要求能读懂每一句的含义，会仿照编写）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E3%80%81%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">6.10.</span> <span class="toc-text">11、思考题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/18/jQuery%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" title="jQuery语法相关"><img src="https://s2.loli.net/2022/03/21/T4wJAbS23e78ymI.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jQuery语法相关"/></a><div class="content"><a class="title" href="/2022/09/18/jQuery%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" title="jQuery语法相关">jQuery语法相关</a><time datetime="2022-09-18T13:14:36.000Z" title="发表于 2022-09-18 21:14:36">2022-09-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/15/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Java并发编程学习(一)"><img src="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java并发编程学习(一)"/></a><div class="content"><a class="title" href="/2022/09/15/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Java并发编程学习(一)">Java并发编程学习(一)</a><time datetime="2022-09-15T12:29:59.000Z" title="发表于 2022-09-15 20:29:59">2022-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/14/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式"><img src="https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单例模式"/></a><div class="content"><a class="title" href="/2022/09/14/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式">单例模式</a><time datetime="2022-09-14T14:17:38.000Z" title="发表于 2022-09-14 22:17:38">2022-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/14/Spring-MVC%E6%B3%A8%E8%A7%A3/" title="Spring MVC注解"><img src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring MVC注解"/></a><div class="content"><a class="title" href="/2022/09/14/Spring-MVC%E6%B3%A8%E8%A7%A3/" title="Spring MVC注解">Spring MVC注解</a><time datetime="2022-09-14T12:58:00.000Z" title="发表于 2022-09-14 20:58:00">2022-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/spring-IOC%E5%92%8CDI%E8%AF%A6%E8%A7%A3/" title="Spring IOC和DI详解"><img src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring IOC和DI详解"/></a><div class="content"><a class="title" href="/2022/06/29/spring-IOC%E5%92%8CDI%E8%AF%A6%E8%A7%A3/" title="Spring IOC和DI详解">Spring IOC和DI详解</a><time datetime="2022-06-29T01:43:47.000Z" title="发表于 2022-06-29 09:43:47">2022-06-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/3Trgy2iL7au91fB.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<br>
+<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">苏ICP备2022038756号-1</a></a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
