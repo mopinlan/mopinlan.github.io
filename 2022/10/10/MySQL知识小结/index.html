@@ -1,0 +1,724 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL知识小结 | mopinlan</title><meta name="keywords" content="MySQL"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于MySQL知识的小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL知识小结">
+<meta property="og:url" content="https://mopinlan.github.io/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="关于MySQL知识的小结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg">
+<meta property="article:published_time" content="2022-10-10T00:58:37.000Z">
+<meta property="article:modified_time" content="2022-10-10T13:55:49.278Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL知识小结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-10 21:55:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL知识小结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-10T00:58:37.000Z" title="发表于 2022-10-10 08:58:37">2022-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-10T13:55:49.278Z" title="更新于 2022-10-10 21:55:49">2022-10-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">学习小结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">10.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL知识小结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>MySQL知识，参考博客<a class="btn-beautify blue larger" target="_blank" rel="noopener" href="https://javaguide.cn/database/basis.html" 
+  title="数据库基础知识总结"><i class="far fa-hand-point-right"></i><span>数据库基础知识总结</span></a></p>
+</div>
+
+<h3 id="数据库基础知识总结"><a href="#数据库基础知识总结" class="headerlink" title="数据库基础知识总结"></a>数据库基础知识总结</h3><h4 id="什么是数据库-数据库管理系统-数据库系统-数据库管理员"><a href="#什么是数据库-数据库管理系统-数据库系统-数据库管理员" class="headerlink" title="什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?"></a>什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?</h4><ul>
+<li>数据库 : 数据库(DataBase 简称 DB)就是信息的集合或者说数据库是由数据库管理系统管理的数据的集合。</li>
+<li>数据库管理系统 : 数据库管理系统(Database Management System 简称 DBMS)是一种操纵和管理数据库的大型软件，通常用于建立、使用和维护数据库。</li>
+<li>数据库系统 : 数据库系统(Data Base System，简称 DBS)通常由软件、数据库和数据管理员(DBA)组成。</li>
+<li>数据库管理员 : 数据库管理员(Database Administrator, 简称 DBA)负责全面管理和控制数据库系统。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/10/10/KZyMh8YztFWbvCV.png" alt="数据库系统"></p>
+<h4 id="什么是元组-码-候选码-主码-外码-主属性-非主属性？"><a href="#什么是元组-码-候选码-主码-外码-主属性-非主属性？" class="headerlink" title="什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？"></a>什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？</h4><ul>
+<li>元组 ： 元组（tuple）是关系数据库中的基本概念，关系是一张表，表中的每行（即数据库中的每条记录）就是一个元组，每列就是一个属性。 在二维表里，元组也称为行。</li>
+<li>码 ：码就是能唯一标识实体的属性，对应表中的列。</li>
+<li>候选码 ： 若关系中的某一属性或属性组的值能唯一的标识一个元组，而其任何、子集都不能再标识，则称该属性组为候选码。例如：在学生实体中，“学号”是能唯一的区分学生实体的，同时又假设“姓名”、“班级”的属性组合足以区分学生实体，那么{学号}和{姓名，班级}都是候选码。</li>
+<li>主码 : 主码也叫主键。主码是从候选码中选出来的。 一个实体集中只能有一个主码，但可以有多个候选码。</li>
+<li>外码 : 外码也叫外键。如果一个关系中的一个属性是另外一个关系中的主码则这个属性为外码。</li>
+<li>主属性 ： 候选码中出现过的属性称为主属性。比如关系 工人（工号，身份证号，姓名，性别，部门）. 显然工号和身份证号都能够唯一标示这个关系，所以都是候选码。工号、身份证号这两个属性就是主属性。如果主码是一个属性组，那么属性组中的属性都是主属性。</li>
+<li>非主属性： 不包含在任何一个候选码中的属性称为非主属性。比如在关系——学生（学号，姓名，年龄，性别，班级）中，主码是“学号”，那么其他的“姓名”、“年龄”、“性别”、“班级”就都可以称为非主属性。</li>
+</ul>
+<h4 id="主键和外键有什么区别"><a href="#主键和外键有什么区别" class="headerlink" title="主键和外键有什么区别?"></a>主键和外键有什么区别?</h4><ul>
+<li>主键(主码) ：主键用于唯一标识一个元组，不能有重复，不允许为空。一个表只能有一个主键。</li>
+<li>外键(外码) ：外键用来和其他表建立联系用，外键是另一表的主键，外键是可以有重复的，可以是空值。一个表可以有多个外键。</li>
+</ul>
+<h4 id="为什么不推荐使用外键与级联？"><a href="#为什么不推荐使用外键与级联？" class="headerlink" title="为什么不推荐使用外键与级联？"></a>为什么不推荐使用外键与级联？</h4><p>阿里巴巴开发手册：</p>
+<p>【强制】不得使用外键与级联，一切外键概念必须在应用层解决。</p>
+<p>说明: 以学生和成绩的关系为例，学生表中的 student_id 是主键，那么成绩表中的 student_id 则为外键。如果更新学生表中的 student_id，同时触发成绩表中的 student_id 更新，即为级联更新。外键与级联更新适用于单机低并发，不适合分布式、高并发集群; 级联更新是强阻塞，存在数据库更新风暴的风险; 外键影响数据库的插入速度。</p>
+<p>为什么不要用外键呢？大部分人可能会这样回答：</p>
+<ul>
+<li>增加了复杂性： a. 每次做DELETE 或者UPDATE都必须考虑外键约束，会导致开发的时候很痛苦, 测试数据极为不方便; b. 外键的主从关系是定的，假如那天需求有变化，数据库中的这个字段根本不需要和其他表有关联的话就会增加很多麻烦。</li>
+<li>增加了额外工作： 数据库需要增加维护外键的工作，比如当我们做一些涉及外键字段的增，删，更新操作之后，需要触发相关操作去检查，保证数据的的一致性和正确性，这样会不得不消耗资源；（个人觉得这个不是不用外键的原因，因为即使你不使用外键，你在应用层面也还是要保证的。所以，我觉得这个影响可以忽略不计。）</li>
+<li>对分库分表不友好 ：因为分库分表下外键是无法生效的。</li>
+</ul>
+<p>我个人觉得上面这种回答不是特别的全面，只是说了外键存在的一个常见的问题。实际上，我们知道外键也是有很多好处的，比如：</p>
+<ul>
+<li>保证了数据库数据的一致性和完整性；</li>
+<li>级联操作方便，减轻了程序代码量；</li>
+</ul>
+<h4 id="什么是-ER-图？"><a href="#什么是-ER-图？" class="headerlink" title="什么是 ER 图？"></a>什么是 ER 图？</h4><p>E-R 图 也称实体-联系图(Entity Relationship Diagram)，提供了表示实体类型、属性和联系的方法，用来描述现实世界的概念模型。 它是描述现实世界关系概念模型的有效方法。 是表示概念关系模型的一种方式。</p>
+<p>下图是一个学生选课的 ER 图，每个学生可以选若干门课程，同一门课程也可以被若干人选择，所以它们之间的关系是多对多（M: N）。另外，还有其他两种关系是：1 对 1（1:1）、1 对多（1: N）。</p>
+<p><img src="https://s2.loli.net/2022/10/10/FOCw6gh4GZMlSov.png" alt="E-R"></p>
+<p>我们试着将上面的 ER 图转换成数据库实际的关系模型(实际设计中，我们通常会将任课教师也作为一个实体来处理)：</p>
+<p><img src="https://s2.loli.net/2022/10/10/9LsAF3wkJQ76GjP.png" alt="实体"></p>
+<h4 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h4><p>◆ 第一范式（1NF）：强调的是列的原子性，即列不能够再分成其他几列。<br>考虑这样一个表：【联系人】（姓名，性别，电话）<br>如果在实际场景中，一个联系人有家庭电话和公司电话，那么这种表结构设计就没有达到 1NF。要符合 1NF 我们只需把列（电话）拆分，即：【联系人】（姓名，性别，家庭电话，公司电话）。1NF 很好辨别，但是 2NF 和 3NF 就容易搞混淆。</p>
+<p>◆ 第二范式（2NF）：首先是 1NF，另外包含两部分内容，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键，而不能只依赖于主键的一部分。</p>
+<p>考虑一个订单明细表：【OrderDetail】（OrderID，ProductID，UnitPrice，Discount，Quantity，ProductName）。</p>
+<p>因为我们知道在一个订单中可以订购多种产品，所以单单一个 OrderID 是不足以成为主键的，主键应该是（OrderID，ProductID）。显而易见 Discount（折扣），Quantity（数量）完全依赖（取决）于主键（OderID，ProductID），而 UnitPrice，ProductName 只依赖于 ProductID。所以 OrderDetail 表不符合 2NF。不符合 2NF 的设计容易产生冗余数据。</p>
+<p>可以把【OrderDetail】表拆分为【OrderDetail】（OrderID，ProductID，Discount，Quantity）和【Product】（ProductID，UnitPrice，ProductName）来消除原订单表中UnitPrice，ProductName多次重复的情况。</p>
+<p>◆ 第三范式（3NF）：首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</p>
+<p>考虑一个订单表【Order】（OrderID，OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity）主键是（OrderID）。</p>
+<p>其中 OrderDate，CustomerID，CustomerName，CustomerAddr，CustomerCity 等非主键列都完全依赖于主键（OrderID），所以符合 2NF。不过问题是 CustomerName，CustomerAddr，CustomerCity 直接依赖的是 CustomerID（非主键列），而不是直接依赖于主键，它是通过传递才依赖于主键，所以不符合 3NF。</p>
+<p>通过拆分【Order】为【Order】（OrderID，OrderDate，CustomerID）和【Customer】（CustomerID，CustomerName，CustomerAddr，CustomerCity）从而达到 3NF。</p>
+<p>注意：</p>
+<p>第二范式（2NF）和第三范式（3NF）的概念很容易混淆，区分它们的关键点在于，<strong>2NF：非主键列是否完全依赖于主键，还是依赖于主键的一部分；3NF：非主键列是直接依赖于主键，还是直接依赖于非主键列</strong>。</p>
+<h4 id="什么是存储过程"><a href="#什么是存储过程" class="headerlink" title="什么是存储过程?"></a>什么是存储过程?</h4><p>我们可以把存储过程看成是<strong>一些 SQL 语句的集合，中间加了点逻辑控制语句。</strong>存储过程在业务比较复杂的时候是非常实用的，比如很多时候我们完成一个操作可能需要写一大串 SQL 语句，这时候我们就可以写有一个存储过程，这样也方便了我们下一次的调用。存储过程一旦调试完成通过后就能稳定运行，另外，使用存储过程比单纯 SQL 语句执行要快，<strong>因为存储过程是预编译过的。</strong></p>
+<p>存储过程在互联网公司应用不多，因为存储过程难以调试和扩展，而且没有移植性，还会消耗数据库资源。</p>
+<h4 id="drop、delete-与-truncate-区别？"><a href="#drop、delete-与-truncate-区别？" class="headerlink" title="drop、delete 与 truncate 区别？"></a>drop、delete 与 truncate 区别？</h4><blockquote>
+<p>用法不同</p>
+</blockquote>
+<ul>
+<li>drop(丢弃数据): drop table 表名 ，直接将表都删除掉，在删除表的时候使用。</li>
+<li>truncate (清空数据) : truncate table 表名 ，只删除表中的数据，再插入数据的时候自增长 id 又从 1 开始，在清空表中数据的时候使用。</li>
+<li>delete（删除数据） : delete from 表名 where 列名&#x3D;值，删除某一行的数据，如果不加 where 子句和truncate table 表名作用类似。</li>
+</ul>
+<p>truncate 和不带 where 子句的 delete、以及 drop 都会删除表内的数据，但是 <strong>truncate 和 delete 只删除数据不删除表的结构(定义)，执行 drop 语句，此表的结构也会删除，也就是执行 drop 之后对应的表不复存在。</strong></p>
+<blockquote>
+<p>属于不同的数据库语言</p>
+</blockquote>
+<p>truncate 和 drop 属于 DDL(数据定义语言)语句，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。而 delete 语句是 DML (数据库操作语言)语句，这个操作会放到 rollback segement 中，事务提交之后才生效。</p>
+<p>DML 语句和 DDL 语句区别：</p>
+<ul>
+<li>DML 是数据库操作语言（Data Manipulation Language）的缩写，是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。</li>
+<li>DDL （Data Definition Language）是数据定义语言的缩写，简单来说，就是对数据库内部的对象进行创建、删除、修改的操作语言。它和 DML 语言的最大区别是 DML 只是对表内部数据的操作，而不涉及到表的定义、结构的修改，更不会涉及到其他对象。DDL 语句更多的被数据库管理员（DBA）所使用，一般的开发人员很少使用。</li>
+</ul>
+<p>由于select不会对表进行破坏，所以有的地方也会把select单独区分开叫做数据库查询语言DQL（Data Query Language）</p>
+<blockquote>
+<p>执行速度不同</p>
+</blockquote>
+<p>一般来说：drop &gt; truncate &gt; delete（这个我没有设计测试过）。</p>
+<ul>
+<li><p>delete命令执行的时候会产生数据库的binlog日志，而日志记录是需要消耗时间的，但是也有个好处方便数据回滚恢复。</p>
+</li>
+<li><p>truncate命令执行的时候不会产生数据库日志，因此比delete要快。除此之外，还会把表的自增值重置和索引恢复到初始大小等。</p>
+</li>
+<li><p>drop命令会把表占用的空间全部释放掉。</p>
+</li>
+</ul>
+<p>Tips：你应该更多地关注在使用场景上，而不是执行效率。</p>
+<h4 id="数据库设计通常分为哪几步"><a href="#数据库设计通常分为哪几步" class="headerlink" title="数据库设计通常分为哪几步?"></a>数据库设计通常分为哪几步?</h4><ul>
+<li>需求分析 : 分析用户的需求，包括数据、功能和性能需求。</li>
+<li>概念结构设计 : 主要采用 E-R 模型进行设计，包括画 E-R 图。</li>
+<li>逻辑结构设计 : 通过将 E-R 图转换成表，实现从 E-R 模型到关系模型的转换。</li>
+<li>物理结构设计 : 主要是为所设计的数据库选择合适的存储结构和存取路径。</li>
+<li>数据库实施 : 包括编程、测试和试运行</li>
+<li>数据库的运行和维护 : 系统的运行与数据库的日常维护.</li>
+</ul>
+<h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h3><p>MySQL 字符编码集中有两套 UTF-8 编码实现：utf8 和 utf8mb4。</p>
+<p>如果使用 utf8 的话，存储emoji 符号和一些比较复杂的汉字、繁体字就会出错。</p>
+<h4 id="何为字符集？"><a href="#何为字符集？" class="headerlink" title="何为字符集？"></a>何为字符集？</h4><p>字符是各种文字和符号的统称，包括各个国家文字、标点符号、表情、数字等等。 字符集 就是一系列字符的集合。字符集的种类较多，每个字符集可以表示的字符范围通常不同，就比如说有些字符集是无法表示汉字的。</p>
+<p>计算机只能存储二进制的数据，那英文、汉字、表情等字符应该如何存储呢？</p>
+<p>我们要将这些字符和二进制的数据一一对应起来，比如说字符“a”对应“01100001”，反之，“01100001”对应 “a”。我们将字符对应二进制数据的过程称为”字符编码”，反之，二进制数据解析成字符的过程称为“字符解码”。</p>
+<h4 id="有哪些常见的字符集？"><a href="#有哪些常见的字符集？" class="headerlink" title="有哪些常见的字符集？"></a>有哪些常见的字符集？</h4><p>常见的字符集有 ASCII、GB2312、GBK、UTF-8……。</p>
+<p>不同的字符集的主要区别在于：</p>
+<ul>
+<li>可以表示的字符范围</li>
+<li>编码方式</li>
+</ul>
+<blockquote>
+<p>ASCII</p>
+</blockquote>
+<p>ASCII (American Standard Code for Information Interchange，美国信息交换标准代码) 是一套主要用于现代美国英语的字符集（这也是 ASCII 字符集的局限性所在）。</p>
+<p>为什么 ASCII 字符集没有考虑到中文等其他字符呢？ 因为计算机是美国人发明的，当时，计算机的发展还处于比较雏形的时代，还未在其他国家大规模使用。因此，美国发布 ASCII 字符集的时候没有考虑兼容其他国家的语言。</p>
+<p>ASCII 字符集至今为止共定义了 128 个字符，其中有 33 个控制字符（比如回车、删除）无法显示。</p>
+<p>一个 ASCII 码长度是一个字节也就是 8 个 bit，比如“a”对应的 ASCII 码是“01100001”。不过，最高位是 0 仅仅作为校验位，其余 7 位使用 0 和 1 进行组合，所以，ASCII 字符集可以定义 128（2^7）个字符。</p>
+<p>由于，ASCII 码可以表示的字符实在是太少了。后来，人们对其进行了扩展得到了 ASCII 扩展字符集 。ASCII 扩展字符集使用 8 位（bits）表示一个字符，所以，ASCII 扩展字符集可以定义 256（2^8）个字符。</p>
+<p><img src="https://s2.loli.net/2022/10/10/FVYhONI7ARb9wmc.png" alt="ASCII码表"></p>
+<blockquote>
+<p>GB2312<br>我们上面说了，ASCII 字符集是一种现代美国英语适用的字符集。因此，很多国家都捣鼓了一个适合自己国家语言的字符集。</p>
+</blockquote>
+<p>GB2312 字符集是一种对汉字比较友好的字符集，共收录 6700 多个汉字，基本涵盖了绝大部分常用汉字。不过，GB2312 字符集不支持绝大部分的生僻字和繁体字。</p>
+<p>对于英语字符，GB2312 编码和 ASCII 码是相同的，1 字节编码即可。对于非英字符，需要 2 字节编码。</p>
+<blockquote>
+<p>GBK</p>
+</blockquote>
+<p>GBK 字符集可以看作是 GB2312 字符集的扩展，兼容 GB2312 字符集，共收录了 20000 多个汉字。</p>
+<p>GBK 中 K 是汉语拼音 Kuo Zhan（扩展）中的“Kuo”的首字母。</p>
+<blockquote>
+<p>GB18030</p>
+</blockquote>
+<p>GB18030 完全兼容 GB2312 和 GBK 字符集，纳入中国国内少数民族的文字，且收录了日韩汉字，是目前为止最全面的汉字字符集，共收录汉字 70000 多个。</p>
+<blockquote>
+<p>BIG5</p>
+</blockquote>
+<p>BIG5 主要针对的是繁体中文，收录了 13000 多个汉字。</p>
+<blockquote>
+<p>Unicode &amp; UTF-8编码</p>
+</blockquote>
+<p>为了更加适合本国语言，诞生了很多种字符集。</p>
+<p>我们上面也说了不同的字符集可以表示的字符范围以及编码规则存在差异。这就导致了一个非常严重的问题：使用错误的编码方式查看一个包含字符的文件就会产生乱码现象。</p>
+<p>就比如说你使用 UTF-8 编码方式打开 GB2312 编码格式的文件就会出现乱码。示例：“牛”这个汉字 GB2312 编码后的十六进制数值为 “C5A3”，而 “C5A3” 用 UTF-8 解码之后得到的却是 “ţ”。</p>
+<p>Unicode 字符集中包含了世界上几乎所有已知的字符。不过，Unicode 字符集并没有规定如何存储这些字符（也就是如何使用二进制数据表示这些字符）。</p>
+<p>然后，就有了 UTF-8（8-bit Unicode Transformation Format）。类似的还有 UTF-16、 UTF-32。</p>
+<p>UTF-8 使用 1 到 4 个字节为每个字符编码， UTF-16 使用 2 或 4 个字节为每个字符编码，UTF-32 固定位 4 个字节为每个字符编码。</p>
+<p>UTF-8 可以根据不同的符号自动选择编码的长短，像英文字符只需要 1 个字节就够了，这一点 ASCII 字符集一样 。因此，对于英语字符，UTF-8 编码和 ASCII 码是相同的。</p>
+<p>UTF-32 的规则最简单，不过缺陷也比较明显，对于英文字母这类字符消耗的空间是 UTF-8 的 4 倍之多。</p>
+<p>UTF-8 是目前使用最广的一种字符编码.</p>
+<h4 id="MySQL-字符集"><a href="#MySQL-字符集" class="headerlink" title="MySQL 字符集"></a>MySQL 字符集</h4><p>MySQL 支持很多种字符编码的方式，比如 UTF-8、GB2312、GBK、BIG5。</p>
+<p>你可以通过 SHOW CHARSET 命令来查看。</p>
+<p>通常情况下，我们建议使用 UTF-8 作为默认的字符编码方式。</p>
+<p>不过，这里有一个小坑。</p>
+<p>MySQL 字符编码集中有两套 UTF-8 编码实现：</p>
+<ul>
+<li>utf8 ： utf8编码只支持1-3个字节 。 在 utf8 编码中，中文是占 3 个字节，其他数字、英文、符号占一个字节。但 emoji 符号占 4 个字节，一些较复杂的文字、繁体字也是 4 个字节。</li>
+<li>utf8mb4 ： UTF-8 的完整实现，正版！最多支持使用 4 个字节表示字符，因此，可以用来存储 emoji 符号。</li>
+</ul>
+<p>为什么有两套 UTF-8 编码实现呢？ 原因如下：</p>
+<p><img src="https://s2.loli.net/2022/10/10/q9NwivAS35UnrFe.png" alt="MySQL"></p>
+<p>因此，如果你需要存储emoji类型的数据或者一些比较复杂的文字、繁体字到 MySQL 数据库的话，数据库的编码一定要指定为utf8mb4 而不是utf8 ，要不然存储的时候就会报错了。</p>
+<p>建表语句如下，我们指定数据库 CHARSET 为 utf8 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` varchar(<span class="number">66</span>) CHARACTER SET utf8mb4 NOT NULL,</span><br><span class="line">  `name` varchar(<span class="number">33</span>) CHARACTER SET utf8mb4 NOT NULL,</span><br><span class="line">  `phone` varchar(<span class="number">33</span>) CHARACTER SET utf8mb4 DEFAULT NULL,</span><br><span class="line">  `password` varchar(<span class="number">100</span>) CHARACTER SET utf8mb4 DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>当我们执行下面的 insert 语句插入数据到数据库时，果然报错！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `user` (`id`, `name`, `phone`, `password`)</span><br><span class="line">VALUES</span><br><span class="line">	(<span class="string">&#x27;A00003&#x27;</span>, <span class="string">&#x27;guide哥😘😘😘&#x27;</span>, <span class="string">&#x27;181631312312&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>报错信息如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Incorrect string value: <span class="string">&#x27;\xF0\x9F\x98\x98\xF0\x9F...&#x27;</span> <span class="keyword">for</span> column <span class="string">&#x27;name&#x27;</span> at row <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h3><h4 id="关系型数据库介绍"><a href="#关系型数据库介绍" class="headerlink" title="关系型数据库介绍"></a>关系型数据库介绍</h4><p>顾名思义，关系型数据库就是一种建立在关系模型的基础上的数据库。关系模型表明了数据库中所存储的数据之间的联系（一对一、一对多、多对多）。</p>
+<p>关系型数据库中，我们的数据都被存放在了各种表中（比如用户表），表中的每一行就存放着一条数据(比如一个用户的信息)。</p>
+<p>大部分关系型数据库都使用 SQL 来操作数据库中的数据。并且，大部分关系型数据库都支持事务的四大特性(ACID)。</p>
+<p>MySQL、PostgreSQL、Oracle、SQL Server、SQLite（微信本地的聊天记录的存储就是用的 SQLite）。</p>
+<h4 id="MySQL-介绍"><a href="#MySQL-介绍" class="headerlink" title="MySQL 介绍"></a>MySQL 介绍</h4><p>MySQL 是一种关系型数据库，主要用于持久化存储我们的系统中的一些数据比如用户信息。</p>
+<p>由于 MySQL 是开源免费并且比较成熟的数据库，因此，MySQL 被大量使用在各种系统中。任何人都可以在 GPL(General Public License) 的许可下下载并根据个性化的需要对其进行修改。MySQL 的默认端口号是3306。</p>
+<h4 id="MySQL-基础架构"><a href="#MySQL-基础架构" class="headerlink" title="MySQL 基础架构"></a>MySQL 基础架构</h4><p>下图是 MySQL 的一个简要架构图，从下图你可以很清晰的看到客户端的一条 SQL 语句在 MySQL 内部是如何执行的。</p>
+<p><img src="https://s2.loli.net/2022/10/10/wBrKMjOL7XJPDC5.png" alt="MySQL 基础架构"></p>
+<p>从上图可以看出， MySQL 主要由下面几部分构成：</p>
+<ul>
+<li>连接器： 身份认证和权限相关(登录 MySQL 的时候)。</li>
+<li>查询缓存： 执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除，因为这个功能不太实用）。</li>
+<li>分析器： 没有命中缓存的话，SQL 语句就会经过分析器，分析器说白了就是要先看你的 SQL 语句要干嘛，再检查你的 SQL 语句语法是否正确。</li>
+<li>优化器： 按照 MySQL 认为最优的方案去执行。</li>
+<li>执行器： 执行语句，然后从存储引擎返回数据。 执行语句之前会先判断是否有权限，如果没有权限的话，就会报错。</li>
+<li>插件式存储引擎 ： 主要负责数据的存储和读取，采用的是插件式架构，支持 InnoDB、MyISAM、Memory 等多种存储引擎。</li>
+</ul>
+<h4 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h4><blockquote>
+<p>MySQL 支持哪些存储引擎？默认使用哪个？</p>
+</blockquote>
+<p>MySQL 支持多种存储引擎，你可以通过 show engines 命令来查看 MySQL 支持的所有存储引擎。</p>
+<p><img src="https://s2.loli.net/2022/10/10/X7EiWVZtJx3LAgo.png" alt="show engines"></p>
+<p>从上图我们可以查看出， MySQL 当前默认的存储引擎是 InnoDB。并且，所有的存储引擎中只有 <strong>InnoDB 是事务性存储引擎，也就是说只有 InnoDB 支持事务。</strong></p>
+<p>我这里使用的 MySQL 版本是 8.x，不同的 MySQL 版本之间可能会有差别。</p>
+<p>MySQL 5.5.5 之前，MyISAM 是 MySQL 的默认存储引擎。5.5.5 版本之后，InnoDB 是 MySQL 的默认存储引擎。</p>
+<p>你可以通过 select version() 命令查看你的 MySQL 版本。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> mysql&gt; select <span class="title function_">version</span><span class="params">()</span>;</span><br><span class="line">+-----------+</span><br><span class="line">| version() |</span><br><span class="line">+-----------+</span><br><span class="line">| <span class="number">8.0</span><span class="number">.27</span>    |</span><br><span class="line">+-----------+</span><br><span class="line"><span class="number">1</span> row in <span class="title function_">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span><br></pre></td></tr></table></figure>
+
+<p>你也可以通过 show variables like ‘%storage_engine%’ 命令直接查看 MySQL 当前默认的存储引擎。</p>
+<p><img src="https://s2.loli.net/2022/10/10/guHYtmprwDh1v4R.png" alt="查看 MySQL 当前默认的存储引擎"></p>
+<p>如果你只想查看数据库中某个表使用的存储引擎的话，可以使用 show table status from db_name where name&#x3D;’table_name’命令。</p>
+<blockquote>
+<p>MySQL 存储引擎架构了解吗？</p>
+</blockquote>
+<p>MySQL 存储引擎采用的是插件式架构，支持多种存储引擎，我们甚至可以为不同的数据库表设置不同的存储引擎以适应不同场景的需要。<strong>存储引擎是基于表的，而不是数据库。</strong></p>
+<p>并且，你还可以根据 MySQL 定义的存储引擎实现标准接口来编写一个属于自己的存储引擎。这些非官方提供的存储引擎可以称为第三方存储引擎，区别于官方存储引擎。像目前最常用的 InnoDB 其实刚开始就是一个第三方存储引擎，后面由于过于优秀，其被 Oracle 直接收购了。</p>
+<blockquote>
+<p>MyISAM 和 InnoDB 的区别是什么？</p>
+</blockquote>
+<p>MySQL 5.5 之前，MyISAM 引擎是 MySQL 的默认存储引擎，可谓是风光一时。</p>
+<p>虽然，MyISAM 的性能还行，各种特性也还不错（比如全文索引、压缩、空间函数等）。但是，MyISAM 不支持事务和行级锁，而且最大的缺陷就是崩溃后无法安全恢复。</p>
+<p>MySQL 5.5.5 之前，MyISAM 是 MySQL 的默认存储引擎。5.5.5 版本之后，InnoDB 是 MySQL 的默认存储引擎。</p>
+<p>1.是否支持行级锁</p>
+<p><strong>MyISAM 只有表级锁(table-level locking)，而 InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</strong></p>
+<p>也就说，MyISAM 一锁就是锁住了整张表，这在并发写的情况下是多么滴憨憨啊！这也是为什么 InnoDB 在并发写的时候，性能更牛皮了！</p>
+<p>2.是否支持事务</p>
+<p><strong>MyISAM 不提供事务支持。</strong></p>
+<p>InnoDB 提供事务支持，<strong>实现了 SQL 标准定义了四个隔离级别，具有提交(commit)和回滚(rollback)事务的能力。并且，InnoDB 默认使用的 REPEATABLE-READ（可重读）隔离级别是可以解决幻读问题发生的</strong>（基于 MVCC 和 Next-Key Lock）。</p>
+<p>3.是否支持外键</p>
+<p><strong>MyISAM 不支持，而 InnoDB 支持。</strong></p>
+<p>外键对于维护数据一致性非常有帮助，但是对性能有一定的损耗。因此，通常情况下，我们是不建议在实际生产项目中使用外键的，在业务代码中进行约束即可！</p>
+<p>4.是否支持数据库异常崩溃后的安全恢复</p>
+<p><strong>MyISAM 不支持，而 InnoDB 支持。</strong></p>
+<p>使用 InnoDB 的数据库在异常崩溃后，<strong>数据库重新启动的时候会保证数据库恢复到崩溃前的状态。这个恢复的过程依赖于 redo log 。</strong></p>
+<p>5.是否支持 MVCC</p>
+<p><strong>MyISAM 不支持，而 InnoDB 支持。</strong></p>
+<p>讲真，这个对比有点废话，毕竟 MyISAM 连行级锁都不支持。MVCC 可以看作是行级锁的一个升级，可以有效减少加锁操作，提高性能。</p>
+<p>6.索引实现不一样。</p>
+<p><strong>虽然 MyISAM 引擎和 InnoDB 引擎都是使用 B+Tree 作为索引结构，但是两者的实现方式不太一样</strong>。</p>
+<p>InnoDB 引擎中，其数据文件本身就是索引文件。相比 MyISAM，索引文件和数据文件是分离的，其表数据文件本身就是按 B+Tree 组织的一个索引结构，树的叶节点 data 域保存了完整的数据记录。</p>
+<blockquote>
+<p>MyISAM 和 InnoDB 如何选择？</p>
+</blockquote>
+<p>大多数时候我们使用的都是 InnoDB 存储引擎，在某些读密集的情况下，使用 MyISAM 也是合适的。不过，前提是你的项目不介意 MyISAM 不支持事务、崩溃恢复等缺点（可是~我们一般都会介意啊！）。</p>
+<div class="note info simple"><p>《MySQL 高性能》上面有一句话这样写到:</p>
+<p>不要轻易相信“MyISAM 比 InnoDB 快”之类的经验之谈，这个结论往往不是绝对的。在很多我们已知场景中，InnoDB 的速度都可以让 MyISAM 望尘莫及，尤其是用到了聚簇索引，或者需要访问的数据都可以放入内存的应用。</p>
+</div>
+
+<p>一般情况下我们选择 InnoDB 都是没有问题的，但是某些情况下你并不在乎可扩展能力和并发能力，也不需要事务支持，也不在乎崩溃后的安全恢复问题的话，选择 MyISAM 也是一个不错的选择。但是一般情况下，我们都是需要考虑到这些问题的。</p>
+<p>因此，对于咱们日常开发的业务系统来说，你几乎找不到什么理由再使用 MyISAM 作为自己的 MySQL 数据库的存储引擎。</p>
+<h4 id="MySQL-查询缓存"><a href="#MySQL-查询缓存" class="headerlink" title="MySQL 查询缓存"></a>MySQL 查询缓存</h4><p>执行查询语句的时候，会先查询缓存。不过，MySQL 8.0 版本后移除，因为这个功能不太实用</p>
+<p>my.cnf 加入以下配置，重启 MySQL 开启查询缓存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">query_cache_type=<span class="number">1</span></span><br><span class="line">query_cache_size=<span class="number">600000</span></span><br></pre></td></tr></table></figure>
+
+<p>MySQL 执行以下命令也可以开启查询缓存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set global  query_cache_type=<span class="number">1</span>;</span><br><span class="line">set global  query_cache_size=<span class="number">600000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如上，开启查询缓存后在同样的查询条件以及数据情况下，会直接在缓存中返回结果。这里的查询条件包括查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息。（查询缓存不命中的情况：（1））因此任何两个查询在任何字符上的不同都会导致缓存不命中。此外，（查询缓存不命中的情况：（2））如果查询中包含任何用户自定义函数、存储函数、用户变量、临时表、MySQL 库中的系统表，其查询结果也不会被缓存。<br>（查询缓存不命中的情况：（3））缓存建立之后，MySQL 的查询缓存系统会跟踪查询中涉及的每张表，如果这些表（数据或结构）发生变化，那么和这张表相关的所有缓存数据都将失效。</p>
+<p><strong>缓存虽然能够提升数据库的查询性能，但是缓存同时也带来了额外的开销，每次查询后都要做一次缓存操作，失效后还要销毁。</strong> 因此，开启查询缓存要谨慎，尤其对于写密集的应用来说更是如此。如果开启，要注意合理控制缓存空间大小，一般来说其大小设置为几十 MB 比较合适。此外，还可以通过 sql_cache 和 sql_no_cache 来控制某个查询语句是否需要缓存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sql_no_cache <span class="title function_">count</span><span class="params">(*)</span> from usr;</span><br></pre></td></tr></table></figure>
+
+<h4 id="MySQL-事务"><a href="#MySQL-事务" class="headerlink" title="MySQL 事务"></a>MySQL 事务</h4><blockquote>
+<p>何谓事务？</p>
+</blockquote>
+<p>我们设想一个场景，这个场景中我们需要插入多条相关联的数据到数据库，不幸的是，这个过程可能会遇到下面这些问题：</p>
+<ul>
+<li>数据库中途突然因为某些原因挂掉了。</li>
+<li>客户端突然因为网络原因连接不上数据库了。</li>
+<li>并发访问数据库时，多个线程同时写入数据库，覆盖了彼此的更改。</li>
+<li>……</li>
+</ul>
+<p>上面的任何一个问题都可能会导致数据的不一致性。<strong>为了保证数据的一致性，系统必须能够处理这些问题。事务就是我们抽象出来简化这些问题的首选机制</strong>。事务的概念起源于数据库，目前，已经成为一个比较广泛的概念。</p>
+<p>何为事务？ 一言蔽之，<strong>事务是逻辑上的一组操作，要么都执行，要么都不执行。</strong></p>
+<p>事务最经典也经常被拿出来说例子就是转账了。假如小明要给小红转账 1000 元，这个转账会涉及到两个关键操作，这两个操作必须都成功或者都失败。</p>
+<p>1.将小明的余额减少 1000 元<br>2.将小红的余额增加 1000 元。</p>
+<p>事务会把这两个操作就可以看成逻辑上的一个整体，这个整体包含的操作要么都成功，要么都要失败。这样就不会出现小明余额减少而小红的余额却并没有增加的情况。</p>
+<p><img src="https://s2.loli.net/2022/10/10/YQI6eGszNdo7J8c.png" alt="事务转账"></p>
+<blockquote>
+<p>何谓数据库事务？</p>
+</blockquote>
+<p>大多数情况下，我们在谈论事务的时候，如果没有特指分布式事务，往往指的就是数据库事务。</p>
+<p>数据库事务在我们日常开发中接触的最多了。如果你的项目属于单体架构的话，你接触到的往往就是数据库事务了。</p>
+<p><strong>那数据库事务有什么作用呢？</strong></p>
+<p>简单来说，数据库事务可以保证多个对数据库的操作（也就是 SQL 语句）构成一个逻辑上的整体。构成这个逻辑上的整体的这些数据库操作遵循：要么全部执行成功,要么全部不执行 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 开启一个事务</span><br><span class="line">START TRANSACTION;</span><br><span class="line"># 多条 SQL 语句</span><br><span class="line">SQL1,SQL2...</span><br><span class="line">## 提交事务</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/10/10/2bh5DWtuFksOaH7.png" alt="事务"></p>
+<p>另外，关系型数据库（例如：MySQL、SQL Server、Oracle 等）事务都有 ACID 特性：</p>
+<ul>
+<li>原子性（Atomicity） ： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
+<li>一致性（Consistency）： 执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；</li>
+<li>隔离性（Isolation）： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
+<li>持久性（Durabilily）： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<p>只有保证了事务的持久性、原子性、隔离性之后，一致性才能得到保障。也就是说 A、I、D 是手段，C 是目的！</p>
+<p><img src="https://s2.loli.net/2022/10/10/SYHku48BEyroVf1.png" alt="ACID"></p>
+<div class="note info simple"><p>原子性，隔离性和持久性是数据库的属性，而一致性（在 ACID 意义上）是应用程序的属性。应用可能依赖数据库的原子性和隔离属性来实现一致性，但这并不仅取决于数据库。因此，字母 C 不属于 ACID 。</p>
+</div>
+
+<blockquote>
+<p>并发事务带来了哪些问题?</p>
+</blockquote>
+<p>在典型的应用程序中，多个事务并发运行，经常会操作相同的数据来完成各自的任务（多个用户对同一数据进行操作）。并发虽然是必须的，但可能会导致以下的问题。</p>
+<ul>
+<li>脏读（Dirty read）: 当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。因为这个数据是还没有提交的数据，那么另外一个事务读到的这个数据是“脏数据”，依据“脏数据”所做的操作可能是不正确的。</li>
+<li>丢失修改（Lost to modify）: 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务 1 读取某表中的数据 A&#x3D;20，事务 2 也读取 A&#x3D;20，事务 1 修改 A&#x3D;A-1，事务 2 也修改 A&#x3D;A-1，最终结果 A&#x3D;19，事务 1 的修改被丢失。</li>
+<li>不可重复读（Unrepeatable read）: 指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</li>
+<li>幻读（Phantom read）: 幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</li>
+</ul>
+<p><strong>不可重复读和幻读有什么区别呢？</strong></p>
+<ul>
+<li>不可重复读的重点是内容修改或者记录减少比如多次读取一条记录发现其中某些记录的值被修改；</li>
+<li>幻读的重点在于记录新增比如多次执行同一条查询语句（DQL）时，发现查到的记录增加了。</li>
+</ul>
+<p>幻读其实可以看作是不可重复读的一种特殊情况，单独把区分幻读的原因主要是解决幻读和不可重复读的方案不一样。</p>
+<p>举个例子：<strong>执行 delete 和 update 操作的时候，可以直接对记录加锁，保证事务安全。而执行 insert 操作的时候，由于记录锁（Record Lock）只能锁住已经存在的记录，为了避免插入新记录，需要依赖间隙锁（Gap Lock）。也就是说执行 insert 操作的时候需要依赖 Next-Key Lock（Record Lock+Gap Lock） 进行加锁来保证不出现幻读。</strong></p>
+<blockquote>
+<p>SQL 标准定义了哪些事务隔离级别?</p>
+</blockquote>
+<p>SQL 标准定义了四个隔离级别：</p>
+<ul>
+<li>READ-UNCOMMITTED(读取未提交) ： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。</li>
+<li>READ-COMMITTED(读取已提交) ： 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。</li>
+<li>REPEATABLE-READ(可重复读) ： 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。</li>
+<li>SERIALIZABLE(可串行化) ： 最高的隔离级别，完全服从 ACID 的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>READ-UNCOMMITTED</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>READ-COMMITTED</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>REPEATABLE-READ</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>SERIALIZABLE</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>MySQL 的隔离级别是基于锁实现的吗？</p>
+</blockquote>
+<p>MySQL 的隔离级别基于锁和 MVCC 机制共同实现的。</p>
+<p>SERIALIZABLE 隔离级别，是通过锁来实现的。除了 SERIALIZABLE 隔离级别，其他的隔离级别都是基于 MVCC 实现。</p>
+<p>不过， SERIALIZABLE 之外的其他隔离级别可能也需要用到锁机制，就比如 REPEATABLE-READ 在当前读情况下需要使用加锁读来保证不会出现幻读。</p>
+<blockquote>
+<p>MySQL 的默认隔离级别是什么?</p>
+</blockquote>
+<p>MySQL InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读）。我们可以通过SELECT @@tx_isolation;命令来查看，MySQL 8.0 该命令改为SELECT @@transaction_isolation;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT @<span class="meta">@tx_isolation</span>;</span><br><span class="line">+-----------------+</span><br><span class="line">| @<span class="meta">@tx_isolation</span>  |</span><br><span class="line">+-----------------+</span><br><span class="line">| REPEATABLE-READ |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
+
+<h4 id="MySQL-锁"><a href="#MySQL-锁" class="headerlink" title="MySQL 锁"></a>MySQL 锁</h4><blockquote>
+<p>表级锁和行级锁了解吗？有什么区别？</p>
+</blockquote>
+<p>MyISAM 仅仅支持表级锁(table-level locking)，一锁就锁整张表，这在并发写的情况下性非常差。</p>
+<p>InnoDB 不光支持表级锁(table-level locking)，还支持行级锁(row-level locking)，默认为行级锁。行级锁的粒度更小，仅对相关的记录上锁即可（对一行或者多行记录加锁），所以对于并发写入操作来说， InnoDB 的性能更高。</p>
+<p><strong>表级锁和行级锁对比</strong> ：</p>
+<ul>
+<li>表级锁： MySQL 中锁定粒度最大的一种锁，是针对非索引字段加的锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁。其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM 和 InnoDB 引擎都支持表级锁。</li>
+<li>行级锁： MySQL 中锁定粒度最小的一种锁，是针对索引字段加的锁，只针对当前操作的行记录进行加锁。 行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。</li>
+</ul>
+<blockquote>
+<p>行级锁的使用有什么注意事项？</p>
+</blockquote>
+<p>InnoDB 的行锁是针对索引字段加的锁，表级锁是针对非索引字段加的锁。当我们执行 UPDATE、DELETE 语句时，如果 WHERE条件中字段没有命中唯一索引或者索引失效的话，就会导致扫描全表对表中的所有行记录进行加锁。这个在我们日常工作开发中经常会遇到，一定要多多注意！！！</p>
+<p>不过，很多时候即使用了索引也有可能会走全表扫描，这是因为 MySQL 优化器的原因。</p>
+<blockquote>
+<p>共享锁和排他锁呢？</p>
+</blockquote>
+<p>不论是表级锁还是行级锁，都存在共享锁（Share Lock，S 锁）和排他锁（Exclusive Lock，X 锁）这两类：</p>
+<ul>
+<li>共享锁（S 锁） ：又称读锁，事务在读取记录的时候获取共享锁，允许多个事务同时获取（锁兼容）。</li>
+<li>排他锁（X 锁） ：又称写锁&#x2F;独占锁，事务在修改记录的时候获取排他锁，不允许多个事务同时获取。如果一个记录已经被加了排他锁，那其他事务不能再对这条事务加任何类型的锁（锁不兼容）。</li>
+</ul>
+<p>排他锁与任何的锁都不兼容，共享锁仅和共享锁兼容。</p>
+<table>
+<thead>
+<tr>
+<th>S 锁</th>
+<th>X 锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S 锁</td>
+<td>不冲突</td>
+</tr>
+<tr>
+<td>X 锁</td>
+<td>冲突</td>
+</tr>
+</tbody></table>
+<p>由于 MVCC 的存在，对于一般的 SELECT 语句，InnoDB 不会加任何锁。不过， 你可以通过以下语句显式加共享锁或排他锁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 共享锁</span><br><span class="line">SELECT ... LOCK IN SHARE MODE;</span><br><span class="line"># 排他锁</span><br><span class="line">SELECT ... FOR UPDATE;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>意向锁有什么作用？</p>
+</blockquote>
+<p>如果需要用到表锁的话，如何判断表中的记录没有行锁呢？一行一行遍历肯定是不行，性能太差。我们需要用到一个叫做意向锁的东东来快速判断是否可以对某个表使用表锁。</p>
+<p>意向锁是表级锁，共有两种：</p>
+<ul>
+<li>意向共享锁（Intention Shared Lock，IS 锁）：事务有意向对表中的某些记录加共享锁（S 锁），加共享锁前必须先取得该表的 IS 锁。</li>
+<li>意向排他锁（Intention Exclusive Lock，IX 锁）：事务有意向对表中的某些记录加排他锁（X 锁），加排他锁之前必须先取得该表的 IX 锁。</li>
+</ul>
+<p>意向锁是有数据引擎自己维护的，用户无法手动操作意向锁，在为数据行加共享 &#x2F; 排他锁之前，InooDB 会先获取该数据行所在在数据表的对应意向锁。</p>
+<p>意向锁之间是互相兼容的。</p>
+<table>
+<thead>
+<tr>
+<th>IS 锁</th>
+<th>IX 锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IS 锁</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>IX 锁</td>
+<td>兼容</td>
+</tr>
+</tbody></table>
+<p>意向锁和共享锁和排它锁互斥（这里指的是表级别的共享锁和排他锁，意向锁不会与行级的共享锁和排他锁互斥）。</p>
+<table>
+<thead>
+<tr>
+<th>IS 锁</th>
+<th>IX 锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S 锁</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>X 锁</td>
+<td>互斥</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/">https://mopinlan.github.io/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/10/08/Java%E4%B9%8BJVM%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java之JVM知识小结</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">数据库基础知识总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E5%91%98"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是数据库, 数据库管理系统, 数据库系统, 数据库管理员?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E7%BB%84-%E7%A0%81-%E5%80%99%E9%80%89%E7%A0%81-%E4%B8%BB%E7%A0%81-%E5%A4%96%E7%A0%81-%E4%B8%BB%E5%B1%9E%E6%80%A7-%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">什么是元组, 码, 候选码, 主码, 外码, 主属性, 非主属性？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E5%92%8C%E5%A4%96%E9%94%AE%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.3.</span> <span class="toc-text">主键和外键有什么区别?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E5%A4%96%E9%94%AE%E4%B8%8E%E7%BA%A7%E8%81%94%EF%BC%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">为什么不推荐使用外键与级联？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-ER-%E5%9B%BE%EF%BC%9F"><span class="toc-number">1.1.5.</span> <span class="toc-text">什么是 ER 图？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8C%83%E5%BC%8F"><span class="toc-number">1.1.6.</span> <span class="toc-text">数据库范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.7.</span> <span class="toc-text">什么是存储过程?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#drop%E3%80%81delete-%E4%B8%8E-truncate-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.1.8.</span> <span class="toc-text">drop、delete 与 truncate 区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E9%80%9A%E5%B8%B8%E5%88%86%E4%B8%BA%E5%93%AA%E5%87%A0%E6%AD%A5"><span class="toc-number">1.1.9.</span> <span class="toc-text">数据库设计通常分为哪几步?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.2.</span> <span class="toc-text">字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%9B%86%EF%BC%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">何为字符集？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">有哪些常见的字符集？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.2.3.</span> <span class="toc-text">MySQL 字符集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.</span> <span class="toc-text">MySQL基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">关系型数据库介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">MySQL 介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.3.</span> <span class="toc-text">MySQL 基础架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">1.3.4.</span> <span class="toc-text">MySQL 存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98"><span class="toc-number">1.3.5.</span> <span class="toc-text">MySQL 查询缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.3.6.</span> <span class="toc-text">MySQL 事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-%E9%94%81"><span class="toc-number">1.3.7.</span> <span class="toc-text">MySQL 锁</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="MySQL知识小结"><img src="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL知识小结"/></a><div class="content"><a class="title" href="/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="MySQL知识小结">MySQL知识小结</a><time datetime="2022-10-10T00:58:37.000Z" title="发表于 2022-10-10 08:58:37">2022-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/08/Java%E4%B9%8BJVM%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java之JVM知识小结"><img src="https://s2.loli.net/2022/03/21/fipnP1dsOeTNyM9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java之JVM知识小结"/></a><div class="content"><a class="title" href="/2022/10/08/Java%E4%B9%8BJVM%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java之JVM知识小结">Java之JVM知识小结</a><time datetime="2022-10-08T06:28:37.000Z" title="发表于 2022-10-08 14:28:37">2022-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/04/Java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java并发知识小结"><img src="https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java并发知识小结"/></a><div class="content"><a class="title" href="/2022/10/04/Java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java并发知识小结">Java并发知识小结</a><time datetime="2022-10-04T11:22:05.000Z" title="发表于 2022-10-04 19:22:05">2022-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/03/Java%E9%9B%86%E5%90%88%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java集合知识小结"><img src="https://s2.loli.net/2022/03/21/DnqyQA7r5IZCkPO.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java集合知识小结"/></a><div class="content"><a class="title" href="/2022/10/03/Java%E9%9B%86%E5%90%88%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java集合知识小结">Java集合知识小结</a><time datetime="2022-10-03T12:15:43.000Z" title="发表于 2022-10-03 20:15:43">2022-10-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/02/Java-IO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java IO基础知识小结"><img src="https://s2.loli.net/2022/03/21/Z4k7mF5hVcraoBU.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java IO基础知识小结"/></a><div class="content"><a class="title" href="/2022/10/02/Java-IO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Java IO基础知识小结">Java IO基础知识小结</a><time datetime="2022-10-02T11:38:40.000Z" title="发表于 2022-10-02 19:38:40">2022-10-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<br><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">苏ICP备2022038756号-1 <span class="footer-separator">|</span></a><img src="http://rhy2ih9xw.bkt.clouddn.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png?e=1665018486&token=JyhzonMW-Aw387G0cKpqvrtaLjUMcMemoda4rJho:p0DLhLwXatrf8aLV1V-d9y353xA="><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32081202000335"> 苏公网安备 32081202000335号</a></a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
