@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Mybatis知识小结 | mopinlan</title><meta name="keywords" content="Mybatis"><meta name="author" content="zhangwenjin"><meta name="copyright" content="zhangwenjin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于Mybatis相关知识的小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis知识小结">
+<meta property="og:url" content="https://mopinlan.github.io/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/index.html">
+<meta property="og:site_name" content="mopinlan">
+<meta property="og:description" content="关于Mybatis相关知识的小结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg">
+<meta property="article:published_time" content="2022-10-18T13:37:52.000Z">
+<meta property="article:modified_time" content="2022-10-18T13:57:55.985Z">
+<meta property="article:author" content="zhangwenjin">
+<meta property="article:tag" content="Mybatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mopinlan.github.io/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这是","messageNext":"天之前的文章。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mybatis知识小结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-18 21:57:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">mopinlan</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Mybatis知识小结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-18T13:37:52.000Z" title="发表于 2022-10-18 21:37:52">2022-10-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-18T13:57:55.985Z" title="更新于 2022-10-18 21:57:55">2022-10-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">学习小结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Mybatis知识小结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Mybatis知识小结"><a href="#Mybatis知识小结" class="headerlink" title="Mybatis知识小结"></a>Mybatis知识小结</h2><div class="note pink'fas icon flat"><i class="note-icon fa-bullhorn'"></i><p>MyBatis知识，参考博客<a class="btn-beautify blue larger" target="_blank" rel="noopener" href="https://javaguide.cn/database/basis.html" 
+  title="MyBatis常见面试题总结"><i class="far fa-hand-point-right"></i><span>MyBatis常见面试题总结</span></a></p>
+</div>
+
+<h3 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="{} 和 ${} 的区别是什么？"></a>{} 和 ${} 的区别是什么？</h3><p>${}是 Properties 文件中的变量占位符，它可以用于标签属性值和 sql 内部，属于静态文本替换，比如${driver}会被静态替换为com.mysql.jdbc. Driver。<br>#{}是 sql 的参数占位符，MyBatis 会将 sql 中的#{}替换为? 号，在 sql 执行前会使用 PreparedStatement 的参数设置方法，按序给 sql 的? 号占位符设置参数值，比如 ps.setInt(0, parameterValue)，#{item.name} 的取值方式为使用反射从参数对象中获取 item 对象的 name 属性值，相当于 param.getItem().getName()。</p>
+<h3 id="xml-映射文件中，除了常见的-select、insert、update、delete-标签之外，还有哪些标签？"><a href="#xml-映射文件中，除了常见的-select、insert、update、delete-标签之外，还有哪些标签？" class="headerlink" title="xml 映射文件中，除了常见的 select、insert、update、delete 标签之外，还有哪些标签？"></a>xml 映射文件中，除了常见的 select、insert、update、delete 标签之外，还有哪些标签？</h3><p>还有很多其他的标签， <resultMap> 、 <parameterMap> 、 <sql> 、 <include> 、 <selectKey> ，加上动态 sql 的 9 个标签， trim|where|set|foreach|if|choose|when|otherwise|bind 等，其中 <sql> 为 sql 片段标签，通过 <include> 标签引入 sql 片段， <selectKey> 为不支持自增的主键生成策略标签。</p>
+<h3 id="Dao-接口的工作原理是什么？Dao-接口里的方法，参数不同时，方法能重载吗？"><a href="#Dao-接口的工作原理是什么？Dao-接口里的方法，参数不同时，方法能重载吗？" class="headerlink" title="Dao 接口的工作原理是什么？Dao 接口里的方法，参数不同时，方法能重载吗？"></a>Dao 接口的工作原理是什么？Dao 接口里的方法，参数不同时，方法能重载吗？</h3><p>最佳实践中，通常一个 xml 映射文件，都会写一个 Dao 接口与之对应。Dao 接口就是人们常说的 Mapper 接口，<strong>接口的全限名，就是映射文件中的 namespace 的值，接口的方法名，就是映射文件中 MappedStatement 的 id 值，接口方法内的参数，就是传递给 sql 的参数。</strong> 。<br><strong>Mapper 接口是没有实现类的，当调用接口方法时，接口全限名+方法名拼接字符串作为 key 值，可唯一定位一个 MappedStatement</strong> ，<br>举例：<br> com.mybatis3.mappers. StudentDao.findStudentById ，可以唯一找到 namespace 为 com.mybatis3.mappers. StudentDao 下面 id &#x3D; findStudentById 的 MappedStatement 。在 MyBatis 中，每一个 <select> 、 <insert> 、 <update> 、 <delete> 标签，都会被解析为一个 MappedStatement 对象。</p>
+<p>Dao 接口里的方法可以重载，但是 Mybatis 的 xml 里面的 ID 不允许重复。</p>
+<p>Mybatis 版本 3.3.0，亲测如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Mapper接口里面方法重载</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StuMapper</span> &#123;</span><br><span class="line"></span><br><span class="line">	List&lt;Student&gt; <span class="title function_">getAllStu</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">	List&lt;Student&gt; <span class="title function_">getAllStu</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Integer id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 StuMapper.xml 中利用 Mybatis 的动态 sql 就可以实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">&quot;getAllStu&quot;</span> resultType=<span class="string">&quot;com.pojo.Student&quot;</span>&gt;</span><br><span class="line">		select * from student</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">		&lt;<span class="keyword">if</span> test=<span class="string">&quot;id != null&quot;</span>&gt;</span><br><span class="line">			id = #&#123;id&#125;</span><br><span class="line">		&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">	&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p>能正常运行，并能得到相应的结果，这样就实现了在 Dao 接口中写重载方法。</p>
+<p>Mybatis 的 <strong>Dao 接口可以有多个重载方法，但是多个接口对应的映射必须只有一个</strong>，否则启动会报错。</p>
+<p>相关 issue ：更正：Dao 接口里的方法可以重载，但是 Mybatis 的 xml 里面的 ID 不允许重复！。</p>
+<p><strong>Dao 接口的工作原理是 JDK 动态代理，MyBatis 运行时会使用 JDK 动态代理为 Dao 接口生成代理 proxy 对象，代理对象 proxy 会拦截接口方法，转而执行 MappedStatement 所代表的 sql，然后将 sql 执行结果返回。</strong></p>
+<p><strong>补充</strong> ：</p>
+<p>Dao 接口方法可以重载，但是需要满足以下条件：</p>
+<ul>
+<li>仅有一个无参方法和一个有参方法</li>
+<li>多个有参方法时，参数数量必须一致。且使用相同的 @Param ，或者使用 param1 这种</li>
+</ul>
+<p>测试如下 ：</p>
+<p>PersonDao.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person <span class="title function_">queryById</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">Person <span class="title function_">queryById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line"></span><br><span class="line">Person <span class="title function_">queryById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> Long id, <span class="meta">@Param(&quot;name&quot;)</span> String name)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>PersonMapper.xml</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">&quot;queryById&quot;</span> resultMap=<span class="string">&quot;PersonMap&quot;</span>&gt;</span><br><span class="line">    select</span><br><span class="line">      id, name, age, address</span><br><span class="line">    from person</span><br><span class="line">    &lt;where&gt;</span><br><span class="line">        &lt;<span class="keyword">if</span> test=<span class="string">&quot;id != null&quot;</span>&gt;</span><br><span class="line">            id = #&#123;id&#125;</span><br><span class="line">        &lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">        &lt;<span class="keyword">if</span> test=<span class="string">&quot;name != null and name != &#x27;&#x27;&quot;</span>&gt;</span><br><span class="line">            name = #&#123;name&#125;</span><br><span class="line">        &lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">    &lt;/where&gt;</span><br><span class="line">    limit <span class="number">1</span></span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p>org.apache.ibatis.scripting.xmltags. DynamicContext. ContextAccessor#getProperty 方法用于获取 <if> 标签中的条件值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Object <span class="title function_">getProperty</span><span class="params">(Map context, Object target, Object name)</span> &#123;</span><br><span class="line">  <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> (Map) target;</span><br><span class="line"></span><br><span class="line">  <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> map.get(name);</span><br><span class="line">  <span class="keyword">if</span> (map.containsKey(name) || result != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="type">Object</span> <span class="variable">parameterObject</span> <span class="operator">=</span> map.get(PARAMETER_OBJECT_KEY);</span><br><span class="line">  <span class="keyword">if</span> (parameterObject <span class="keyword">instanceof</span> Map) &#123;</span><br><span class="line">    <span class="keyword">return</span> ((Map)parameterObject).get(name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>parameterObject 为 map，存放的是 Dao 接口中参数相关信息。</p>
+<p>((Map)parameterObject).get(name) 方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> V <span class="title function_">get</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">super</span>.containsKey(key)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BindingException</span>(<span class="string">&quot;Parameter &#x27;&quot;</span> + key + <span class="string">&quot;&#x27; not found. Available parameters are &quot;</span> + keySet());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">super</span>.get(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>queryById()方法执行时，parameterObject为 null，getProperty方法返回 null 值，<if>标签获取的所有条件值都为 null，所有条件不成立，动态 sql 可以正常执行。</li>
+<li>queryById(1L)方法执行时，parameterObject为 map，包含了id和param1两个 key 值。当获取<if>标签中name的属性值时，进入((Map)parameterObject).get(name)方法中，map 中 key 不包含name，所以抛出异常。</li>
+<li>queryById(1L,”1”)方法执行时，parameterObject中包含id,param1,name,param2四个 key 值，id和name属性都可以获取到，动态 sql 正常执行。</li>
+</ul>
+<h3 id="MyBatis-是如何进行分页的？分页插件的原理是什么？"><a href="#MyBatis-是如何进行分页的？分页插件的原理是什么？" class="headerlink" title="MyBatis 是如何进行分页的？分页插件的原理是什么？"></a>MyBatis 是如何进行分页的？分页插件的原理是什么？</h3><p>(1) MyBatis 使用 RowBounds 对象进行分页，它是针对 ResultSet 结果集执行的内存分页，而非物理分页；<br>(2) 可以在 sql 内直接书写带有物理分页的参数来完成物理分页功能，<br>(3) 也可以使用分页插件来完成物理分页。</p>
+<p>分页插件的基本原理是使用 MyBatis 提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的 sql，然后重写 sql，根据 dialect 方言，添加对应的物理分页语句和物理分页参数。</p>
+<p>举例： </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> _ <span class="keyword">from</span> student ，拦截 <span class="keyword">sql</span> 后重写为： <span class="keyword">select</span> t._ <span class="keyword">from</span> （<span class="keyword">select</span> \<span class="operator">*</span> <span class="keyword">from</span> student）t limit <span class="number">0</span>，<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="简述-MyBatis-的插件运行原理，以及如何编写一个插件。"><a href="#简述-MyBatis-的插件运行原理，以及如何编写一个插件。" class="headerlink" title="简述 MyBatis 的插件运行原理，以及如何编写一个插件。"></a>简述 MyBatis 的插件运行原理，以及如何编写一个插件。</h3><p>MyBatis 仅可以编写针对 ParameterHandler 、 ResultSetHandler 、 StatementHandler 、 Executor 这 4 种接口的插件，MyBatis 使用 JDK 的动态代理，为需要拦截的接口生成代理对象以实现接口方法拦截功能，每当执行这 4 种接口对象的方法时，就会进入拦截方法，具体就是 InvocationHandler 的 invoke() 方法，当然，只会拦截那些你指定需要拦截的方法。</p>
+<p>实现 MyBatis 的 Interceptor 接口并复写 intercept() 方法，然后在给插件编写注解，指定要拦截哪一个接口的哪些方法即可，记住，别忘了在配置文件中配置你编写的插件。</p>
+<h3 id="MyBatis-执行批量插入，能返回数据库主键列表吗？"><a href="#MyBatis-执行批量插入，能返回数据库主键列表吗？" class="headerlink" title="MyBatis 执行批量插入，能返回数据库主键列表吗？"></a>MyBatis 执行批量插入，能返回数据库主键列表吗？</h3><p>能，JDBC 都能，MyBatis 当然也能。</p>
+<h3 id="MyBatis-动态-sql-是做什么的？都有哪些动态-sql？能简述一下动态-sql-的执行原理不？"><a href="#MyBatis-动态-sql-是做什么的？都有哪些动态-sql？能简述一下动态-sql-的执行原理不？" class="headerlink" title="MyBatis 动态 sql 是做什么的？都有哪些动态 sql？能简述一下动态 sql 的执行原理不？"></a>MyBatis 动态 sql 是做什么的？都有哪些动态 sql？能简述一下动态 sql 的执行原理不？</h3><p>MyBatis 动态 sql 可以让我们在 xml 映射文件内，以标签的形式编写动态 sql，完成逻辑判断和动态拼接 sql 的功能。</p>
+<p>其执行原理为，使用 OGNL 从 sql 参数对象中计算表达式的值，根据表达式的值动态拼接 sql，以此来完成动态 sql 的功能。</p>
+<p>MyBatis 提供了 9 种动态 sql 标签:</p>
+<ul>
+<li><if></if></li>
+<li><where></where>(trim,set)</li>
+<li><choose></choose>（when, otherwise）</li>
+<li><foreach></foreach></li>
+<li><bind/></li>
+</ul>
+<h3 id="MyBatis-是如何将-sql-执行结果封装为目标对象并返回的？都有哪些映射形式？"><a href="#MyBatis-是如何将-sql-执行结果封装为目标对象并返回的？都有哪些映射形式？" class="headerlink" title="MyBatis 是如何将 sql 执行结果封装为目标对象并返回的？都有哪些映射形式？"></a>MyBatis 是如何将 sql 执行结果封装为目标对象并返回的？都有哪些映射形式？</h3><ul>
+<li>第一种是使用 <resultMap> 标签，逐一定义列名和对象属性名之间的映射关系。</li>
+<li>第二种是使用 sql 列的别名功能，将列别名书写为对象属性名，比如 T_NAME AS NAME，对象属性名一般是 name，小写，但是列名不区分大小写，MyBatis 会忽略列名大小写，智能找到与之对应对象属性名，你甚至可以写成 T_NAME AS NaMe，MyBatis 一样可以正常工作。</li>
+</ul>
+<p>有了列名与属性名的映射关系后，MyBatis 通过反射创建对象，同时使用反射给对象的属性逐一赋值并返回，那些找不到映射关系的属性，是无法完成赋值的。</p>
+<h3 id="MyBatis-能执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"><a href="#MyBatis-能执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。" class="headerlink" title="MyBatis 能执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。"></a>MyBatis 能执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</h3><p>能，MyBatis 不仅可以执行一对一、一对多的关联查询，还可以执行多对一，多对多的关联查询，<strong>多对一查询，其实就是一对一查询</strong>，只需要把 selectOne() 修改为 selectList() 即可；<strong>多对多查询，其实就是一对多查询</strong>，只需要把 selectOne() 修改为 selectList() 即可。</p>
+<p>关联对象查询，有两种实现方式，一种是单独发送一个 sql 去查询关联对象，赋给主对象，然后返回主对象。另一种是使用嵌套查询，嵌套查询的含义为使用 join 查询，一部分列是 A 对象的属性值，另外一部分列是关联对象 B 的属性值，好处是只发一个 sql 查询，就可以把主对象和其关联对象查出来。</p>
+<p>那么问题来了，join 查询出来 100 条记录，如何确定主对象是 5 个，而不是 100 个？其去重复的原理是 <resultMap> 标签内的 <id> 子标签，指定了唯一确定一条记录的 id 列，MyBatis 根据 <id> 列值来完成 100 条记录的去重复功能， <id> 可以有多个，代表了联合主键的语意。</p>
+<p>同样主对象的关联对象，也是根据这个原理去重复的，尽管一般情况下，只有主对象会有重复记录，关联对象一般不会重复。</p>
+<p>举例：下面 join 查询出来 6 条记录，一、二列是 Teacher 对象列，第三列为 Student 对象列，MyBatis 去重复处理后，结果为 1 个老师 6 个学生，而不是 6 个老师 6 个学生。</p>
+<table>
+<thead>
+<tr>
+<th>t_id</th>
+<th>t_name</th>
+<th>s_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>teacher</td>
+<td>38</td>
+</tr>
+<tr>
+<td>1</td>
+<td>teacher</td>
+<td>39</td>
+</tr>
+<tr>
+<td>1</td>
+<td>teacher</td>
+<td>40</td>
+</tr>
+<tr>
+<td>1</td>
+<td>teacher</td>
+<td>41</td>
+</tr>
+<tr>
+<td>1</td>
+<td>teacher</td>
+<td>42</td>
+</tr>
+<tr>
+<td>1</td>
+<td>teacher</td>
+<td>43</td>
+</tr>
+</tbody></table>
+<h3 id="MyBatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><a href="#MyBatis-是否支持延迟加载？如果支持，它的实现原理是什么？" class="headerlink" title="MyBatis 是否支持延迟加载？如果支持，它的实现原理是什么？"></a>MyBatis 是否支持延迟加载？如果支持，它的实现原理是什么？</h3><p>MyBatis 仅支持 association 关联对象和 collection 关联集合对象的延迟加载，association 指的就是一对一，collection 指的就是一对多查询。在 MyBatis 配置文件中，可以配置是否启用延迟加载 lazyLoadingEnabled&#x3D;true|false。</p>
+<p>它的原理是，使用 CGLIB 创建目标对象的代理对象，当调用目标方法时，进入拦截器方法，比如调用 a.getB().getName() ，拦截器 invoke() 方法发现 a.getB() 是 null 值，那么就会单独发送事先保存好的查询关联 B 对象的 sql，把 B 查询上来，然后调用 a.setB(b)，于是 a 的对象 b 属性就有值了，接着完成 a.getB().getName() 方法的调用。这就是延迟加载的基本原理。</p>
+<p>当然了，不光是 MyBatis，几乎所有的包括 Hibernate，支持延迟加载的原理都是一样的。</p>
+<h3 id="MyBatis-的-xml-映射文件中，不同的-xml-映射文件，id-是否可以重复？"><a href="#MyBatis-的-xml-映射文件中，不同的-xml-映射文件，id-是否可以重复？" class="headerlink" title="MyBatis 的 xml 映射文件中，不同的 xml 映射文件，id 是否可以重复？"></a>MyBatis 的 xml 映射文件中，不同的 xml 映射文件，id 是否可以重复？</h3><p>不同的 xml 映射文件，如果配置了 namespace，那么 id 可以重复；如果没有配置 namespace，那么 id 不能重复；毕竟 namespace 不是必须的，只是最佳实践而已。</p>
+<p>原因就是 namespace+id 是作为 Map&lt;String, MappedStatement&gt; 的 key 使用的，如果没有 namespace，就剩下 id，那么，id 重复会导致数据互相覆盖。有了 namespace，自然 id 就可以重复，namespace 不同，namespace+id 自然也就不同。</p>
+<h3 id="MyBatis-中如何执行批处理？"><a href="#MyBatis-中如何执行批处理？" class="headerlink" title="MyBatis 中如何执行批处理？"></a>MyBatis 中如何执行批处理？</h3><p>使用 BatchExecutor 完成批处理。</p>
+<h3 id="MyBatis-都有哪些-Executor-执行器？它们之间的区别是什么？"><a href="#MyBatis-都有哪些-Executor-执行器？它们之间的区别是什么？" class="headerlink" title="MyBatis 都有哪些 Executor 执行器？它们之间的区别是什么？"></a>MyBatis 都有哪些 Executor 执行器？它们之间的区别是什么？</h3><p>MyBatis 有三种基本的 Executor 执行器：</p>
+<ul>
+<li>SimpleExecutor： 每执行一次 update 或 select，就开启一个 Statement 对象，用完立刻关闭 Statement 对象。</li>
+<li>ReuseExecutor： 执行 update 或 select，以 sql 作为 key 查找 Statement 对象，存在就使用，不存在就创建，用完后，不关闭 Statement 对象，而是放置于 Map&lt;String, Statement&gt;内，供下一次使用。简言之，就是重复使用 Statement 对象。 BatchExecutor 执行 update（没有 select，JDBC 批处理不支持 select），将所有 sql 都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个 Statement 对象，每个 Statement 对象都是 addBatch()完毕后，等待逐一执行 executeBatch()批处理。与 JDBC 批处理相同。</li>
+</ul>
+<p>作用范围：Executor 的这些特点，都严格限制在 SqlSession 生命周期范围内。</p>
+<h3 id="MyBatis-中如何指定使用哪一种-Executor-执行器？"><a href="#MyBatis-中如何指定使用哪一种-Executor-执行器？" class="headerlink" title="MyBatis 中如何指定使用哪一种 Executor 执行器？"></a>MyBatis 中如何指定使用哪一种 Executor 执行器？</h3><p>在 MyBatis 配置文件中，可以指定默认的 ExecutorType 执行器类型，也可以手动给 DefaultSqlSessionFactory 的创建 SqlSession 的方法传递 ExecutorType 类型参数。</p>
+<h3 id="MyBatis-是否可以映射-Enum-枚举类？"><a href="#MyBatis-是否可以映射-Enum-枚举类？" class="headerlink" title="MyBatis 是否可以映射 Enum 枚举类？"></a>MyBatis 是否可以映射 Enum 枚举类？</h3><p>MyBatis 可以映射枚举类，不单可以映射枚举类，MyBatis 可以映射任何对象到表的一列上。映射方式为自定义一个 TypeHandler ，实现 TypeHandler 的 setParameter() 和 getResult() 接口方法。 TypeHandler 有两个作用：</p>
+<ul>
+<li>一是完成从 javaType 至 jdbcType 的转换；</li>
+<li>二是完成 jdbcType 至 javaType 的转换，体现为 setParameter() 和 getResult() 两个方法，分别代表设置 sql 问号占位符参数和获取列查询结果。</li>
+</ul>
+<h3 id="MyBatis-映射文件中，如果-A-标签通过-include-引用了-B-标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在-A-标签的前面？"><a href="#MyBatis-映射文件中，如果-A-标签通过-include-引用了-B-标签的内容，请问，B-标签能否定义在-A-标签的后面，还是说必须定义在-A-标签的前面？" class="headerlink" title="MyBatis 映射文件中，如果 A 标签通过 include 引用了 B 标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在 A 标签的前面？"></a>MyBatis 映射文件中，如果 A 标签通过 include 引用了 B 标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在 A 标签的前面？</h3><p>虽然 MyBatis 解析 xml 映射文件是按照顺序解析的，但是，被引用的 B 标签依然可以定义在任何地方，MyBatis 都可以正确识别。</p>
+<p>原理是，MyBatis 解析 A 标签，发现 A 标签引用了 B 标签，但是 B 标签尚未解析到，尚不存在，此时，MyBatis 会将 A 标签标记为未解析状态，然后继续解析余下的标签，包含 B 标签，待所有标签解析完毕，MyBatis 会重新解析那些被标记为未解析的标签，此时再解析 A 标签时，B 标签已经存在，A 标签也就可以正常解析完成了。</p>
+<h3 id="简述-MyBatis-的-xml-映射文件和-MyBatis-内部数据结构之间的映射关系？"><a href="#简述-MyBatis-的-xml-映射文件和-MyBatis-内部数据结构之间的映射关系？" class="headerlink" title="简述 MyBatis 的 xml 映射文件和 MyBatis 内部数据结构之间的映射关系？"></a>简述 MyBatis 的 xml 映射文件和 MyBatis 内部数据结构之间的映射关系？</h3><p>MyBatis 将所有 xml 配置信息都封装到 All-In-One 重量级对象 Configuration 内部。在 xml 映射文件中， <parameterMap> 标签会被解析为 ParameterMap 对象，其每个子元素会被解析为 ParameterMapping 对象。 <resultMap> 标签会被解析为 ResultMap 对象，其每个子元素会被解析为 ResultMapping 对象。每一个 <select>、<insert>、<update>、<delete> 标签均会被解析为 MappedStatement 对象，标签内的 sql 会被解析为 BoundSql 对象。</p>
+<h3 id="为什么说-MyBatis-是半自动-ORM-映射工具？它与全自动的区别在哪里？"><a href="#为什么说-MyBatis-是半自动-ORM-映射工具？它与全自动的区别在哪里？" class="headerlink" title="为什么说 MyBatis 是半自动 ORM 映射工具？它与全自动的区别在哪里？"></a>为什么说 MyBatis 是半自动 ORM 映射工具？它与全自动的区别在哪里？</h3><p>Hibernate 属于全自动 ORM 映射工具，使用 Hibernate 查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。而 MyBatis 在查询关联对象或关联集合对象时，需要手动编写 sql 来完成，所以，称之为半自动 ORM 映射工具。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangwenjin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mopinlan.github.io/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/">https://mopinlan.github.io/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mopinlan.github.io" target="_blank">mopinlan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Mybatis/">Mybatis</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/10/18/Spring-SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%B0%8F%E7%BB%93/"><img class="prev-cover" src="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring&amp;SpringBoot常用注解小结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/07/24/Mabatis%E4%B9%8Bconf-xml%E8%AF%A6%E8%A7%A3/" title="Mabatis之conf.xml详解"><img class="cover" src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-24</div><div class="title">Mabatis之conf.xml详解</div></div></a></div><div><a href="/2019/07/24/Mybatis%E4%B9%8Bmapper-xml%E8%AF%A6%E8%A7%A3/" title="Mybatis之mapper.xml详解"><img class="cover" src="https://s2.loli.net/2022/03/21/FXtnfSDR2z4Y7O3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-24</div><div class="title">Mybatis之mapper.xml详解</div></div></a></div><div><a href="/2021/11/21/Mybatis%E5%9B%9E%E9%A1%BE%E5%B0%8F%E7%BB%93/" title="Mybatis回顾小结"><img class="cover" src="https://s2.loli.net/2022/03/21/nJjgpxYom4G3NkS.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-21</div><div class="title">Mybatis回顾小结</div></div></a></div><div><a href="/2019/07/24/Mybatis%E4%B9%8BMapper%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" title="Mybatis之Mapper动态代理"><img class="cover" src="https://s2.loli.net/2022/03/21/cX8iDtlV6vgdreE.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-24</div><div class="title">Mybatis之Mapper动态代理</div></div></a></div><div><a href="/2021/11/23/Mybatis%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" title="Mybatis多表查询"><img class="cover" src="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-23</div><div class="title">Mybatis多表查询</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zhangwenjin</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mopinlan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">思恋是一种很玄的东西，如影~随行</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">Mybatis知识小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">{} 和 ${} 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E4%B8%AD%EF%BC%8C%E9%99%A4%E4%BA%86%E5%B8%B8%E8%A7%81%E7%9A%84-select%E3%80%81insert%E3%80%81update%E3%80%81delete-%E6%A0%87%E7%AD%BE%E4%B9%8B%E5%A4%96%EF%BC%8C%E8%BF%98%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A0%87%E7%AD%BE%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">xml 映射文件中，除了常见的 select、insert、update、delete 标签之外，还有哪些标签？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dao-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FDao-%E6%8E%A5%E5%8F%A3%E9%87%8C%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8F%82%E6%95%B0%E4%B8%8D%E5%90%8C%E6%97%B6%EF%BC%8C%E6%96%B9%E6%B3%95%E8%83%BD%E9%87%8D%E8%BD%BD%E5%90%97%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">Dao 接口的工作原理是什么？Dao 接口里的方法，参数不同时，方法能重载吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%88%86%E9%A1%B5%E7%9A%84%EF%BC%9F%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">MyBatis 是如何进行分页的？分页插件的原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-MyBatis-%E7%9A%84%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6%E3%80%82"><span class="toc-number">1.5.</span> <span class="toc-text">简述 MyBatis 的插件运行原理，以及如何编写一个插件。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%89%A7%E8%A1%8C%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%EF%BC%8C%E8%83%BD%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E9%94%AE%E5%88%97%E8%A1%A8%E5%90%97%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">MyBatis 执行批量插入，能返回数据库主键列表吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E5%8A%A8%E6%80%81-sql-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84%EF%BC%9F%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%A8%E6%80%81-sql%EF%BC%9F%E8%83%BD%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8B%E5%8A%A8%E6%80%81-sql-%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86%E4%B8%8D%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">MyBatis 动态 sql 是做什么的？都有哪些动态 sql？能简述一下动态 sql 的执行原理不？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%98%AF%E5%A6%82%E4%BD%95%E5%B0%86-sql-%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E5%B0%81%E8%A3%85%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%AF%B9%E8%B1%A1%E5%B9%B6%E8%BF%94%E5%9B%9E%E7%9A%84%EF%BC%9F%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E6%98%A0%E5%B0%84%E5%BD%A2%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">MyBatis 是如何将 sql 执行结果封装为目标对象并返回的？都有哪些映射形式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E8%83%BD%E6%89%A7%E8%A1%8C%E4%B8%80%E5%AF%B9%E4%B8%80%E3%80%81%E4%B8%80%E5%AF%B9%E5%A4%9A%E7%9A%84%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%90%97%EF%BC%9F%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%BB%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="toc-number">1.9.</span> <span class="toc-text">MyBatis 能执行一对一、一对多的关联查询吗？都有哪些实现方式，以及它们之间的区别。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%94%AF%E6%8C%81%EF%BC%8C%E5%AE%83%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">MyBatis 是否支持延迟加载？如果支持，它的实现原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E7%9A%84-xml-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E4%B8%AD%EF%BC%8C%E4%B8%8D%E5%90%8C%E7%9A%84-xml-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%EF%BC%8Cid-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="toc-number">1.11.</span> <span class="toc-text">MyBatis 的 xml 映射文件中，不同的 xml 映射文件，id 是否可以重复？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E4%B8%AD%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E6%89%B9%E5%A4%84%E7%90%86%EF%BC%9F"><span class="toc-number">1.12.</span> <span class="toc-text">MyBatis 中如何执行批处理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B-Executor-%E6%89%A7%E8%A1%8C%E5%99%A8%EF%BC%9F%E5%AE%83%E4%BB%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.13.</span> <span class="toc-text">MyBatis 都有哪些 Executor 执行器？它们之间的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E4%B8%AD%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E4%BD%BF%E7%94%A8%E5%93%AA%E4%B8%80%E7%A7%8D-Executor-%E6%89%A7%E8%A1%8C%E5%99%A8%EF%BC%9F"><span class="toc-number">1.14.</span> <span class="toc-text">MyBatis 中如何指定使用哪一种 Executor 执行器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%98%A0%E5%B0%84-Enum-%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%9F"><span class="toc-number">1.15.</span> <span class="toc-text">MyBatis 是否可以映射 Enum 枚举类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E4%B8%AD%EF%BC%8C%E5%A6%82%E6%9E%9C-A-%E6%A0%87%E7%AD%BE%E9%80%9A%E8%BF%87-include-%E5%BC%95%E7%94%A8%E4%BA%86-B-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E8%AF%B7%E9%97%AE%EF%BC%8CB-%E6%A0%87%E7%AD%BE%E8%83%BD%E5%90%A6%E5%AE%9A%E4%B9%89%E5%9C%A8-A-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%90%8E%E9%9D%A2%EF%BC%8C%E8%BF%98%E6%98%AF%E8%AF%B4%E5%BF%85%E9%A1%BB%E5%AE%9A%E4%B9%89%E5%9C%A8-A-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%89%8D%E9%9D%A2%EF%BC%9F"><span class="toc-number">1.16.</span> <span class="toc-text">MyBatis 映射文件中，如果 A 标签通过 include 引用了 B 标签的内容，请问，B 标签能否定义在 A 标签的后面，还是说必须定义在 A 标签的前面？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-MyBatis-%E7%9A%84-xml-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E5%92%8C-MyBatis-%E5%86%85%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-number">1.17.</span> <span class="toc-text">简述 MyBatis 的 xml 映射文件和 MyBatis 内部数据结构之间的映射关系？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4-MyBatis-%E6%98%AF%E5%8D%8A%E8%87%AA%E5%8A%A8-ORM-%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7%EF%BC%9F%E5%AE%83%E4%B8%8E%E5%85%A8%E8%87%AA%E5%8A%A8%E7%9A%84%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-number">1.18.</span> <span class="toc-text">为什么说 MyBatis 是半自动 ORM 映射工具？它与全自动的区别在哪里？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Mybatis知识小结"><img src="https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis知识小结"/></a><div class="content"><a class="title" href="/2022/10/18/Mybatis%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Mybatis知识小结">Mybatis知识小结</a><time datetime="2022-10-18T13:37:52.000Z" title="发表于 2022-10-18 21:37:52">2022-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/18/Spring-SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%B0%8F%E7%BB%93/" title="Spring&amp;SpringBoot常用注解小结"><img src="https://s2.loli.net/2022/03/21/kXpycE8hINVS5b9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring&amp;SpringBoot常用注解小结"/></a><div class="content"><a class="title" href="/2022/10/18/Spring-SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%B0%8F%E7%BB%93/" title="Spring&amp;SpringBoot常用注解小结">Spring&amp;SpringBoot常用注解小结</a><time datetime="2022-10-18T07:24:37.000Z" title="发表于 2022-10-18 15:24:37">2022-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/15/Spring%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Spring知识小结"><img src="https://s2.loli.net/2022/03/21/nJjgpxYom4G3NkS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring知识小结"/></a><div class="content"><a class="title" href="/2022/10/15/Spring%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="Spring知识小结">Spring知识小结</a><time datetime="2022-10-15T12:00:09.000Z" title="发表于 2022-10-15 20:00:09">2022-10-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="数据结构知识小结"><img src="https://s2.loli.net/2022/03/21/nJjgpxYom4G3NkS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构知识小结"/></a><div class="content"><a class="title" href="/2022/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="数据结构知识小结">数据结构知识小结</a><time datetime="2022-10-14T10:45:02.000Z" title="发表于 2022-10-14 18:45:02">2022-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="MySQL知识小结"><img src="https://s2.loli.net/2022/03/21/T4wJAbS23e78ymI.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL知识小结"/></a><div class="content"><a class="title" href="/2022/10/10/MySQL%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93/" title="MySQL知识小结">MySQL知识小结</a><time datetime="2022-10-10T00:58:37.000Z" title="发表于 2022-10-10 08:58:37">2022-10-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/03/21/8qQ9CNAiH4MedOy.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By zhangwenjin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<br><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">苏ICP备2022038756号-1 <span class="footer-separator">|</span></a><img src="http://img.mopinlan.top/202210141154731.png"><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32081202000335"> 苏公网安备 32081202000335号</a></a></div><div class="footer_custom_text">不知会遇到你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2XAXfeXF0KBln9WrfUKu64n-gzGzoHsz',
+      appKey: 'sAxT6dTqsgHzhCSY79QeHM71',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = 'zBoRYsKiBDwAxd5Dk';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
